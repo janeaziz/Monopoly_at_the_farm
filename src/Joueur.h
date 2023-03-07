@@ -1,6 +1,6 @@
-#include "Arbre.h"
+
 #include "CasePropriete.h"
-#include "Jardin.h"
+
 
 #ifndef _JOUEUR_H
 #define _JOUEUR_H
@@ -12,10 +12,11 @@ class Joueur {
     unsigned int argent;
     int quantite_eau;
     int quantite_soleil;
-    Arbre tab_arbre;
+    int nb_arbre;
+    int nb_jardin;
     CasePropriete tab_propriete;
     unsigned int position; //indice de la case
-    Jardin tab_jardin;
+ 
 
     public:
 
@@ -127,14 +128,14 @@ class Joueur {
     void tour_de_jeu();
 
     /**
-     * @brief cette fonction permet de rajouter un arbre dans le tableau d'arbre de Joueur et
+     * @brief cette fonction permet d'incrementer nb_arbre de Joueur et
      * diminue ainsi l'argent de "argent" du Joueur
      * 
      */
     void acheter_arbre();
 
     /**
-     * @brief cette fonction permet de rajouter un arbre dans le tableau d'arbres de Joueur et
+     * @brief cette fonction permet d'incrementer nb_jardin de Joueur et
      * diminue ainsi l'argent de "argent" du Joueur
      * 
      */
