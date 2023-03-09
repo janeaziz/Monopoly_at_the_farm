@@ -1,17 +1,24 @@
+OBJ=obj/Plateau.o
 CC=g++
-CFLAGS=-c -Wall
-LDFLAGS=-lSDL2 -lSDL2_image
-SOURCES=src/Plateau.cpp src/main.cpp
-OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=jeu
+CFLAGS=-g -Wall
+LIBS_SDL = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lGL
 
-all: $(SOURCES) $(EXECUTABLE)
+all: folders bin/monopoly 
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+folders:
+	mkdir -p obj bin data
 
-.cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
+bin/monopoly: $(OBJ) obj/main.o
+	$(CC) $(OBJ) obj/main.o -o bin/monopoly $(LIBS_SDL)
+
+$(OBJ): src/Plateau.cpp src/Plateau.h 
+	$(CC) $(CFLAGS) -c src/Plateau.cpp -o $(OBJ)
+
+obj/main.o: src/main.cpp src/Plateau.h 
+	$(CC) $(CFLAGS) -c src/main.cpp  -o obj/main.o
+
+docs: doc/image.doxy
+	doxygen doc/image.doxy
 
 clean:
-	rm -f $(OBJECTS) $(EXECUTABLE)
+	rm -rf obj/* bin/* doc/html callgrind.out.*
