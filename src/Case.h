@@ -12,7 +12,9 @@ class Case{
     std::string type;
     Couleur c;
 
-    
+    public:
+    Case();
+    Case(std::string t) : type(t);
 
 };
 
