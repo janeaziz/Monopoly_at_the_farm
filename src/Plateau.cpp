@@ -75,11 +75,11 @@ Plateau::~Plateau() {
 void Plateau::charger_images(SDL_Renderer* renderer) {
     // Tableau contenant le nom de fichier pour chaque type de case
     const char* images_filenames[5] = {
-        "images/CasePropriete.png", 
-        "images/CaseRessources.png", 
-        "images/CaseEnigme.png", 
-        "images/CaseArgent.png",
-        "images/CaseDepart.png" // On ajoute une image pour la case départ
+        "doc/CasePropriete.png", 
+        "doc/CaseRessources.png", 
+        "doc/CaseEnigme.png", 
+        "doc/CaseArgent.png",
+        "doc/CaseDepart.png" // On ajoute une image pour la case départ
     };
 
     for (int i = 0; i < 20; i++) {
