@@ -38,10 +38,11 @@
 Plateau::Plateau() {
     // Création des cases du plateau
     for (int i = 0; i < 20; i++) {
-        if (i % 5 == 0) {
-            cases[i] = new Case("Case départ");
+        cases[i] = new Case();
+        if (i == 0) {
+            cases[i]->set_type("Case départ");
         } else {
-            cases[i] = new Case("Case " + std::to_string(i));
+            cases[i]->set_type("Case " + std::to_string(i));
         }
     }
 }
