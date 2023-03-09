@@ -1,4 +1,6 @@
 
+#include <SDL.h>
+#include <SDL_ttf.h>
 #include "CasePropriete.h"
 #include "Case.h"
 
