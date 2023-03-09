@@ -1,7 +1,9 @@
+
+#include"Couleur.h"
+#include <string>
 #ifndef _CASE_H
 #define  _CASE_H
-#include <string>
-#include"Couleur.h"
+
 
 class Case{
     protected:
