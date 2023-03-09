@@ -16,7 +16,7 @@ class Joueur {
     int quantite_soleil;
     int nb_arbre;
     int nb_jardin;
-    CasePropriete tab_propriete;
+    CasePropriete *tab_propriete;
     unsigned int position; //indice de la case
     SDL_Rect image; // Image du joueur pour SDL2
     TTF_Font *font; // Police pour afficher le nom du joueur
@@ -31,7 +31,7 @@ class Joueur {
     * @param font Police pour afficher le nom du joueur
     * 
     */
-    Joueur(SDL_Renderer *renderer, TTF_Font *font);
+    Joueur(int id, SDL_Renderer *renderer, TTF_Font *font);
 
     /**
     * @brief Destructeur de Joueur
@@ -60,13 +60,7 @@ class Joueur {
      */
     unsigned int & getArgent () const;
 
-    /**
-     * @brief Accesseur pour avoir la valeur de quantite_eau
-     * 
-     * @return int& 
-     */
-    int & getEau () const;
-
+    
     /**
      * @brief Accesseur pour avoir la valeur de position
      * 
@@ -138,7 +132,11 @@ class Joueur {
     */
     void modifierArgent (int x);
 
-    void payer_loyer(const CasePropriete* p);
+
+
+
+
+   /*void payer_loyer(const CasePropriete* p);
 
     /**
      * @brief cette fonction va gerer tous les changements a chaque tour:
@@ -147,29 +145,31 @@ class Joueur {
      * si elle appartient a ce dernier
      * 
      */
-    void tour_de_jeu(const Case* case_actuel);
+    /*void tour_de_jeu(const Case* case_actuel);
 
     /**
      * @brief cette fonction permet d'incrementer nb_arbre de Joueur et
      * diminue ainsi l'argent de "argent" du Joueur
      * 
      */
-    void acheter_arbre();
+   /* void acheter_arbre();
 
     /**
      * @brief cette fonction permet d'incrementer nb_jardin de Joueur et
      * diminue ainsi l'argent de "argent" du Joueur
      * 
      */
-    void acheter_jardin();
+    /*void acheter_jardin();
 
     /**
      * @brief cette fonction permet de rajouter un arbre dans le tableau de proprietes de Joueur et
      * diminue ainsi l'argent de "argent" du Joueur
      * 
      */
-    void acheter_propriete(const CasePropriete* p);
+   /* void acheter_propriete(const CasePropriete* p);*/
 
 
 };
 #endif
+
+
