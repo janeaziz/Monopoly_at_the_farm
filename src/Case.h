@@ -4,7 +4,7 @@
 #include"Couleur.h"
 
 class Case{
-    private:
+    protected:
 
     int pos;
     std::string type;
