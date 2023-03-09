@@ -1,5 +1,6 @@
 
 #include "CasePropriete.h"
+#include "Case.h"
 
 
 #ifndef _JOUEUR_H
@@ -116,7 +117,7 @@ class Joueur {
     */
     void modifierArgent (int x);
 
-    void payer_loyer(CasePropriete p);
+    void payer_loyer(const CasePropriete* p);
 
     /**
      * @brief cette fonction va gerer tous les changements a chaque tour:
@@ -125,7 +126,7 @@ class Joueur {
      * si elle appartient a ce dernier
      * 
      */
-    void tour_de_jeu();
+    void tour_de_jeu(const Case* case_actuel);
 
     /**
      * @brief cette fonction permet d'incrementer nb_arbre de Joueur et
@@ -146,7 +147,7 @@ class Joueur {
      * diminue ainsi l'argent de "argent" du Joueur
      * 
      */
-    void acheter_propriete(CasePropriete p);
+    void acheter_propriete(const CasePropriete* p);
 
 
 };
