@@ -1,8 +1,9 @@
 #include"Couleur.h"
+#include "Case.h"
 #ifndef _CASEARGENT_H
 #define _CASEARGENT_H
 
-class CaseArgent{
+class CaseArgent: public Case{
 
     private:
 

@@ -1,9 +1,10 @@
 #include"Couleur.h"
+#include "Case.h"
 #ifndef _CASERESSOURCES_H
 #define  _CASERESSOURCES_H
 
 
-    class CaseRessources {
+    class CaseRessources: public Case {
         private:
 
         int q_eau;

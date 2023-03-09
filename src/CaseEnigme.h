@@ -5,7 +5,7 @@
 #define  _CASEENIGME_H
 
 
-class CaseEnigme:Case{
+class CaseEnigme: public Case{
 
     private:
     std::string question;

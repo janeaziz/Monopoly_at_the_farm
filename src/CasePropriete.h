@@ -1,9 +1,10 @@
-#include"Couleur.h"
+#include "Couleur.h"
+#include "Case.h"
 #include"Joueur.h"
 #ifndef _CASEPROPRIETE_H
 #define _CASEPROPRIETE_H
 
-class CasePropriete{
+class CasePropriete: public Case{
 
     private:
 
@@ -66,17 +67,6 @@ class CasePropriete{
         int calculer_loyer();
 
         void set_proprio(Joueur proprietaire);
-
-
-
-
-
-
-
-
-
-        
-
 
 
 
