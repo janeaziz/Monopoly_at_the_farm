@@ -10,12 +10,14 @@ class Case{
 
     int pos;
     std::string type;
-    Couleur c;
+     
 
     public:
-    Case();
-    Case(std::string t) : type(t);
 
+    Case(int i);
+    Case(int indice, std::string t);
+
+    void set_type(std::string letype);
 };
 
 #endif

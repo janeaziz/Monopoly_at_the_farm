@@ -35,14 +35,33 @@
 
 #include <iostream>
 
+
+const int Screen_width=800;
+const int Screen_height=800;
+
+const int case_width=130;
+const int casee_height=130;
+
+
 Plateau::Plateau() {
     // Création des cases du plateau
+    
     for (int i = 0; i < 20; i++) {
-        cases[i] = new Case();
+        cases[i] = new Case(i);
         if (i == 0) {
             cases[i]->set_type("Case départ");
-        } else {
-            cases[i]->set_type("Case " + std::to_string(i));
+        } else if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) {
+            cases[i]->set_type("Case propriete");
+        }
+        else if (i==8 || i==15){
+            cases[i]->set_type("Case enigme");
+        }
+        else if (i==1 || i==10 || i==16 || i==19)
+        {
+            cases[i]->set_type("Case argent");
+        }
+        else{
+            cases[i]->set_type("Case Ressources") ;// il ya 3 cases 
         }
     }
 }
@@ -76,11 +95,11 @@ Plateau::~Plateau() {
 void Plateau::charger_images(SDL_Renderer* renderer) {
     // Tableau contenant le nom de fichier pour chaque type de case
     const char* images_filenames[5] = {
-        "doc/CasePropriete.png", 
-        "doc/CaseRessources.png", 
-        "doc/CaseEnigme.png", 
-        "doc/CaseArgent.png",
-        "doc/CaseDepart.png" // On ajoute une image pour la case départ
+        "data/CasePropriete.png", 
+        "data/CaseRessources.png", 
+        "data/CaseEnigme.png", 
+        "data/CaseArgent.png",
+        "data/CaseDepart.png" // On ajoute une image pour la case départ
     };
 
     for (int i = 0; i < 20; i++) {
@@ -106,22 +125,25 @@ void Plateau::charger_images(SDL_Renderer* renderer) {
 }
 
 
-void Plateau::dessiner(SDL_Renderer* renderer,int x, int y) {
+void Plateau::dessiner(SDL_Renderer* renderer) {
     // Dessin du plateau en utilisant les images des cases
     for (int i = 0; i < 20; i++) {
         SDL_Rect rect;
-        rect.x = x;
-        rect.y = y;
-        rect.w = 100;
-        rect.h = 100;
+        rect.x = 0;
+        rect.y = 0;
+        rect.w = case_width;
+        rect.h = casee_height;
+        charger_images(renderer);
         SDL_RenderCopy(renderer, images[i], nullptr, &rect);
         if (i % 5 == 4) {
-            x = 0;
-            y += 100;
+            rect.x = 0;
+            rect.y += 100;
         } else {
-            x += 100;
+            rect.x += 100;
         }
+
     }
+    SDL_RenderPresent(renderer);
 }
 
 Case& Plateau::getCase(unsigned int x) const {

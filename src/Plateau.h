@@ -8,10 +8,9 @@
 class Plateau{
 
     private:
-    Case* cases[20]; // Tableau de pointeurs vers les 20 cases du plateau
+    Case * cases[20]; // Tableau de pointeurs vers les 20 cases du plateau
     SDL_Texture* images[20]; // Tableau de pointeurs vers les images de chaque case
-    SDL_Renderer* renderer; // Pointeur vers le renderer SDL
-
+   
     public:
 
     /**
@@ -39,7 +38,7 @@ class Plateau{
      * @param x Position x du coin supérieur gauche du plateau
      * @param y Position y du coin supérieur gauche du plateau
      */
-    void dessiner(SDL_Renderer* renderer,int x, int y);
+    void dessiner(SDL_Renderer* renderer);
     
     /**
      * @brief Get the Case object
@@ -48,6 +47,8 @@ class Plateau{
      * @return Case 
      */
     Case & getCase(unsigned int x) const;
+
+    void afficher ();
 
 };
 
