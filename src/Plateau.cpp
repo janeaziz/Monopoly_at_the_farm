@@ -34,13 +34,14 @@
 #include <SDL2/SDL_image.h>
 
 #include <iostream>
+using namespace std;
 
 
 const int Screen_width=800;
 const int Screen_height=800;
 
 const int case_width=130;
-const int casee_height=130;
+const int case_height=130;
 
 
 Plateau::Plateau() {
@@ -121,26 +122,33 @@ void Plateau::charger_images(SDL_Renderer* renderer) {
             //Case de type Ressources
             images[i] = IMG_LoadTexture(renderer, images_filenames[1]);
         }
+        if(images[i]){
+            cout<< "l'image " <<i << "n'a pas ete charge"<<endl;
+        }
+        
     }
 }
 
 
 void Plateau::dessiner(SDL_Renderer* renderer) {
     // Dessin du plateau en utilisant les images des cases
+    charger_images(renderer);
     for (int i = 0; i < 20; i++) {
         SDL_Rect rect;
         rect.x = 0;
         rect.y = 0;
         rect.w = case_width;
-        rect.h = casee_height;
-        charger_images(renderer);
+        rect.h = case_height;
+        
         SDL_RenderCopy(renderer, images[i], nullptr, &rect);
-        if (i % 5 == 4) {
+        /*if (i % 5 == 4) {
             rect.x = 0;
             rect.y += 100;
         } else {
             rect.x += 100;
-        }
+        }*/
+        rect.x= i%5 * case_width *2 + case_width;
+        rect.y=i/5 * case_height *2 + case_height;
 
     }
     SDL_RenderPresent(renderer);
