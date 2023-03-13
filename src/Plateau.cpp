@@ -191,7 +191,7 @@ void Plateau::dessiner(SDL_Renderer* renderer) {
         SDL_RenderCopyEx(renderer, images[i], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
         
     }
-    SDL_RenderPresent(renderer);
+    //SDL_RenderPresent(renderer);
     
     
 }

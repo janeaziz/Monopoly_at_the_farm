@@ -37,7 +37,7 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         return 1;
     }
 
-while (!quit){
+
     while (SDL_PollEvent(&event)){
         if (event.type==SDL_QUIT){
             quit=true;
@@ -46,14 +46,16 @@ while (!quit){
     
 
     p.dessiner(renderer);
-}
 
-    //SDL_RenderPresent(renderer);
+    quit=false;
 
+    while (!quit){
+        SDL_RenderPresent(renderer);
+    }
+   
     
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-
-
+    
 }
