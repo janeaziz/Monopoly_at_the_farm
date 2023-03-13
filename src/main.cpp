@@ -23,12 +23,14 @@ int main(){
 
     return 0;
     */
+SDL_Window*window = NULL; 
+SDL_Renderer * renderer = NULL;  
 bool quit;
 Plateau p; 
 SDL_Event event;
 
-SDL_Window*window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,800,800,SDL_WINDOW_SHOWN);
-    SDL_Renderer * renderer= SDL_CreateRenderer(window,-1,0);
+window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,800,800,SDL_WINDOW_SHOWN);
+renderer= SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 
 if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "Erreur lors de l'initialisation de SDL : " << SDL_GetError() << std::endl;
@@ -44,9 +46,10 @@ while (!quit){
     
 
     p.dessiner(renderer);
-
-    SDL_RenderPresent(renderer);
 }
+
+    //SDL_RenderPresent(renderer);
+
     
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

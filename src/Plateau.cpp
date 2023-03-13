@@ -122,7 +122,7 @@ void Plateau::charger_images(SDL_Renderer* renderer) {
             //Case de type Ressources
             images[i] = IMG_LoadTexture(renderer, images_filenames[1]);
         }
-        if(images[i]){
+        if(!images[i]){
             cout<< "l'image " <<i << "n'a pas ete charge"<<endl;
         }
         
@@ -133,7 +133,8 @@ void Plateau::charger_images(SDL_Renderer* renderer) {
 void Plateau::dessiner(SDL_Renderer* renderer) {
     // Dessin du plateau en utilisant les images des cases
     charger_images(renderer);
-    for (int i = 0; i < 20; i++) {
+
+    /*for (int i = 0; i < 20; i++) {
         SDL_Rect rect;
         rect.x = 0;
         rect.y = 0;
@@ -141,17 +142,49 @@ void Plateau::dessiner(SDL_Renderer* renderer) {
         rect.h = case_height;
         
         SDL_RenderCopy(renderer, images[i], nullptr, &rect);
-        /*if (i % 5 == 4) {
+        //if (i % 5 == 4) {
             rect.x = 0;
             rect.y += 100;
         } else {
             rect.x += 100;
-        }*/
-        rect.x= i%5 * case_width *2 + case_width;
-        rect.y=i/5 * case_height *2 + case_height;
+        }/
+        rect.x+=case_width; //i%5 * case_width *2 + case_width;
+        rect.y+=case_height;//i/5 * case_height *2 + case_height;
+        SDL_RenderPresent(renderer);
+    }*/
+     SDL_Rect Rect;
+    for (int i= 0; i< 20; i++) {
+        if (i==6 || i == 7 || i == 8 || i == 9){
+           Rect.x = 5 * case_width; 
+           if (i==6) Rect.y= case_height;
+           if (i==7) Rect.y= 2*case_height;
+           if (i==8) Rect.y= 3*case_height;
+           if (i==6) Rect.y= 4*case_height;
+        }
+        else if(i==16 || i == 17 || i == 18 || i == 19){
+            Rect.x = 0;
+            if (i==16) Rect.y= 4*case_height;
+            if (i==17) Rect.y= 3*case_height;
+            if (i==18) Rect.y= 2*case_height;
+            if (i==19) Rect.y= case_height;
+        }
+        else { 
+            
+            Rect.x = i%6 * case_width;
 
+            if(i<16 && i>9){
+                Rect.y = 5 * case_height;
+            }
+            else Rect.y = 0;
+        }
+        Rect.w = case_width;
+        Rect.h = case_height;
+        SDL_RenderCopyEx(renderer, images[i], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+        
     }
     SDL_RenderPresent(renderer);
+    
+    
 }
 
 Case& Plateau::getCase(unsigned int x) const {
