@@ -159,7 +159,7 @@ void Plateau::dessiner(SDL_Renderer* renderer) {
            if (i==6) Rect.y= case_height;
            if (i==7) Rect.y= 2*case_height;
            if (i==8) Rect.y= 3*case_height;
-           if (i==6) Rect.y= 4*case_height;
+           if (i==9) Rect.y= 4*case_height;
         }
         else if(i==16 || i == 17 || i == 18 || i == 19){
             Rect.x = 0;
@@ -170,12 +170,21 @@ void Plateau::dessiner(SDL_Renderer* renderer) {
         }
         else { 
             
-            Rect.x = i%6 * case_width;
+            
 
             if(i<16 && i>9){
+                if(i==15) Rect.x= 0;
+                if(i==14) Rect.x= 1*case_width;
+                if(i==13) Rect.x= 2*case_width;
+                if(i==12) Rect.x= 3*case_width;
+                if(i==11) Rect.x= 4*case_width;
+                if(i==10) Rect.x= 5*case_width; 
                 Rect.y = 5 * case_height;
             }
-            else Rect.y = 0;
+            else{ 
+                Rect.x = i%6 * case_width;
+                Rect.y = 0;
+            }    
         }
         Rect.w = case_width;
         Rect.h = case_height;
