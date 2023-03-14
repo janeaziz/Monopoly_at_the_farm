@@ -37,21 +37,24 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         return 1;
     }
 
-
+while (!quit){
     while (SDL_PollEvent(&event)){
         if (event.type==SDL_QUIT){
             quit=true;
         }
-    }
+    } 
+
+            p.dessiner(renderer);
+            SDL_RenderPresent(renderer);
+            SDL_RenderClear(renderer);
     
 
-    p.dessiner(renderer);
-
-    quit=false;
-
-    while (!quit){
-        SDL_RenderPresent(renderer);
-    }
+        
+         
+  }
+    
+    
+  
    
     
     SDL_DestroyRenderer(renderer);
