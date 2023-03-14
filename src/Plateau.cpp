@@ -95,15 +95,20 @@ Plateau::~Plateau() {
 
 void Plateau::charger_images(SDL_Renderer* renderer) {
     // Tableau contenant le nom de fichier pour chaque type de case
-    const char* images_filenames[5] = {
+    const char* images_filenames[9] = {
         "data/CasePropriete.png", 
         "data/CaseRessources.png", 
         "data/CaseEnigme.png", 
         "data/CaseArgent.png",
-        "data/CaseDepart.png" // On ajoute une image pour la case départ
+        "data/CaseDepart.png", // On ajoute une image pour la case départ
+        "data/de.png",
+        "data/photocentre.png",
+        "data/pageaccueil.png",
+        "data/boutonstart.png"
+
     };
 
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 24; i++) {
         // Charger l'image correspondante au type de case de la case i
         if (i == 0) {
             // Case départ
@@ -118,43 +123,54 @@ void Plateau::charger_images(SDL_Renderer* renderer) {
         } else if (i == 1 || i== 10 || i == 16 || i== 19){
             // Case de type CaseArgent
             images[i] = IMG_LoadTexture(renderer, images_filenames[3]);
-        } else {
+        } else if (i == 5 || i== 9 || i == 14){
             //Case de type Ressources
             images[i] = IMG_LoadTexture(renderer, images_filenames[1]);
+        } else if (i ==  20){
+            //le de
+            images[i] = IMG_LoadTexture(renderer, images_filenames[5]);
+        } else if (i ==  21){
+            //photo du centre du plateau
+            images[i] = IMG_LoadTexture(renderer, images_filenames[6]);
+        } else if (i ==  22){
+            //photo de la page d'accueil
+            images[i] = IMG_LoadTexture(renderer, images_filenames[7]);
+        } else if (i ==  23){
+            //Bouton Start
+            images[i] = IMG_LoadTexture(renderer, images_filenames[8]);
         }
+
+
         if(!images[i]){
             cout<< "l'image " <<i << "n'a pas ete charge"<<endl;
         }
         
     }
+
+    
 }
+/**
+void Plateau::pageaccueil(SDL_Renderer* renderer){
+    SDL_Rect RectAccueil;
+    for (int i= 20; i< 24; i++) {
+        if(i==20) RectAccueil.x = 6*case_width;
+        if(i==21) RectAccueil.
+    }
+}
+*/
 
-
-void Plateau::dessiner(SDL_Renderer* renderer) {
+void Plateau::dessiner_plateau(SDL_Renderer* renderer) {
     // Dessin du plateau en utilisant les images des cases
-    charger_images(renderer);
+    
+    SDL_Rect Rect;
+    for (int i= 0; i< 21; i++) {
 
-    /*for (int i = 0; i < 20; i++) {
-        SDL_Rect rect;
-        rect.x = 0;
-        rect.y = 0;
-        rect.w = case_width;
-        rect.h = case_height;
-        
-        SDL_RenderCopy(renderer, images[i], nullptr, &rect);
-        //if (i % 5 == 4) {
-            rect.x = 0;
-            rect.y += 100;
-        } else {
-            rect.x += 100;
-        }/
-        rect.x+=case_width; //i%5 * case_width *2 + case_width;
-        rect.y+=case_height;//i/5 * case_height *2 + case_height;
-        SDL_RenderPresent(renderer);
-    }*/
-     SDL_Rect Rect;
-    for (int i= 0; i< 20; i++) {
-        if (i==6 || i == 7 || i == 8 || i == 9){
+        if (i==20) {
+            Rect.x = 6*case_width + 20;
+            Rect.y = 0;
+        }
+
+        else if (i==6 || i == 7 || i == 8 || i == 9){
            Rect.x = 5 * case_width; 
            if (i==6) Rect.y= case_height;
            if (i==7) Rect.y= 2*case_height;
@@ -181,7 +197,8 @@ void Plateau::dessiner(SDL_Renderer* renderer) {
                 if(i==10) Rect.x= 5*case_width; 
                 Rect.y = 5 * case_height;
             }
-            else{ 
+
+            else { 
                 Rect.x = i%6 * case_width;
                 Rect.y = 0;
             }    
@@ -191,8 +208,9 @@ void Plateau::dessiner(SDL_Renderer* renderer) {
         SDL_RenderCopyEx(renderer, images[i], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
         
     }
-    //SDL_RenderPresent(renderer);
     
+    SDL_RenderPresent(renderer);
+    SDL_RenderClear(renderer);
     
 }
 

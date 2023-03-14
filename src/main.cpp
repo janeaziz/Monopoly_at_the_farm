@@ -29,7 +29,7 @@ bool quit;
 Plateau p; 
 SDL_Event event;
 
-window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,800,800,SDL_WINDOW_SHOWN);
+window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,950,800,SDL_WINDOW_SHOWN);
 renderer= SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 
 if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -43,11 +43,9 @@ while (!quit){
             quit=true;
         }
     } 
-
-            p.dessiner(renderer);
-            SDL_RenderPresent(renderer);
-            SDL_RenderClear(renderer);
-    
+            p.charger_images(renderer);
+            p.dessiner_plateau(renderer);
+            
 
         
          
