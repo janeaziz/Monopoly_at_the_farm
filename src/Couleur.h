@@ -8,6 +8,7 @@ class Couleur {
 
     unsigned char r,g,b;
 
+    public:
     Couleur();
     /**
      * @brief Construct a new Couleur object

@@ -1,9 +1,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
-#include "CasePropriete.h"
+#include <SDL2/SDL_image.h>
+//#include "CasePropriete.h"
 #include "Case.h"
 
-
+class CasePropriete;
 #ifndef _JOUEUR_H
 #define _JOUEUR_H
 
@@ -16,9 +17,9 @@ class Joueur {
     int quantite_soleil;
     int nb_arbre;
     int nb_jardin;
-    CasePropriete *tab_propriete;
+    CasePropriete * tab_propriete [10];
     unsigned int position; //indice de la case
-    SDL_Rect image; // Image du joueur pour SDL2
+    SDL_Texture *image; // Image du joueur pour SDL2
     TTF_Font *font; // Police pour afficher le nom du joueur
     SDL_Renderer *renderer; // Renderer pour SDL2
 
@@ -44,21 +45,21 @@ class Joueur {
      * 
      * @return int& 
      */
-    int & getEau () const;
+    int  getEau () const;
 
     /**
      * @brief Accesseur pour avoir la valeur de quantite_soleil
      * 
      * @return int& 
      */
-    int & getSoleil () const;
+    int getSoleil () const;
 
     /**
      * @brief Accesseur pour avoir la valeur de argent
      * 
      * @return unsigned int& 
      */
-    unsigned int & getArgent () const;
+    unsigned int getArgent () const;
 
     
     /**
@@ -66,21 +67,21 @@ class Joueur {
      * 
      * @return int& 
      */
-    int & getPosition () const;
+    unsigned int getPosition () const;
 
     /**
      * @brief Accesseur pour l'image du joueur
      * 
      * @return SDL_Rect& 
      */
-    SDL_Rect & getImage() const;
+    SDL_Texture* getImage() const;
 
     /**
      * @brief Mutateur pour l'image du joueur
      * 
      * @param rect Nouvelle image
      */
-    void setImage(SDL_Rect rect);
+    void setImage(SDL_Texture* im);
 
 
     /**
@@ -136,39 +137,7 @@ class Joueur {
 
 
 
-   /*void payer_loyer(const CasePropriete* p);
-
-    /**
-     * @brief cette fonction va gerer tous les changements a chaque tour:
-     * si c'est une case de gain d'argent, on augmente l'argent de la valeur voulue
-     * si c'est un terrain, soit il l'achete si elle est libre soit doit payer a l'adversaire
-     * si elle appartient a ce dernier
-     * 
-     */
-    /*void tour_de_jeu(const Case* case_actuel);
-
-    /**
-     * @brief cette fonction permet d'incrementer nb_arbre de Joueur et
-     * diminue ainsi l'argent de "argent" du Joueur
-     * 
-     */
-   /* void acheter_arbre();
-
-    /**
-     * @brief cette fonction permet d'incrementer nb_jardin de Joueur et
-     * diminue ainsi l'argent de "argent" du Joueur
-     * 
-     */
-    /*void acheter_jardin();
-
-    /**
-     * @brief cette fonction permet de rajouter un arbre dans le tableau de proprietes de Joueur et
-     * diminue ainsi l'argent de "argent" du Joueur
-     * 
-     */
-   /* void acheter_propriete(const CasePropriete* p);*/
-
-
+   
 };
 #endif
 

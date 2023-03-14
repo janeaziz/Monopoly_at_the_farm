@@ -9,8 +9,8 @@ class Jeu{
     private:
     Plateau plateau;
     Joueur * joueurs;
-    Joueur * joueur_actuel;
-    Joueur * gagnant;
+    unsigned int joueur_actuel;
+    unsigned int  gagnant;
 
     public:
 
@@ -29,11 +29,10 @@ class Jeu{
     void bouge(int x);
 
     /**
-     * @brief Ajoute un Joueur donnee en parametre au tableau de Joueur
+     * @brief Ajoute deux joueurs au jeur en les initialisant
      * 
-     * @param j 
      */
-    void ajouter_joueur(Joueur j);
+    void ajouter_joueur(SDL_Renderer *renderer,TTF_Font *font);
 
     /**
      * @brief alterne vers le Joueur suivant lorsque le joueur courant fini son tour
@@ -74,3 +73,6 @@ class Jeu{
 };
 
 #endif
+
+//achat propriete , payer loyer, modofier eau , modifier soleil, modifier argent , achat arbre, achat jardin, 
+//doivent etre dans la classe jeu pas joueur. 

@@ -1,5 +1,5 @@
 #include "Joueur.h"
-
+#include "CasePropriete.h"
 Joueur::Joueur(int id, SDL_Renderer *renderer, TTF_Font *font){
     
     id =id;
@@ -10,62 +10,68 @@ Joueur::Joueur(int id, SDL_Renderer *renderer, TTF_Font *font){
     nb_jardin=0;
     this->renderer=renderer;
     this->font=font;
-    this->image(0,0,100,100);
-    tab_propriete=nullptr;
+    //SDL_Rect r = {0,0,100,100};
+    this->image = IMG_LoadTexture(renderer,"data/Joueur1.png");
+    //this->image = r;
+    for(int i=0; i<10;i++){
+        tab_propriete[i]=nullptr;
+    }
+    
     position=0;
 
-
-
 }
 
-Joueur::Joueur(){
-    if(tab_propriete!= nullptr){
-        delete [] tab_propriete;
-         tab_propriete = nullptr;
-}
+Joueur::~Joueur(){
+    for(int i=0; i<10;i++){
+        if(tab_propriete[i]!= nullptr){
+            delete tab_propriete[i];
+        }
+    }
+    //delete [] tab_propriete;
+
     SDL_DestroyRenderer(renderer);
     SDL_DestroyTexture(image);
     TTF_CloseFont(font);
 }
 
-int& Joueur::getEau()const{
+int Joueur::getEau()const{
     return quantite_eau;
 }
 
-int& Joueur::getSoleil()const{
+int Joueur::getSoleil()const{
     return quantite_soleil;
 }
 
-unsigned int& Joueur::getArgent()const{
+unsigned int  Joueur::getArgent()const{
     return argent;
 }
 
-int& Joueur:: getPosition()const{
+unsigned int Joueur::getPosition()const{
     return position;
 }
 
-SDL_Rect & Joueur:: getImage() const{
+SDL_Texture* Joueur::getImage() const{
     return this->image;
 
 }
 
-void Joueur:: setImage(SDL_Rect rect){
-    image=rect;
+void Joueur::setImage(SDL_Texture* im){
+    image=im;
 }
 
-void setEau (int x){
+void Joueur::setEau (int x){
     quantite_eau=x;
 }
 
-void setSoleil (int x){
+void Joueur::setSoleil (int x){
     quantite_soleil=x;
 }
 
-void setArgent (unsigned int x){
+void Joueur::setArgent (unsigned int x){
     argent=x;
 }
 
-void setPosition (unsigned int x){
+void Joueur::setPosition (unsigned int x){
     position=x;
 }
 

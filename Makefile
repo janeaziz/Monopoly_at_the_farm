@@ -1,4 +1,4 @@
-OBJ=obj/Plateau.o obj/Case.o
+OBJ=obj/Plateau.o obj/Case.o obj/Joueur.o obj/Jeu.o
 CC=g++
 CFLAGS=-g -Wall
 LIBS_SDL = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lGL
@@ -17,7 +17,11 @@ obj/Plateau.o: src/Plateau.cpp src/Plateau.h src/Case.h
 obj/Case.o: src/Case.cpp src/Case.h 
 	$(CC) $(CFLAGS) -c src/Case.cpp -o obj/Case.o
 
+obj/Jeu.o:src/Jeu.cpp src/Joueur.h src/Plateau.h
+	$(CC) $(CFLAGS) -c src/Jeu.cpp -o obj/Jeu.o
 
+obj/Joueur.o:src/Joueur.cpp src/Case.h
+	$(CC) $(CFLAGS) -c src/Joueur.cpp -o obj/Joueur.o
 
 obj/main.o: src/main.cpp src/Plateau.h src/Case.h
 	$(CC) $(CFLAGS) -c src/main.cpp  -o obj/main.o

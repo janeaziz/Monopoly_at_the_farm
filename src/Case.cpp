@@ -1,7 +1,9 @@
 #include"Case.h"
-
+#include <string>
 #include<iostream>
 using namespace std;
+
+
 
 Case::Case(int indice, std::string t){
     pos=indice;
