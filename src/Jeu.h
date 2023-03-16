@@ -32,7 +32,7 @@ class Jeu{
      * @brief Ajoute deux joueurs au jeur en les initialisant
      * 
      */
-    void ajouter_joueur(SDL_Renderer *renderer,TTF_Font *font);
+    void ajouter_joueur();
 
     /**
      * @brief alterne vers le Joueur suivant lorsque le joueur courant fini son tour

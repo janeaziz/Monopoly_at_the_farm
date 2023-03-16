@@ -20,9 +20,9 @@ void Jeu::bouge(int x){
     cout<<"la nv pos du j est "<< joueurs[joueur_actuel].getPosition() <<endl;
 }
 
-void Jeu::ajouter_joueur(SDL_Renderer *renderer,TTF_Font *font){
-    Joueur j1(0,renderer,font);
-    Joueur j2(1,renderer,font) ;
+void Jeu::ajouter_joueur(){
+    Joueur j1(0);
+    Joueur j2(1) ;
     joueurs[0]= Joueur(j1);
     joueurs[1]= Joueur(j2) ;
     //cout<< "2 joueurs sont initialises "<< joueurs[0]->id<< "le 2 eme "<< joueurs[1]->id<<endl;

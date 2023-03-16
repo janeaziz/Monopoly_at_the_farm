@@ -8,12 +8,14 @@ int main(){
 
 SDL_Window*window = NULL; 
 SDL_Renderer * renderer = NULL;  
-SDL_Texture* images[24];
+SDL_Texture* images[26];
 bool quit;
 SDL_Event event;
 
 window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,950,800,SDL_WINDOW_SHOWN);
 renderer= SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
+
+charger_images(renderer,images);
 
 if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "Erreur lors de l'initialisation de SDL : " << SDL_GetError() << std::endl;
@@ -26,7 +28,7 @@ while (!quit){
             quit=true;
         }
     } 
-            charger_images(renderer,images);
+            
             dessiner_plateau(renderer,images);
             
 

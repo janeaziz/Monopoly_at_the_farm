@@ -4,9 +4,9 @@
 
 using namespace std;
 
-void charger_images(SDL_Renderer* renderer, SDL_Texture* images[24]) {
+void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
     // Tableau contenant le nom de fichier pour chaque type de case
-    const char* images_filenames[9] = {
+    const char* images_filenames[11] = {
         "data/CasePropriete.png", 
         "data/CaseRessources.png", 
         "data/CaseEnigme.png", 
@@ -15,11 +15,13 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[24]) {
         "data/de.png",
         "data/photocentre.png",
         "data/pageaccueil.png",
-        "data/boutonstart.png"
+        "data/boutonstart.png",
+        "data/Joueur1.png",
+        "data/Joueur2.png"
 
     };
 
-    for (int i = 0; i < 24; i++) {
+    for (int i = 0; i < 26; i++) {
         // Charger l'image correspondante au type de case de la case i
         if (i == 0) {
             // Case départ
@@ -49,10 +51,14 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[24]) {
         } else if (i ==  23){
             //Bouton Start
             images[i] = IMG_LoadTexture(renderer, images_filenames[8]);
+        } else if (i == 24){
+            images[i] = IMG_LoadTexture(renderer, images_filenames[9]);
+        } else if (i == 25){
+            images[i] = IMG_LoadTexture(renderer, images_filenames[10]);
         }
 
 
-        if(!images[i]){
+        if(images[i]){
             cout<< "l'image " <<i << "n'a pas ete charge"<<endl;
         }
         
@@ -62,7 +68,7 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[24]) {
 }
 
 
-void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[24]) {
+void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[]) {
     // Dessin du plateau en utilisant les images des cases
     
     SDL_Rect Rect;
@@ -120,4 +126,9 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[24]) {
     SDL_RenderPresent(renderer);
     SDL_RenderClear(renderer);
     
+}
+
+
+void afficher_joueur(SDL_Texture* images[]){
+
 }

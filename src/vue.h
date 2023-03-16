@@ -9,7 +9,7 @@
      * 
      * @param renderer Pointeur vers le renderer SDL
      */
-    void charger_images(SDL_Renderer* renderer,SDL_Texture* images[24]);
+    void charger_images(SDL_Renderer* renderer,SDL_Texture* images[]);
 
 
     /**
@@ -17,7 +17,7 @@
      * 
      * @param renderer Pointeur vers le renderer SDL
      */
-    void pageaccueil(SDL_Renderer* renderer,SDL_Texture* images[24]);
+    void pageaccueil(SDL_Renderer* renderer,SDL_Texture* images[]);
 
     /**
      * @brief Dessine le plateau en utilisant les images des cases
@@ -25,7 +25,7 @@
      * @param x Position x du coin supérieur gauche du plateau
      * @param y Position y du coin supérieur gauche du plateau
      */
-    void dessiner_plateau(SDL_Renderer* renderer,SDL_Texture* images[24]);
+    void dessiner_plateau(SDL_Renderer* renderer,SDL_Texture* images[]);
     
    
 

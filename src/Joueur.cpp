@@ -1,6 +1,6 @@
 #include "Joueur.h"
 #include "CasePropriete.h"
-Joueur::Joueur(int id, SDL_Renderer *renderer, TTF_Font *font){
+Joueur::Joueur(int id){ //, SDL_Renderer *renderer, TTF_Font *font){
     
     id =id;
     argent=1500;
@@ -8,11 +8,11 @@ Joueur::Joueur(int id, SDL_Renderer *renderer, TTF_Font *font){
     quantite_soleil=3;
     nb_arbre=0;
     nb_jardin=0;
-    this->renderer=renderer;
+/*  this->renderer=renderer;
     this->font=font;
-    //SDL_Rect r = {0,0,100,100};
+   
     this->image = IMG_LoadTexture(renderer,"data/Joueur1.png");
-    //this->image = r;
+*/
     for(int i=0; i<10;i++){
         tab_propriete[i]=nullptr;
     }
@@ -27,11 +27,11 @@ Joueur::~Joueur(){
             delete tab_propriete[i];
         }
     }
-    //delete [] tab_propriete;
 
-    SDL_DestroyRenderer(renderer);
+
+    /*SDL_DestroyRenderer(renderer);
     SDL_DestroyTexture(image);
-    TTF_CloseFont(font);
+    TTF_CloseFont(font); */
 }
 
 int Joueur::getEau()const{
@@ -50,14 +50,15 @@ unsigned int Joueur::getPosition()const{
     return position;
 }
 
-SDL_Texture* Joueur::getImage() const{
+/*SDL_Texture* Joueur::getImage() const{
     return this->image;
 
-}
+} 
+
 
 void Joueur::setImage(SDL_Texture* im){
     image=im;
-}
+}  */
 
 void Joueur::setEau (int x){
     quantite_eau=x;

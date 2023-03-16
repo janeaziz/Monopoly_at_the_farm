@@ -19,20 +19,18 @@ class Joueur {
     int nb_jardin;
     CasePropriete * tab_propriete [10];
     unsigned int position; //indice de la case
-    SDL_Texture *image; // Image du joueur pour SDL2
+    /*SDL_Texture *image; // Image du joueur pour SDL2
     TTF_Font *font; // Police pour afficher le nom du joueur
     SDL_Renderer *renderer; // Renderer pour SDL2
-
+    */
     public:
 
     /**
-    * @brief Construit un nouveau Joueur
-    * 
-    * @param renderer Renderer pour SDL2
-    * @param font Police pour afficher le nom du joueur
-    * 
-    */
-    Joueur(int id, SDL_Renderer *renderer, TTF_Font *font);
+     * @brief Construit un nouveau Joueur
+     * 
+     * @param id 
+     */
+    Joueur(int id); //SDL_Renderer *renderer, TTF_Font *font);
 
     /**
     * @brief Destructeur de Joueur
@@ -69,19 +67,11 @@ class Joueur {
      */
     unsigned int getPosition () const;
 
-    /**
-     * @brief Accesseur pour l'image du joueur
-     * 
-     * @return SDL_Rect& 
-     */
-    SDL_Texture* getImage() const;
+   
+   // SDL_Texture* getImage() const;
 
-    /**
-     * @brief Mutateur pour l'image du joueur
-     * 
-     * @param rect Nouvelle image
-     */
-    void setImage(SDL_Texture* im);
+ 
+   // void setImage(SDL_Texture* im);
 
 
     /**
