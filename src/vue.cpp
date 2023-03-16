@@ -121,6 +121,11 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[]) {
         Rect.h = case_height;
         SDL_RenderCopyEx(renderer, images[i], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
         
+        Rect.x=case_width;
+        Rect.y=case_height;
+        Rect.w=4*case_width;
+        Rect.h=4*case_height;
+        SDL_RenderCopyEx(renderer, images[21], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
     }
     
     
@@ -133,8 +138,8 @@ void afficher_joueur(SDL_Renderer* renderer,SDL_Texture* images[],Joueur p1, Jou
 
     const int case_width=130;
     const int case_height=130;
-    Rect.w = case_width;
-    Rect.h = case_height;
+    Rect.w = 50;
+    Rect.h = 50;
 
     if (p1.getPosition()==6 || p1.getPosition() == 7 || p1.getPosition() == 8 || p1.getPosition() == 9){
            Rect.x = 5 * case_width; 
