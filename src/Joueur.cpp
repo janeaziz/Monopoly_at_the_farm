@@ -17,7 +17,7 @@ Joueur::Joueur(int id){ //, SDL_Renderer *renderer, TTF_Font *font){
         tab_propriete[i]=nullptr;
     }
     
-    position=0;
+    position =0;
 
 }
 
