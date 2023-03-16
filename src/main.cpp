@@ -1,32 +1,15 @@
 #include "Plateau.h"
+#include "vue.h"
 #include <iostream>
+
 using namespace std;
  
 int main(){
 
-   /* // Initialiser SDL
-    
-
-    Plateau plateau;
-    SDL_Window * window= SDL_CreateWindow()
-    SDL_Renderer* renderer = plateau.init_renderer();
-     plateau.set_renderer(renderer);
-    // Dessiner le plateau
-    plateau.charger_images(renderer);
-    plateau.dessiner(0, 0);
-
-    // Libérer la mémoire allouée pour le rendu
-    SDL_DestroyRenderer(renderer);
-
-    // Quitter SDL
-    SDL_Quit();
-
-    return 0;
-    */
 SDL_Window*window = NULL; 
 SDL_Renderer * renderer = NULL;  
+SDL_Texture* images[24];
 bool quit;
-Plateau p; 
 SDL_Event event;
 
 window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,950,800,SDL_WINDOW_SHOWN);
@@ -43,8 +26,8 @@ while (!quit){
             quit=true;
         }
     } 
-            p.charger_images(renderer);
-            p.dessiner_plateau(renderer);
+            charger_images(renderer,images);
+            dessiner_plateau(renderer,images);
             
 
         

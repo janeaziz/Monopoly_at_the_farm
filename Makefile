@@ -1,4 +1,4 @@
-OBJ=obj/Plateau.o obj/Case.o obj/Joueur.o obj/Jeu.o
+OBJ=obj/Plateau.o obj/Case.o obj/Joueur.o obj/Jeu.o obj/vue.o
 CC=g++
 CFLAGS=-g -Wall
 LIBS_SDL = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lGL
@@ -23,7 +23,10 @@ obj/Jeu.o:src/Jeu.cpp src/Joueur.h src/Plateau.h
 obj/Joueur.o:src/Joueur.cpp src/Case.h
 	$(CC) $(CFLAGS) -c src/Joueur.cpp -o obj/Joueur.o
 
-obj/main.o: src/main.cpp src/Plateau.h src/Case.h
+obj/vue.o:src/vue.cpp src/vue.h src/Jeu.h
+	$(CC) $(CFLAGS) -c src/vue.cpp -o obj/vue.o
+
+obj/main.o: src/main.cpp src/Plateau.h src/Case.h src/vue.h src/Jeu.h
 	$(CC) $(CFLAGS) -c src/main.cpp  -o obj/main.o
 
 docs: doc/image.doxy
