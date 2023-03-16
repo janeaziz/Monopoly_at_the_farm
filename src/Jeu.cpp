@@ -28,3 +28,15 @@ void Jeu::ajouter_joueur(SDL_Renderer *renderer,TTF_Font *font){
     //cout<< "2 joueurs sont initialises "<< joueurs[0]->id<< "le 2 eme "<< joueurs[1]->id<<endl;
 }
 
+void Jeu:: tour_suivant(){
+    if(joueur_actuel==0){
+        joueur_actuel=1;
+    }else{
+        joueur_actuel=0;
+    }
+
+}
+
+void Jeu::joue_tour(){
+    
+}
