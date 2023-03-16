@@ -4,6 +4,12 @@
 using namespace std;
 
 
+Jeu::Jeu() {
+    plateau = Plateau(); // Initialisation du plateau
+    joueurs = new Joueur[2]; // Initialisation des joueurs
+    joueur_actuel = 0; // Initialisation du joueur actuel
+    gagnant = -1; // Initialisation du gagnant à -1 
+}
 
 unsigned int Jeu::jete_de(){
     srand(time(NULL));
@@ -39,4 +45,8 @@ void Jeu:: tour_suivant(){
 
 void Jeu::joue_tour(){
     
+}
+
+Joueur Jeu::getJoueurs(int id) const{
+    return joueurs[id];
 }

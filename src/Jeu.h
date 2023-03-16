@@ -15,6 +15,11 @@ class Jeu{
     public:
 
     /**
+     * @brief Construct a new Jeu object
+     * 
+     */
+    Jeu();
+    /**
      * @brief retourne un entier aleatoire entre 1 et 6
      * 
      * @return unsigned int 
@@ -68,6 +73,14 @@ class Jeu{
      * @return Joueur 
      */
     Joueur getJoueurActuel();
+
+    /**
+     * @brief Get the Joueurs object
+     * 
+     * @param id 
+     * @return Joueur 
+     */
+    Joueur getJoueurs(int id) const;
 
 
 };

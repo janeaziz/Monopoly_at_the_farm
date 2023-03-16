@@ -25,6 +25,7 @@ class Joueur {
     */
     public:
 
+    Joueur();
     /**
      * @brief Construit un nouveau Joueur
      * 

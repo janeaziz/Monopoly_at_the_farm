@@ -79,7 +79,7 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[]) {
 
     for (int i= 0; i< 21; i++) {
 
-        if (i==20) {
+        if (i==20) {  // pour le de
             Rect.x = 6* case_width + 20;
             Rect.y = 0;
         }
@@ -123,12 +123,92 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[]) {
         
     }
     
-    SDL_RenderPresent(renderer);
-    SDL_RenderClear(renderer);
+    
     
 }
 
 
-void afficher_joueur(SDL_Texture* images[]){
+void afficher_joueur(SDL_Renderer* renderer,SDL_Texture* images[],Joueur p1, Joueur p2){
+    SDL_Rect Rect;
 
+    const int case_width=130;
+    const int case_height=130;
+    Rect.w = case_width;
+    Rect.h = case_height;
+
+    if (p1.getPosition()==6 || p1.getPosition() == 7 || p1.getPosition() == 8 || p1.getPosition() == 9){
+           Rect.x = 5 * case_width; 
+           if (p1.getPosition()==6) Rect.y= case_height;
+           if (p1.getPosition()==7) Rect.y= 2*case_height;
+           if (p1.getPosition()==8) Rect.y= 3*case_height;
+           if (p1.getPosition()==9) Rect.y= 4*case_height;
+        }
+        else if(p1.getPosition()==16 || p1.getPosition() == 17 || p1.getPosition() == 18 || p1.getPosition() == 19){
+            Rect.x = 0;
+            if (p1.getPosition()==16) Rect.y= 4*case_height;
+            if (p1.getPosition()==17) Rect.y= 3*case_height;
+            if (p1.getPosition()==18) Rect.y= 2*case_height;
+            if (p1.getPosition()==19) Rect.y= case_height;
+        }
+            else if(p1.getPosition()<16 && p1.getPosition()>9){ 
+            
+            
+
+            
+                if(p1.getPosition()==15) Rect.x= 0;
+                if(p1.getPosition()==14) Rect.x= 1*case_width;
+                if(p1.getPosition()==13) Rect.x= 2*case_width;
+                if(p1.getPosition()==12) Rect.x= 3*case_width;
+                if(p1.getPosition()==11) Rect.x= 4*case_width;
+                if(p1.getPosition()==10) Rect.x= 5*case_width; 
+                Rect.y = 5 * case_height;
+            }
+
+                else if(p1.getPosition()<6 && p1.getPosition()>=0){ 
+                    Rect.x = p1.getPosition() %6 * case_width;
+                    Rect.y = 0;
+                }
+    SDL_RenderCopyEx(renderer, images[24], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+
+    const int height_j2=70;
+    const int width_j2=70;
+
+    if (p2.getPosition()==6 || p2.getPosition() == 7 || p2.getPosition() == 8 || p2.getPosition() == 9){  // pour le Joueur 2
+           Rect.x = 5 * case_width; 
+           if (p2.getPosition()==6) Rect.y= case_height+height_j2;
+           if (p2.getPosition()==7) Rect.y= 2*case_height+height_j2;
+           if (p2.getPosition()==8) Rect.y= 3*case_height+height_j2;
+           if (p2.getPosition()==9) Rect.y= 4*case_height+height_j2;
+        }
+        else if(p2.getPosition()==16 || p2.getPosition() == 17 || p2.getPosition() == 18 || p2.getPosition() == 19){
+            Rect.x = 0;
+            if (p2.getPosition()==16) Rect.y= 4*case_height+height_j2;
+            if (p2.getPosition()==17) Rect.y= 3*case_height+height_j2;
+            if (p2.getPosition()==18) Rect.y= 2*case_height+height_j2;
+            if (p2.getPosition()==19) Rect.y= case_height+height_j2;
+        }
+            else if(p2.getPosition()<16 && p2.getPosition()>9){ 
+            
+            
+
+            
+                if(p2.getPosition()==15) Rect.x= 0;
+                if(p2.getPosition()==14) Rect.x= 1*case_width + width_j2;
+                if(p2.getPosition()==13) Rect.x= 2*case_width + width_j2;
+                if(p2.getPosition()==12) Rect.x= 3*case_width + width_j2;
+                if(p2.getPosition()==11) Rect.x= 4*case_width + width_j2;
+                if(p2.getPosition()==10) Rect.x= 5*case_width + width_j2; 
+                Rect.y = 5 * case_height+width_j2;
+            }
+
+                else if(p2.getPosition()<6 && p2.getPosition()>=0){ 
+                    Rect.x = p2.getPosition() %6 * case_width + width_j2;
+                    Rect.y = 0;
+                }            
+
+    SDL_RenderCopyEx(renderer, images[25], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+   
+                
 }
+    
+

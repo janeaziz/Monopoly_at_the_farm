@@ -12,7 +12,7 @@
     void charger_images(SDL_Renderer* renderer,SDL_Texture* images[]);
 
 
-    /**
+    /**jouter_joueur();
      * @brief Affiche la page d'accueil avec l'image d'accueil et l'image du bouton start
      * 
      * @param renderer Pointeur vers le renderer SDL
@@ -29,4 +29,4 @@
     
    
 
-    void afficher_joueur (SDL_Texture* images[24]);
+    void afficher_joueur (SDL_Renderer* renderer,SDL_Texture* images[],Joueur p1, Joueur p2);

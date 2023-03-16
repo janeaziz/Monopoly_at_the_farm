@@ -1,5 +1,19 @@
 #include "Joueur.h"
 #include "CasePropriete.h"
+
+Joueur::Joueur (){
+    id =0;
+    argent=1500;
+    quantite_eau=3;
+    quantite_soleil=3;
+    nb_arbre=0;
+    nb_jardin=0;
+    for(int i=0; i<10;i++){
+        tab_propriete[i]=nullptr;
+    }
+    
+    position =0;
+}
 Joueur::Joueur(int id){ //, SDL_Renderer *renderer, TTF_Font *font){
     
     id =id;
