@@ -1,4 +1,4 @@
-
+#include <sstream>
 #include <iostream>
 #include "vue.h"
 
@@ -216,4 +216,90 @@ void afficher_joueur(SDL_Renderer* renderer,SDL_Texture* images[],Joueur p1, Jou
                 
 }
     
+/*void afficher_texte(SDL_Renderer* renderer, int x, int y)
+{    if(TTF_Init()==-1){
+        std::cerr<<"Erreur lors de l'initialisation de TTF "<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+    }
+    int i=5;
+    std::string texte = "Joueur " + std::to_string(i) + " /n argent:";
+    SDL_Color couleur = { 255, 255, 255, 255 };
+    TTF_Font* font = TTF_OpenFont("data/DejaVuSansCondensed.ttf", 20);
+    if (!font) {
+        std::cerr << "Erreur lors de l'ouverture de la police : " << TTF_GetError() << std::endl;
+        return;
+    }
+
+    std::stringstream ss(texte);
+    std::string ligne;
+    int ligne_y = y;
+    while (std::getline(ss, ligne, '\n')) {
+        SDL_Surface* surface_texte = TTF_RenderText_Solid(font, ligne.c_str(), couleur);
+        SDL_Texture* texture_texte = SDL_CreateTextureFromSurface(renderer, surface_texte);
+
+        SDL_Rect rect_texte = { x, ligne_y, surface_texte->w, surface_texte->h };
+        SDL_RenderCopy(renderer, texture_texte, nullptr, &rect_texte);
+
+        SDL_FreeSurface(surface_texte);
+        SDL_DestroyTexture(texture_texte);
+
+        ligne_y += surface_texte->h;
+    }
+
+    TTF_CloseFont(font);
+}
+*/
+
+void afficher_info(SDL_Renderer * renderer,Joueur j,int x, int y){
+    if(TTF_Init()==-1){
+        std::cerr<<"Erreur lors de l'initialisation de TTF "<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+    }
+    TTF_Font* font=TTF_OpenFont("data/DejaVuSansCondensed.ttf",20);
+    if(font==NULL){
+        std::cerr<<"Erreur lors du chargement de la police "<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+    }
+    int i = 5;
+    std::string message[7];
+    message[0] ="Joueur " + std::to_string(i);
+    message[1] ="argent" + std::to_string(i);
+
+    SDL_Color couleur={255,0,0};
+    for(int i=0;i<2;i++){
+    SDL_Surface* surface=TTF_RenderText_Blended(font,message[i].c_str(),couleur);
+
+
+    if(surface==NULL){
+        std::cerr<<"Erreur lors de la creation de la surface "<<i<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+
+
+    }
+
+    SDL_Texture* texture= SDL_CreateTextureFromSurface(renderer,surface);
+    if(texture==NULL){
+        std::cerr<<"Erreur lors de la creation de la texture"<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+    }
+
+    SDL_Rect posfont={x,y,surface->w,surface->h};
+    SDL_RenderCopy(renderer,texture,NULL,&posfont);
+    y+=20;
+    
+
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
+    }
+    TTF_CloseFont(font);
+    TTF_Quit();
+
+    
+ }
+
 

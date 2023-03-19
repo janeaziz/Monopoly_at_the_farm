@@ -50,6 +50,7 @@ while (!quit){
             
             dessiner_plateau(renderer,images);
             afficher_joueur (renderer,images,j.getJoueurs(0), j.getJoueurs(1));
+            afficher_info(renderer, j.getJoueurs(0),800, 150);
             SDL_RenderPresent(renderer);
             SDL_RenderClear(renderer);
         

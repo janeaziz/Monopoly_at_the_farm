@@ -30,3 +30,7 @@
    
 
     void afficher_joueur (SDL_Renderer* renderer,SDL_Texture* images[],Joueur p1, Joueur p2);
+
+    // void afficher_texte(SDL_Renderer* renderer, int x, int y);
+
+    void afficher_info(SDL_Renderer * renderer,Joueur j,int x, int y);
