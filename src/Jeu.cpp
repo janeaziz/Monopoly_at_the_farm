@@ -22,8 +22,18 @@ unsigned int Jeu::jete_de(){
 }
 
 void Jeu::bouge(int x){
-    joueurs[joueur_actuel].setPosition(joueurs[joueur_actuel].getPosition() + x);
-    cout<<"la nv pos du j est "<< joueurs[joueur_actuel].getPosition() <<endl;
+    int pos;
+    pos =joueurs[joueur_actuel].getPosition() + x;
+    if (pos <20){
+        joueurs[joueur_actuel].setPosition(joueurs[joueur_actuel].getPosition() + x);
+        cout<<"la nv pos du j est "<< joueurs[joueur_actuel].getPosition() <<endl;
+    }else{
+        pos= pos -20;
+        joueurs[joueur_actuel].setPosition(pos);
+        cout<<"la nv pos du j est "<< joueurs[joueur_actuel].getPosition() <<endl;
+    }
+    
+    
 }
 
 void Jeu::ajouter_joueur(){
@@ -37,7 +47,8 @@ void Jeu::ajouter_joueur(){
 void Jeu:: tour_suivant(){
     if(joueur_actuel==0){
         joueur_actuel=1;
-    }else{
+    }
+    else{
         joueur_actuel=0;
     }
 
@@ -49,4 +60,12 @@ void Jeu::joue_tour(){
 
 Joueur Jeu::getJoueurs(int id) const{
     return joueurs[id];
+}
+
+unsigned int Jeu::getJoueurActuel()const{
+    return joueur_actuel;
+}
+
+void Jeu:: setJoueurActuel(unsigned int i){
+    joueur_actuel=i;
 }

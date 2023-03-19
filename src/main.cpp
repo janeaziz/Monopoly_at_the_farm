@@ -19,6 +19,7 @@ rect_de.x=6*case_width +20;
 rect_de.y=0;
 rect_de.h=case_height;
 rect_de.w=case_width;
+unsigned int valde;
 
 window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,950,800,SDL_WINDOW_SHOWN);
 renderer= SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
@@ -36,7 +37,12 @@ while (!quit){
         if (event.type==SDL_QUIT){
             quit=true;
         }   else if (event.type == SDL_MOUSEBUTTONDOWN){
-            clic(event,j,rect_de);
+            valde=clic(event,j,rect_de);
+            if(valde>0){
+                j.bouge(valde);
+                j.tour_suivant();
+            }
+           
             
         }
         }

@@ -70,9 +70,9 @@ class Jeu{
     /**
      * @brief accesseur sur le joueur_actuel
      * 
-     * @return Joueur 
+     * @return unsigned int
      */
-    Joueur getJoueurActuel();
+    unsigned int getJoueurActuel()const;
 
     /**
      * @brief Get the Joueurs object
@@ -83,9 +83,18 @@ class Jeu{
     Joueur getJoueurs(int id) const;
 
 
+
+
+    /**
+     * @brief Set the Joueur Actuel object
+     * 
+     * @param i 
+     */
+    void setJoueurActuel(unsigned int i);
+
 };
 
 #endif
 
 //achat propriete , payer loyer, modofier eau , modifier soleil, modifier argent , achat arbre, achat jardin, 
-//doivent etre dans la classe jeu pas joueur. 
+//doivent etre dans la classe jeu pas joueur.
