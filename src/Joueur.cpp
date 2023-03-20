@@ -14,9 +14,9 @@ Joueur::Joueur (){
     
     position =0;
 }
-Joueur::Joueur(int id){ //, SDL_Renderer *renderer, TTF_Font *font){
+Joueur::Joueur(int idj){ //, SDL_Renderer *renderer, TTF_Font *font){
     
-    id =id;
+    id =idj;
     argent=1500;
     quantite_eau=3;
     quantite_soleil=3;
@@ -48,8 +48,20 @@ Joueur::~Joueur(){
     TTF_CloseFont(font); */
 }
 
+unsigned int Joueur::getid () const{
+    return id;    
+} 
+
 int Joueur::getEau()const{
     return quantite_eau;
+}
+
+int Joueur::get_nb_arbre()const{
+    return nb_arbre;
+}
+
+int Joueur::get_nb_jardin()const{
+    return nb_jardin;
 }
 
 int Joueur::getSoleil()const{

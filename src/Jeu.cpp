@@ -7,6 +7,7 @@ using namespace std;
 Jeu::Jeu() {
     plateau = Plateau(); // Initialisation du plateau
     joueurs = new Joueur[2]; // Initialisation des joueurs
+    ajouter_joueur();
     joueur_actuel = 0; // Initialisation du joueur actuel
     gagnant = -1; // Initialisation du gagnant à -1 
 }

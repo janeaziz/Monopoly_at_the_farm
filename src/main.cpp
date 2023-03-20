@@ -20,8 +20,11 @@ rect_de.y=0;
 rect_de.h=case_height;
 rect_de.w=case_width;
 unsigned int valde;
+SDL_Color rouge={255,0,0};
+SDL_Color bleu={0,0,255};
+SDL_Color blanc={255,255,255};
 
-window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,950,800,SDL_WINDOW_SHOWN);
+window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,1100,900,SDL_WINDOW_SHOWN);
 renderer= SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 
 charger_images(renderer,images);
@@ -38,9 +41,11 @@ while (!quit){
             quit=true;
         }   else if (event.type == SDL_MOUSEBUTTONDOWN){
             valde=clic(event,j,rect_de);
+            
             if(valde>0){
                 j.bouge(valde);
                 j.tour_suivant();
+                //afficher_val_de( renderer,valde,800, 465, blanc);
             }
            
             
@@ -50,7 +55,9 @@ while (!quit){
             
             dessiner_plateau(renderer,images);
             afficher_joueur (renderer,images,j.getJoueurs(0), j.getJoueurs(1));
-            afficher_info(renderer, j.getJoueurs(0),800, 150);
+            afficher_info(renderer, j.getJoueurs(0),800, 150,rouge);
+            afficher_info(renderer, j.getJoueurs(1),800, 300,bleu);
+            afficher_val_de( renderer,valde,800, 465, blanc);
             SDL_RenderPresent(renderer);
             SDL_RenderClear(renderer);
         

@@ -40,6 +40,13 @@ class Joueur {
     ~Joueur();
 
     /**
+     * @brief Get the id object
+     * 
+     * @return unsigned int 
+     */
+    unsigned int getid () const;
+
+    /**
      * @brief Accesseur pour avoir la valeur de quantite_eau
      * 
      * @return int& 
@@ -53,6 +60,19 @@ class Joueur {
      */
     int getSoleil () const;
 
+    /**
+     * @brief Get the nb arbre object
+     * 
+     * @return int 
+     */
+    int get_nb_arbre () const;
+
+    /**
+     * @brief Get the nb jardin object
+     * 
+     * @return int 
+     */
+    int get_nb_jardin () const;
     /**
      * @brief Accesseur pour avoir la valeur de argent
      * 

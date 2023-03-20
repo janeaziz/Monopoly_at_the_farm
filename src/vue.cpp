@@ -251,7 +251,7 @@ void afficher_joueur(SDL_Renderer* renderer,SDL_Texture* images[],Joueur p1, Jou
 }
 */
 
-void afficher_info(SDL_Renderer * renderer,Joueur j,int x, int y){
+void afficher_info(SDL_Renderer * renderer,Joueur j,int x, int y,SDL_Color c){
     if(TTF_Init()==-1){
         std::cerr<<"Erreur lors de l'initialisation de TTF "<<TTF_GetError()<<endl;
         SDL_Quit();
@@ -263,14 +263,24 @@ void afficher_info(SDL_Renderer * renderer,Joueur j,int x, int y){
         SDL_Quit();
         exit(1);
     }
-    int i = 5;
-    std::string message[7];
-    message[0] ="Joueur " + std::to_string(i);
-    message[1] ="argent" + std::to_string(i);
+    unsigned int id= j.getid();
+    unsigned int money=j.getArgent();
+    int soleil=j.getSoleil();
+    int eau=j.getEau();
+    int arbres=j.get_nb_arbre();
+    int jardins=j.get_nb_jardin();
 
-    SDL_Color couleur={255,0,0};
-    for(int i=0;i<2;i++){
-    SDL_Surface* surface=TTF_RenderText_Blended(font,message[i].c_str(),couleur);
+    std::string message[7];
+    message[0] ="Joueur " + std::to_string(id);
+    message[1] ="argent: " + std::to_string(money);
+    message[2] ="eau: " + std::to_string(eau);
+    message[3] ="soleil: " + std::to_string(soleil);
+    message[4] ="nb arbres: " + std::to_string(arbres);
+    message[5] ="nb jardins: " + std::to_string(jardins);
+
+    //SDL_Color couleur={255,0,0};
+    for(int i=0;i<6;i++){
+    SDL_Surface* surface=TTF_RenderText_Blended(font,message[i].c_str(),c);
 
 
     if(surface==NULL){
@@ -302,4 +312,51 @@ void afficher_info(SDL_Renderer * renderer,Joueur j,int x, int y){
     
  }
 
+
+void afficher_val_de(SDL_Renderer * renderer,unsigned int val_de,int x, int y,SDL_Color c){
+    if(TTF_Init()==-1){
+        std::cerr<<"Erreur lors de l'initialisation de TTF "<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+    }
+    TTF_Font* font=TTF_OpenFont("data/DejaVuSansCondensed.ttf",20);
+    if(font==NULL){
+        std::cerr<<"Erreur lors du chargement de la police "<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+    }
+
+    std::string message ="La valeur du de est: " + std::to_string(val_de);
+
+    SDL_Surface* surface=TTF_RenderText_Blended(font,message.c_str(),c);
+
+
+    if(surface==NULL){
+        std::cerr<<"Erreur lors de la creation de la surface "<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+
+
+    }
+
+    SDL_Texture* texture= SDL_CreateTextureFromSurface(renderer,surface);
+    if(texture==NULL){
+        std::cerr<<"Erreur lors de la creation de la texture"<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+    }
+
+    SDL_Rect posfont={x,y,surface->w,surface->h};
+    SDL_RenderCopy(renderer,texture,NULL,&posfont);
+    
+    
+
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
+    
+    TTF_CloseFont(font);
+    TTF_Quit();
+
+    
+}
 
