@@ -19,7 +19,7 @@ rect_de.x=6*case_width +20;
 rect_de.y=0;
 rect_de.h=case_height;
 rect_de.w=case_width;
-unsigned int valde;
+unsigned int valde = 0;
 SDL_Color rouge={255,0,0};
 SDL_Color bleu={0,0,255};
 SDL_Color blanc={255,255,255};
