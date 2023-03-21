@@ -15,7 +15,7 @@ class CasePropriete : public Case{
 
         Couleur c;
         int prix; // prix du terrain
-        Joueur proprio;
+        int proprio;
         int loyer; // loyer  que l'adversaire paye s'il arrive sur cette case
         int nb_arbre;
         int nb_arbre_max;
@@ -39,10 +39,10 @@ class CasePropriete : public Case{
          * @param arb 
          * @param jard 
          */
-        CasePropriete(Couleur c, int p, int l, Joueur j, int arb, int jard, int nba_max); 
+        CasePropriete(Couleur c, int prix_achat, int pos, std::string type, int l, int proprietaire, int arb, int jard, int nba_max); 
         
 
-        virtual ~CasePropriete();
+        ~CasePropriete();
         
         /**
          * @brief Get the prix object
@@ -89,7 +89,7 @@ class CasePropriete : public Case{
          * 
          * @return int 
          */
-        const Joueur& get_proprio() const;
+        int get_proprio() const;
 
        
         /**
@@ -97,7 +97,7 @@ class CasePropriete : public Case{
          * 
          * @param j 
          */
-        void set_proprio(Joueur j);
+        void set_proprio(int i);
 
 
 

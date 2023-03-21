@@ -1,4 +1,4 @@
-OBJ=obj/Plateau.o obj/Case.o obj/Joueur.o obj/Jeu.o obj/vue.o obj/controleur.o
+OBJ=obj/Plateau.o obj/Case.o obj/Joueur.o obj/Jeu.o obj/vue.o obj/controleur.o obj/Couleur.o obj/CasePropriete.o
 CC=g++
 CFLAGS=-g -Wall
 LIBS_SDL = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lGL
@@ -11,8 +11,14 @@ folders:
 bin/monopoly: $(OBJ) obj/main.o
 	$(CC) $(OBJ) obj/main.o -o bin/monopoly $(LIBS_SDL)
 
-obj/Plateau.o: src/Plateau.cpp src/Plateau.h src/Case.h
+obj/Couleur.o: src/Couleur.cpp src/Couleur.h
+	$(CC) $(CFLAGS) -c src/Couleur.cpp -o obj/Couleur.o
+
+obj/Plateau.o: src/Plateau.cpp src/Plateau.h src/Case.h src/CasePropriete.h src/Couleur.h
 	$(CC) $(CFLAGS) -c src/Plateau.cpp -o obj/Plateau.o
+
+obj/CasePropriete.o: src/CasePropriete.cpp 	src/CasePropriete.h src/Couleur.h src/Case.h src/Joueur.h
+	$(CC) $(CFLAGS) -c src/CasePropriete.cpp -o obj/CasePropriete.o
 
 obj/Case.o: src/Case.cpp src/Case.h 
 	$(CC) $(CFLAGS) -c src/Case.cpp -o obj/Case.o

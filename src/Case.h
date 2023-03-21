@@ -13,13 +13,17 @@ class Case{
 
     public:
 
-
+    /**
+     * @brief Construct a new Case object
+     * 
+     */
+    Case();
     /**
      * @brief Construct a new Case object
      * 
      * @param i 
      */
-    Case(int i);
+  //  Case(int i);
     Case(int indice, std::string t);
 
 
@@ -30,6 +34,15 @@ class Case{
  */
 
     void set_type(std::string letype);
+
+    /**
+     * @brief Get the pos object
+     * 
+     * @return int 
+     */
+    int get_pos()const;
 };
+
+
 
 #endif
