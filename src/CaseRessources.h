@@ -1,4 +1,4 @@
-#include"Couleur.h"
+//#include"Couleur.h"
 #include "Case.h"
 #ifndef _CASERESSOURCES_H
 #define  _CASERESSOURCES_H
@@ -9,7 +9,7 @@
 
         int q_eau;
         int q_soleil;
-        Couleur c;
+     //   Couleur c;
 
         public:
         
@@ -20,15 +20,18 @@
          * @param e 
          * @param s 
          */
-        CaseRessources(int e, int s);
+        CaseRessources(int e, int s, int position, std::string letype);
 
 
         /**
-         * @brief Set the couleur caser object
+         * @brief Destroy the Case Ressouces object
          * 
-         * @param col 
          */
-        void set_couleur_caser(Couleur col);
+        ~CaseRessources();
+
+
+      
+        
 
         /**
          * @brief Get the eau object

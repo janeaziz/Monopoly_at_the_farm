@@ -50,6 +50,11 @@ class Case{
     virtual int get_loyer()const;
 //fonction CaseArgent
     virtual int get_montant()const;
+
+//fonctions CaseRessources
+    virtual int get_eau() const;    
+    
+    virtual int get_soleil() const; 
 };
 
 

@@ -99,6 +99,8 @@ class CasePropriete : public Case{
          */
         void set_proprio(int i);
 
+        
+
 
 
 };

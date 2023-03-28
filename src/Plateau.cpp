@@ -1,34 +1,4 @@
 
-
-/*void Plateau::charger_images(SDL_Renderer* renderer) {
-    // Pour chaque case
-    for(int i = 0; i < 20; i++) {
-        // On construit le nom du fichier image (exemple : "images/case_0.png")
-        std::string filename = "images/case_" + std::to_string(i) + ".png";
-
-        // On charge l'image depuis le fichier
-        SDL_Surface* surface = IMG_Load(filename.c_str());
-        if(surface == nullptr) {
-            std::cerr << "Erreur : impossible de charger l'image " << filename << std::endl;
-            return;
-        }
-
-        // On crée une texture à partir de l'image
-        SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-        if(texture == nullptr) {
-            std::cerr << "Erreur : impossible de créer la texture pour l'image " << filename << std::endl;
-            SDL_FreeSurface(surface);
-            return;
-        }
-
-        // On stocke la texture dans le tableau "images"
-        images[i] = texture;
-
-        // On libère la surface, car on n'en a plus besoin
-        SDL_FreeSurface(surface);
-    }
-} */
-
 #include "Plateau.h"
 //#include "CasePropriete.h"
 //#include "Couleur.h"
@@ -79,8 +49,8 @@ Plateau::Plateau() {
             }    
         }
         else{
-            cases[i] = new Case(i, "Case Ressources");
-           // cases[i]->set_type("Case Ressources") ;// il ya 3 cases 
+            cases[i] = new CaseRessources(2, 2, i, "Case Ressources");
+            cout<< "Il a gagne "<<cases[i]->get_eau()<<" unites d'eau et "<<cases[i]->get_soleil()<<" de soleil"<<endl;
         }
 
 
