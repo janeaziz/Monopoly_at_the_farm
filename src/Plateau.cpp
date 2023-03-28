@@ -51,14 +51,15 @@ Plateau::Plateau() {
         /*rouge.setRouge(255);
         rouge.setVert(0);
         rouge.setBleu(0); */
-
+       
         
         if (i == 0) {
             cases[i] = new Case(i, "Case départ");
             //cases[i]->set_type();
         } else if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) {
             cases[i] = new CasePropriete(rouge, 200,i, "Case propriete", 50, proprietaire_terrain, 0, 0, 3 );
-          //  cout<<"le prix est "<<cases[i]->get_loyer()<<endl;
+             cout<<"ca marche"<<endl;
+            cout<<"le prix est "<<cases[i]->get_prix()<<endl;
            
         }
         else if (i==8 || i==15){
@@ -67,8 +68,15 @@ Plateau::Plateau() {
         }
         else if (i==1 || i==10 || i==16 || i==19)
         {
-            cases[i] = new Case(i, "Case argent");
-            //cases[i]->set_type("Case argent");
+            //cases[i] = new Case(i, "Case argent");
+            if (i==1 || i==10){
+                cases[i]=new CaseArgent(200,i,"Case Argent");
+                cout<< "Il a gagne "<<cases[i]->get_montant()<<" euros"<<endl;
+            }
+            else{
+                cases[i]=new CaseArgent(-200,i,"Case Argent");
+                cout<< "Il a perdu "<<cases[i]->get_montant()<<" euros"<<endl;
+            }    
         }
         else{
             cases[i] = new Case(i, "Case Ressources");
@@ -79,10 +87,10 @@ Plateau::Plateau() {
     }
 }
 
-Plateau::~Plateau() {
+ Plateau::~Plateau() {
     // Suppression des cases du plateau
     for (int i = 0; i < 20; i++) {
-        delete cases[i];
+     delete cases[i];
     }
 }
 

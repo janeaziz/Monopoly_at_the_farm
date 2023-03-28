@@ -1,4 +1,4 @@
-OBJ=obj/Plateau.o obj/Case.o obj/Joueur.o obj/Jeu.o obj/vue.o obj/controleur.o obj/Couleur.o obj/CasePropriete.o
+OBJ=obj/Plateau.o obj/Case.o obj/Joueur.o obj/Jeu.o obj/vue.o obj/controleur.o obj/Couleur.o obj/CasePropriete.o obj/CaseArgent.o
 CC=g++
 CFLAGS=-g -Wall
 LIBS_SDL = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lGL
@@ -14,11 +14,14 @@ bin/monopoly: $(OBJ) obj/main.o
 obj/Couleur.o: src/Couleur.cpp src/Couleur.h
 	$(CC) $(CFLAGS) -c src/Couleur.cpp -o obj/Couleur.o
 
-obj/Plateau.o: src/Plateau.cpp src/Plateau.h src/Case.h src/CasePropriete.h src/Couleur.h
+obj/Plateau.o: src/Plateau.cpp src/Plateau.h src/Case.h src/CasePropriete.h src/Couleur.h src/CaseArgent.h
 	$(CC) $(CFLAGS) -c src/Plateau.cpp -o obj/Plateau.o
 
 obj/CasePropriete.o: src/CasePropriete.cpp 	src/CasePropriete.h src/Couleur.h src/Case.h src/Joueur.h
 	$(CC) $(CFLAGS) -c src/CasePropriete.cpp -o obj/CasePropriete.o
+
+obj/CaseArgent.o: src/CaseArgent.cpp src/CaseArgent.h src/Case.h
+	$(CC) $(CFLAGS) -c src/CaseArgent.cpp -o obj/CaseArgent.o
 
 obj/Case.o: src/Case.cpp src/Case.h 
 	$(CC) $(CFLAGS) -c src/Case.cpp -o obj/Case.o

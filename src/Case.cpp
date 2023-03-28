@@ -14,6 +14,10 @@ Case::Case(int indice, std::string t){
 
 }
 
+Case::~Case(){
+    pos=-1;
+    type="NULL";
+}
 /*Case::Case(int indice){
     type="null";
     pos=indice;
@@ -25,3 +29,17 @@ void Case::set_type(std::string t){
 int Case::get_pos()const{
     return pos;
 }
+
+//fonction CasePropriete
+int Case::get_prix()const{
+    return 0;
+}
+
+int Case::get_loyer()const{
+    return 0;
+}
+
+//fonction CaseArgent
+int Case::get_montant()const{
+    return 0;
+}; 

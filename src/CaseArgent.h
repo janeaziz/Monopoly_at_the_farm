@@ -1,4 +1,4 @@
-#include"Couleur.h"
+//#include"Couleur.h"
 #include "Case.h"
 #ifndef _CASEARGENT_H
 #define _CASEARGENT_H
@@ -8,7 +8,7 @@ class CaseArgent: public Case{
     private:
 
     int montant;
-    Couleur couleur;
+   // Couleur couleur;
 
     public:
 
@@ -19,11 +19,13 @@ class CaseArgent: public Case{
      * @param argent 
      * @param c 
      */
-    CaseArgent(int argent, Couleur c);
+    CaseArgent(int argent, int position, std::string letype);
 
-    //int get_montant()const;
+    ~CaseArgent();
 
-    //void set_montant(int monnaie);
+    int get_montant()const;
+
+    void set_montant(int monnaie);
 
     //fonction sur case? 
     //dans la classe jeu on va voir l'utilisateur il est ou et on

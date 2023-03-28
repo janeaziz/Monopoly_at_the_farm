@@ -26,6 +26,8 @@ class Case{
   //  Case(int i);
     Case(int indice, std::string t);
 
+    virtual ~Case();
+
 
 /**
  * @brief Set the type object
@@ -41,6 +43,13 @@ class Case{
      * @return int 
      */
     int get_pos()const;
+
+//fonctions CasePropriete
+    virtual int get_prix()const;
+
+    virtual int get_loyer()const;
+//fonction CaseArgent
+    virtual int get_montant()const;
 };
 
 
