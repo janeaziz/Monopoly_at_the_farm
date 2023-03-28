@@ -12,6 +12,16 @@ Jeu::Jeu() {
     gagnant = -1; // Initialisation du gagnant à -1 
 }
 
+Jeu::~Jeu(){
+    
+    if (joueurs != nullptr) {
+        delete [] joueurs;
+        joueurs = nullptr;
+    }
+    joueur_actuel=-1;
+    gagnant=-1;
+}
+
 unsigned int Jeu::jete_de(){
     srand(time(NULL));
     unsigned int de;
@@ -56,7 +66,13 @@ void Jeu:: tour_suivant(){
 }
 
 void Jeu::joue_tour(){
+    int i=joueurs[joueur_actuel].getPosition();
+    int argent_actuel=joueurs[joueur_actuel].getArgent();
     
+    if (i==1 || i==10 || i==16 || i==19){  //s'il est sur une case Argent
+        int montant_case=plateau.getCase(i).get_montant();
+        joueurs[joueur_actuel].setArgent (argent_actuel + montant_case);
+    }
 }
 
 Joueur Jeu::getJoueurs(int id) const{

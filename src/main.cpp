@@ -44,6 +44,7 @@ while (!quit){
             
             if(valde>0){
                 j.bouge(valde);
+                //j.joue_tour();
                 j.tour_suivant();
                 //afficher_val_de( renderer,valde,800, 465, blanc);
             }

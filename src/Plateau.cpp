@@ -59,9 +59,14 @@ Plateau::Plateau() {
 
  Plateau::~Plateau() {
     // Suppression des cases du plateau
+  /* if (cases != nullptr) {
+        delete [] cases;
+        cases = nullptr;
+    }  */
+
     for (int i = 0; i < 20; i++) {
      delete cases[i];
-    }
+    } 
 }
 
 

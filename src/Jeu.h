@@ -19,6 +19,12 @@ class Jeu{
      * 
      */
     Jeu();
+
+    /**
+     * @brief Destroy the Jeu object
+     * 
+     */
+    ~Jeu();
     /**
      * @brief retourne un entier aleatoire entre 1 et 6
      * 
