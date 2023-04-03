@@ -8,7 +8,7 @@ class Jeu{
 
     private:
     Plateau plateau;
-    Joueur * joueurs;
+    Joueur * joueurs[2];
     unsigned int joueur_actuel;
     unsigned int  gagnant;
 
@@ -86,7 +86,7 @@ class Jeu{
      * @param id 
      * @return Joueur 
      */
-    Joueur getJoueurs(int id) const;
+    Joueur& getJoueurs(int id) const;
 
 
 

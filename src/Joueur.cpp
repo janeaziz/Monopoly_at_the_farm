@@ -39,6 +39,7 @@ Joueur::~Joueur(){
     for(int i=0; i<10;i++){
         if(tab_propriete[i]!= nullptr){
             delete tab_propriete[i];
+            tab_propriete[i] = nullptr;
         }
     }
 

@@ -35,6 +35,10 @@ int Case::get_prix()const{
     return 0;
 }
 
+int Case::get_proprio()const{
+    return 0;
+}
+
 int Case::get_loyer()const{
     return 0;
 }

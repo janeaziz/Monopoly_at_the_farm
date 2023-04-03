@@ -47,6 +47,13 @@ class Joueur {
     unsigned int getid () const;
 
     /**
+     * @brief 
+     * 
+     * @param id 
+     */
+  //  void setid (int id); 
+
+    /**
      * @brief Accesseur pour avoir la valeur de quantite_eau
      * 
      * @return int& 

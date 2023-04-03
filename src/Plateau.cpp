@@ -65,7 +65,10 @@ Plateau::Plateau() {
     }  */
 
     for (int i = 0; i < 20; i++) {
-     delete cases[i];
+        if(cases[i] != nullptr){
+            delete cases[i];
+            cases[i]=nullptr;
+        }    
     } 
 }
 
