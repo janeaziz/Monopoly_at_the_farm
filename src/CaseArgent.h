@@ -23,7 +23,7 @@ class CaseArgent: public Case{
 
     //~CaseArgent();
 
-    int get_montant()const;
+   virtual int get_montant()const;
 
     void set_montant(int monnaie);
 

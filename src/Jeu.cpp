@@ -89,6 +89,7 @@ void Jeu::joue_tour(){
         int montant_case=plateau.getCase(i).get_montant();
         cout<<"montant case argent "<< montant_case<<endl;;
         joueurs[joueur_actuel].setArgent (argent_actuel + montant_case);
+        cout<<"montan gagne"<<joueurs[joueur_actuel].getArgent ()<<endl;
     }
 
     if (i==5 || i==9 || i==14){  // s'il est sur une case ressources

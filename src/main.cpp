@@ -28,7 +28,7 @@ window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTER
 renderer= SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 
 charger_images(renderer,images);
-//j.ajouter_joueur();
+
 
 if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "Erreur lors de l'initialisation de SDL : " << SDL_GetError() << std::endl;
@@ -47,7 +47,7 @@ while (!quit){
                 j.joue_tour();
                 j.tour_suivant();
                 //afficher_val_de( renderer,valde,800, 465, blanc);
-            }
+           }
            
             
         }

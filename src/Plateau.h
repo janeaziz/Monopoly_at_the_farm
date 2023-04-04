@@ -13,7 +13,7 @@
 class Plateau{
 
     private:
-    Case * cases; // Tableau de pointeurs vers les 20 cases du plateau
+    Case * cases[20]; // Tableau de pointeurs vers les 20 cases du plateau
     
     public:
 

@@ -36,7 +36,7 @@ int Case::get_prix()const{
 }
 
 int Case::get_proprio()const{
-    return 0;
+    return 0 ;
 }
 
 int Case::get_loyer()const{
@@ -45,13 +45,14 @@ int Case::get_loyer()const{
 
 //fonction CaseArgent
 int Case::get_montant()const{
-    return 0;
-}
+    return 5;
+   }
 //fonctions CaseRessources
 int Case::get_eau() const{
     return 0;
 }
 
 int Case::get_soleil() const{
-    return 0;
+    return 0 ;
 }
+

@@ -2,6 +2,8 @@
 #ifndef CASE_H
 #define CASE_H
 #include"Couleur.h"
+
+
 using namespace std;
 
 class Case{
@@ -57,7 +59,6 @@ class Case{
     virtual int get_eau() const;    
     
     virtual int get_soleil() const; 
-
 
     
 
