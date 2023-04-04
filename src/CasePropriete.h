@@ -24,6 +24,11 @@ class CasePropriete : public Case{
 
     public:
 
+    /**
+     * 
+    */
+    CasePropriete();
+
         /**
          * @brief Construct a new Case Propriete object
          * on initialise la couleur 

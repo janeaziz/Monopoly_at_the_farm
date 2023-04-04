@@ -2,6 +2,22 @@
 #include"Joueur.h"
 #include"Couleur.h"
 
+
+CasePropriete::CasePropriete() {
+
+    c.setRouge(0);
+    c.setVert(0);
+    c.setBleu(0);
+    prix=0;
+    pos=0;
+    type="Case Propriete";
+    loyer=0;
+    nb_arbre=0;
+    nb_arbre_max=0;
+    nb_jardin=0;
+    proprio=0;
+}
+
 CasePropriete::CasePropriete(Couleur cl, int pr,int position, std::string type, int l, int propri, int nba, int nbj, int nba_max )
 {
     c.setRouge(cl.getRouge());

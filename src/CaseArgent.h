@@ -21,7 +21,7 @@ class CaseArgent: public Case{
      */
     CaseArgent(int argent, int position, std::string letype);
 
-    ~CaseArgent();
+    //~CaseArgent();
 
     int get_montant()const;
 

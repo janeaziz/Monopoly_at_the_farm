@@ -8,10 +8,8 @@ Joueur::Joueur (){
     quantite_soleil=3;
     nb_arbre=0;
     nb_jardin=0;
-    for(int i=0; i<10;i++){
-        tab_propriete[i]=nullptr;
-    }
-    
+    tab_propriete = nullptr;
+  
     position =0;
 }
 Joueur::Joueur(int idj){ //, SDL_Renderer *renderer, TTF_Font *font){
@@ -21,27 +19,27 @@ Joueur::Joueur(int idj){ //, SDL_Renderer *renderer, TTF_Font *font){
     quantite_eau=3;
     quantite_soleil=3;
     nb_arbre=0;
-    nb_jardin=0;
+    nb_jardin=0; 
 /*  this->renderer=renderer;
     this->font=font;
    
     this->image = IMG_LoadTexture(renderer,"data/Joueur1.png");
 */
-    for(int i=0; i<10;i++){
-        tab_propriete[i]=nullptr;
-    }
+    tab_propriete = new CasePropriete[10];
+
+    
     
     position =0;
 
 }
 
 Joueur::~Joueur(){
-    for(int i=0; i<10;i++){
-        if(tab_propriete[i]!= nullptr){
-            delete tab_propriete[i];
-            tab_propriete[i] = nullptr;
+
+        if(tab_propriete != nullptr){
+            delete [] tab_propriete;
+            tab_propriete= nullptr;
         }
-    }
+    
 
 
     /*SDL_DestroyRenderer(renderer);
@@ -86,6 +84,10 @@ unsigned int Joueur::getPosition()const{
 void Joueur::setImage(SDL_Texture* im){
     image=im;
 }  */
+
+void Joueur::setid (int idj){
+    id=idj;
+};
 
 void Joueur::setEau (int x){
     quantite_eau=x;

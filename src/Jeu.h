@@ -8,7 +8,7 @@ class Jeu{
 
     private:
     Plateau plateau;
-    Joueur * joueurs[2];
+    Joueur joueurs[2];
     unsigned int joueur_actuel;
     unsigned int  gagnant;
 
@@ -20,11 +20,9 @@ class Jeu{
      */
     Jeu();
 
-    /**
-     * @brief Destroy the Jeu object
-     * 
-     */
-    ~Jeu();
+ //   ~Jeu();
+
+   
     /**
      * @brief retourne un entier aleatoire entre 1 et 6
      * 
@@ -32,12 +30,13 @@ class Jeu{
      */
     unsigned int jete_de();
 
+
     /**
      * @brief bouge le joueur de x cases
      * 
      * @param x 
      */
-    void bouge(int x);
+    void bouge(int x); 
 
     /**
      * @brief Ajoute deux joueurs au jeur en les initialisant
@@ -86,7 +85,7 @@ class Jeu{
      * @param id 
      * @return Joueur 
      */
-    Joueur& getJoueurs(int id) const;
+    Joueur getJoueurs(int id) const;
 
 
 

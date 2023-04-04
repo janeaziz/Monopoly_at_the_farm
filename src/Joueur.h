@@ -17,7 +17,7 @@ class Joueur {
     int quantite_soleil;
     int nb_arbre;
     int nb_jardin;
-    CasePropriete * tab_propriete [10];
+    CasePropriete * tab_propriete ;
     unsigned int position; //indice de la case
     /*SDL_Texture *image; // Image du joueur pour SDL2
     TTF_Font *font; // Police pour afficher le nom du joueur
@@ -51,7 +51,7 @@ class Joueur {
      * 
      * @param id 
      */
-  //  void setid (int id); 
+    void setid (int id); 
 
     /**
      * @brief Accesseur pour avoir la valeur de quantite_eau

@@ -44,7 +44,7 @@ while (!quit){
             
             if(valde>0){
                 j.bouge(valde);
-              //  j.joue_tour();
+                j.joue_tour();
                 j.tour_suivant();
                 //afficher_val_de( renderer,valde,800, 465, blanc);
             }
@@ -63,7 +63,7 @@ while (!quit){
             SDL_RenderClear(renderer);
         
          
-  }
+  } 
     
 
     SDL_DestroyRenderer(renderer);

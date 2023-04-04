@@ -3,13 +3,18 @@ CC=g++
 CFLAGS=-g -Wall
 LIBS_SDL = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lGL
 
-all: folders bin/monopoly 
+all: folders bin/monopoly bin/test
 
 folders:
 	mkdir -p obj bin data
 
 bin/monopoly: $(OBJ) obj/main.o
 	$(CC) $(OBJ) obj/main.o -o bin/monopoly $(LIBS_SDL)
+
+
+bin/test: $(OBJ) obj/maintest.o
+	$(CC) $(OBJ) obj/maintest.o -o bin/test $(LIBS_SDL)
+
 
 obj/Couleur.o: src/Couleur.cpp src/Couleur.h
 	$(CC) $(CFLAGS) -c src/Couleur.cpp -o obj/Couleur.o
@@ -40,6 +45,9 @@ obj/vue.o:src/vue.cpp src/vue.h src/Jeu.h
 
 obj/main.o: src/main.cpp src/Plateau.h src/Case.h src/vue.h src/Jeu.h
 	$(CC) $(CFLAGS) -c src/main.cpp  -o obj/main.o
+
+obj/maintest.o: src/maintest.cpp src/Plateau.h src/Case.h src/Jeu.h
+	$(CC) $(CFLAGS) -c src/maintest.cpp  -o obj/maintest.o
 
 obj/controleur.o:src/controleur.cpp src/controleur.h src/Jeu.h
 	$(CC) $(CFLAGS) -c src/controleur.cpp -o obj/controleur.o
