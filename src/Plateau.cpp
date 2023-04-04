@@ -54,7 +54,8 @@ Plateau::Plateau() {
         }
         else{
             cases[i] = new CaseRessources(2, 2, i, "Case Ressources");
-            cout<< "Il a gagne "<<cases[i]->get_eau()<<" unites d'eau et "<<cases[i]->get_soleil()<<" de soleil"<<endl;
+            CaseRessources* caseRes= dynamic_cast<CaseRessources*>(cases[i]);
+            cout<< "Il a gagne "<<caseRes->get_eau()<<" unites d'eau et "<<cases[i]->get_soleil()<<" de soleil"<<endl;
         }
 
 
