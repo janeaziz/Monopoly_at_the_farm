@@ -15,7 +15,7 @@ Jeu::Jeu() {
 }
 
 /*Jeu::~Jeu(){
-    /*
+    
  for(int i=0;i<2;i++){
         joueurs[i]=NULL;
         
@@ -106,6 +106,10 @@ void Jeu::joue_tour(){
             joueurs[joueur_actuel].setArgent(argent_actuel - loyer_case);
             joueurs[joueur_adverse].setArgent(argent_actuel_adverse + loyer_case);
         }
+
+        /*if(proprio_case == joueur_actuel){
+            
+        } */
     }
 
 

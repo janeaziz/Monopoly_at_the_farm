@@ -36,3 +36,5 @@
     void afficher_info(SDL_Renderer * renderer,Joueur j,int x, int y,SDL_Color c);
 
     void afficher_val_de(SDL_Renderer * renderer,unsigned int val_de,int x, int y,SDL_Color c);
+
+    void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c);

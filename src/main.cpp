@@ -58,6 +58,7 @@ while (!quit){
             afficher_joueur (renderer,images,j.getJoueurs(0), j.getJoueurs(1));
             afficher_info(renderer, j.getJoueurs(0),800, 150,rouge);
             afficher_info(renderer, j.getJoueurs(1),800, 300,bleu);
+            charger_questions(renderer,1,blanc);
             afficher_val_de( renderer,valde,800, 465, blanc);
             SDL_RenderPresent(renderer);
             SDL_RenderClear(renderer);

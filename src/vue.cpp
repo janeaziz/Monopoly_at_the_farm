@@ -360,3 +360,52 @@ void afficher_val_de(SDL_Renderer * renderer,unsigned int val_de,int x, int y,SD
     
 }
 
+void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
+    
+    if(TTF_Init()==-1){
+        std::cerr<<"Erreur lors de l'initialisation de TTF "<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+    }
+    TTF_Font* font=TTF_OpenFont("data/DejaVuSansCondensed.ttf",20);
+    if(font==NULL){
+        std::cerr<<"Erreur lors du chargement de la police "<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+    }
+    
+    std::string questions[3];
+        
+    questions[0]="Voulez-vous acheter ce terrain?";
+    questions[1]="Voulez-vous planter un arbre?";
+    questions[2]="Voulez-vous planter un jardin?";
+
+    SDL_Surface* surface=TTF_RenderText_Blended(font,questions[indice].c_str(),c);
+
+    if(surface==NULL){
+        std::cerr<<"Erreur lors de la creation de la surface "<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+
+
+    }
+
+    SDL_Texture* texture= SDL_CreateTextureFromSurface(renderer,surface);
+    if(texture==NULL){
+        std::cerr<<"Erreur lors de la creation de la texture"<<TTF_GetError()<<endl;
+        SDL_Quit();
+        exit(1);
+    }
+
+    SDL_Rect posfont={100,850,surface->w,surface->h};
+    SDL_RenderCopy(renderer,texture,NULL,&posfont);
+
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
+    
+    TTF_CloseFont(font);
+    TTF_Quit();
+
+
+}
+
