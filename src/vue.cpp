@@ -72,7 +72,7 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[]) {
     // Dessin du plateau en utilisant les images des cases
     
     SDL_Rect Rect;
-
+ //j.tour_suivant();
     const int case_width=130;
     const int case_height=130;
 
@@ -374,20 +374,26 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
         exit(1);
     }
     
-    std::string questions[3];
+    std::string questions[7];
         
     questions[0]="Voulez-vous acheter ce terrain?";
-    questions[1]="Voulez-vous planter un arbre?";
+    questions[1]="Voulez-vous planter un arbre?";// Cliquez sur Y pour oui et N pour non.";
     questions[2]="Voulez-vous planter un jardin?";
-
+    questions[3]="Vous avez perdu 200 euros!";
+    questions[4]="Vous avez gagne 200 euros!";
+    questions[5]="Vous avez perdu 2 unites d'eau et de soleil!";
+    questions[6]="Vous avez gagne 2 unites d'eau et de soleil!";
+   
     SDL_Surface* surface=TTF_RenderText_Blended(font,questions[indice].c_str(),c);
+    
+
 
     if(surface==NULL){
         std::cerr<<"Erreur lors de la creation de la surface "<<TTF_GetError()<<endl;
         SDL_Quit();
         exit(1);
 
-
+    
     }
 
     SDL_Texture* texture= SDL_CreateTextureFromSurface(renderer,surface);
@@ -398,7 +404,10 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
     }
 
     SDL_Rect posfont={100,850,surface->w,surface->h};
+    
+   
     SDL_RenderCopy(renderer,texture,NULL,&posfont);
+    
 
     SDL_FreeSurface(surface);
     SDL_DestroyTexture(texture);

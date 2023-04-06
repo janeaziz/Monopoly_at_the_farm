@@ -49,7 +49,7 @@ class Case{
 //fonctions CasePropriete
     virtual int get_prix()const;
 
-    virtual int get_proprio() const;
+    virtual  int get_proprio() const;
 
     virtual int get_loyer()const;
 //fonction CaseArgent

@@ -70,7 +70,7 @@ class CasePropriete : public Case{
          */
 
         int get_loyer()const;
-
+    
 
         /**
          * @brief Set the loyer object, donne le nouveau montant du loyer 
@@ -94,7 +94,7 @@ class CasePropriete : public Case{
          * 
          * @return int 
          */
-        int get_proprio() const;
+         int get_proprio() const;
 
        
         /**

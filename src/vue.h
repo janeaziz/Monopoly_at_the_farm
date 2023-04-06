@@ -3,6 +3,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 #include "Jeu.h"
+#include"controleur.h"
 
 /**
      * @brief Charge les images des cases depuis le dossier "images"

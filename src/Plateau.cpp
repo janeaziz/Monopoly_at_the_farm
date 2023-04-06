@@ -16,7 +16,7 @@ Plateau::Plateau() {
     
     for ( int i = 0; i < 20; i++) {
 
-        int proprietaire_terrain=-1;
+        int proprietaire_terrain=2;
         Couleur rouge;
         rouge= Couleur(255,255,255);
         /*rouge.setRouge(255);

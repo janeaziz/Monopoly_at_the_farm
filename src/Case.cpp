@@ -1,5 +1,5 @@
 #include"Case.h"
-#include <string>
+//#include <string>
 #include<iostream>
 using namespace std;
 
@@ -35,7 +35,7 @@ int Case::get_prix()const{
     return 0;
 }
 
-int Case::get_proprio()const{
+ int Case::get_proprio()const{
     return 0 ;
 }
 

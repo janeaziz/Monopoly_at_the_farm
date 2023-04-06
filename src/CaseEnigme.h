@@ -4,8 +4,46 @@
 #ifndef _CASEENIGME_H
 #define  _CASEENIGME_H
 
+class CaseEnigme: public Case {
+    private:
+    int eau;
+    int soleil;
 
-class CaseEnigme: public Case{
+    private:
+    /**
+     * @brief COnstructeur par defaut  de la classe CaseEnigme 
+    */
+    CaseEnigme();
+
+    /**
+     * @brief Constructeur de la classe 
+     * @param que
+     * @param qs
+    */
+    CaseEnigme(int qe, int qs);
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*class CaseEnigme: public Case{
 
     private:
     std::string question;
@@ -13,42 +51,22 @@ class CaseEnigme: public Case{
 
     public:
 
-    /**
-     * @brief Elle pose la question a l'utilisateur grace a SDL2
-     * 
-     */
+    /
     void poser_question();
 
-    /**
-     * @brief Elle verifie la reponse de l'utilisateur grace a SDL2
-     * 
-     */
+  
     void verifie_reponse();
 
-    /**
-     * @brief accesseur pour la donnee membre question
-     * 
-     * @return std::string& 
-     */
     std::string & get_question() const;
 
 
-    /**
-     * @brief mutateur de couleur
-     * 
-     * @param c 
-     */
+    
     void set_couleur(Couleur c);
 
-    /**
-     * @brief accesseur pour la donnee membre reponse
-     * 
-     * @return true 
-     * @return false 
-     */
+    
     bool & get_reponse() const;
 
 
-};
+};*/
 
 #endif

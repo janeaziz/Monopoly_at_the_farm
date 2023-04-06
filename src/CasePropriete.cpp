@@ -15,7 +15,7 @@ CasePropriete::CasePropriete() {
     nb_arbre=0;
     nb_arbre_max=0;
     nb_jardin=0;
-    proprio=0;
+    proprio=1;
 }
 
 CasePropriete::CasePropriete(Couleur cl, int pr,int position, std::string type, int l, int propri, int nba, int nbj, int nba_max )
@@ -45,7 +45,7 @@ CasePropriete::~CasePropriete(){
     nb_arbre=0;
     nb_arbre_max=0;
     nb_jardin=0;
-    proprio=-1;
+    proprio=0;
     //proprio.~Joueur();
 
 
@@ -82,7 +82,7 @@ void CasePropriete::set_prix(unsigned int x){
     prix=x;   
 }
 
-int CasePropriete::get_proprio()const{
+ int CasePropriete::get_proprio()const{
     return proprio;
 }
 

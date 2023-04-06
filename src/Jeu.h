@@ -1,6 +1,7 @@
 #include "Joueur.h"
 #include "Plateau.h"
 
+
 #ifndef _JEU_H
 #define _JEU_H
 
@@ -9,7 +10,7 @@ class Jeu{
     private:
     Plateau plateau;
     Joueur joueurs[2];
-    unsigned int joueur_actuel;
+   unsigned int joueur_actuel;
     unsigned int  gagnant;
 
     public:
@@ -42,7 +43,7 @@ class Jeu{
      * @brief Ajoute deux joueurs au jeur en les initialisant
      * 
      */
-    void ajouter_joueur();
+    /*void ajouter_joueur(SDL_Renderer* renderer,SDL_Color cl);*/
 
     /**
      * @brief alterne vers le Joueur suivant lorsque le joueur courant fini son tour
@@ -55,7 +56,7 @@ class Jeu{
      * d'argent, de ressources, etc.) 
      * 
      */
-    void joue_tour();
+    int joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event);
 
     /**
      * @brief retourne vrai si un des Joueurs perd ton son argent

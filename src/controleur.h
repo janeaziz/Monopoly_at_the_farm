@@ -4,3 +4,5 @@
 #include "Jeu.h"
 
 unsigned int clic(SDL_Event event , Jeu &jeu, SDL_Rect de_rect);
+
+bool bouton(SDL_Event event);

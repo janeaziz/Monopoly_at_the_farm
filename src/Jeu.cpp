@@ -1,4 +1,6 @@
 #include"Jeu.h"
+#include "controleur.h"
+#include"vue.h"
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
@@ -53,13 +55,13 @@ void Jeu::bouge(int x){
   
 } 
 
-void Jeu::ajouter_joueur(){
+/*void Jeu::ajouter_joueur(){
     //Joueur j1(0);
     //Joueur j2(1) ;
     //joueurs[0]= Joueur(0);
     //joueurs[1]= Joueur(1) ;
     //cout<< "2 joueurs sont initialises "<< joueurs[0]->id<< "le 2 eme "<< joueurs[1]->id<<endl;
-}
+}*/
 
 void Jeu:: tour_suivant(){
     if(joueur_actuel==0){
@@ -72,8 +74,8 @@ void Jeu:: tour_suivant(){
 }
 
 
-void Jeu::joue_tour(){
-    
+int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event){
+    int questions=0;
     int joueur_adverse;
     if (joueur_actuel==0) joueur_adverse=1;
     else joueur_adverse=0;
@@ -87,6 +89,11 @@ void Jeu::joue_tour(){
     if (i==1 || i==10 || i==16 || i==19){  //s'il est sur une case Argent
         cout<<"on est dans la boucle case argent "<<endl;
         int montant_case=plateau.getCase(i).get_montant();
+        
+        if (montant_case<0){
+            questions=3;
+        } else questions=4;
+        
         cout<<"montant case argent "<< montant_case<<endl;;
         joueurs[joueur_actuel].setArgent (argent_actuel + montant_case);
         cout<<"montan gagne"<<joueurs[joueur_actuel].getArgent ()<<endl;
@@ -95,23 +102,42 @@ void Jeu::joue_tour(){
     if (i==5 || i==9 || i==14){  // s'il est sur une case ressources
         int nb_eau = plateau.getCase(i).get_eau();
         int nb_soleil = plateau.getCase(i).get_soleil();
+        if (nb_eau < 0){
+            questions=5;
+        } else questions=6;
         joueurs[joueur_actuel].setEau(eau_actuel + nb_eau);
         joueurs[joueur_actuel].setSoleil(soleil_actuel + nb_soleil);
     }
 
     if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) { // s'il est sur une case Propriete
-        int proprio_case=plateau.getCase(i).get_proprio();
+     int proprio_case=plateau.getCase(i).get_proprio();
+     cout<<"terrain"<< proprio_case<<endl;
         int loyer_case=plateau.getCase(i).get_loyer();
         if(proprio_case == joueur_adverse){ // si le proprio est le joueur adverse
             joueurs[joueur_actuel].setArgent(argent_actuel - loyer_case);
             joueurs[joueur_adverse].setArgent(argent_actuel_adverse + loyer_case);
         }
 
-        /*if(proprio_case == joueur_actuel){
-            
-        } */
-    }
+        if(proprio_case == joueur_actuel) {
+            cout<<"on est ds la boucle"<<endl;
+           // bool bouton_pr =bouton(event); //= bouton(event);
+            //cout<<"le bouton du clavier "<<bouton_pr<<endl;
+           questions=1;
+        
+           /* while(  bouton_pr== 0){
+                question_arbre=true;
+                //charger_questions(renderer,1,c);
+                bouton_pr=bouton(event);
+                // cout<<"bouton du clavier "<<bouton_pr<<endl;
+              }
+            */
+        } 
 
+        if(proprio_case == 2) {
+            questions=2;
+        }
+    }
+    return questions;
 
 }
 
