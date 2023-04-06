@@ -39,3 +39,5 @@
     void afficher_val_de(SDL_Renderer * renderer,unsigned int val_de,int x, int y,SDL_Color c);
 
     void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c);
+
+    void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int jouertour);

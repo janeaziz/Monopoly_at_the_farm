@@ -403,7 +403,7 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
         exit(1);
     }
 
-    SDL_Rect posfont={100,850,surface->w,surface->h};
+    SDL_Rect posfont={100,820,surface->w,surface->h};
     
    
     SDL_RenderCopy(renderer,texture,NULL,&posfont);
@@ -416,5 +416,40 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
     TTF_Quit();
 
 
+}
+
+void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int jouertour){
+
+    SDL_Color rouge={255,0,0};
+    SDL_Color bleu={0,0,255};
+    SDL_Color vert={0,255,0};
+    SDL_Color blanc={255,255,255};
+    if(bouton_y_n == false && jouertour==1 ){
+        charger_questions(renderer,1,blanc);
+        //sleep(10);
+        cout<<"je suis dans charger question"<<endl;
+    } 
+
+    if(bouton_y_n == false && jouertour==2 ){
+        charger_questions(renderer,0,blanc);
+                     //sleep(10);
+                    //cout<<"je suis dans charger question"<<endl;
+    }
+
+    if(jouertour==3){
+        charger_questions(renderer,3,rouge);
+    }
+    
+    if(jouertour==4){
+        charger_questions(renderer,4,bleu);
+    }
+
+    if(jouertour==5){
+        charger_questions(renderer,5,rouge);
+    }
+    
+    if(jouertour==6){
+        charger_questions(renderer,6,vert);
+    }
 }
 

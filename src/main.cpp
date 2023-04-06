@@ -100,22 +100,8 @@ while (!quit){
                     //cout<<"je suis dans charger question"<<endl;
     }
 
-    if(jouertour==3){
-        charger_questions(renderer,3,rouge);
-    }
+    appel_questions(renderer,bouton_y_n,jouertour);
     
-    if(jouertour==4){
-        charger_questions(renderer,4,bleu);
-    }
-
-    if(jouertour==5){
-        charger_questions(renderer,5,rouge);
-    }
-    
-    if(jouertour==6){
-        charger_questions(renderer,6,vert);
-    }
-
     SDL_RenderPresent(renderer);
     SDL_RenderClear(renderer);
 
