@@ -374,7 +374,7 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
         exit(1);
     }
     
-    std::string questions[7];
+    std::string questions[14];
         
     questions[0]="Voulez-vous acheter ce terrain?";
     questions[1]="Voulez-vous planter un arbre?";// Cliquez sur Y pour oui et N pour non.";
@@ -383,6 +383,13 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
     questions[4]="Vous avez gagne 200 euros!";
     questions[5]="Vous avez perdu 2 unites d'eau et de soleil!";
     questions[6]="Vous avez gagne 2 unites d'eau et de soleil!";
+    questions[7]="Vous avez gagne 1 unitee d'eau et de soleil et votre adversaire en a perdue.";
+    questions[8]="Vous avez gagne 2 unitees d'eau et de soleil et votre adversaire en a perdues.";
+    questions[9]="Vous avez gagne 3 unitees d'eau et de soleil et votre adversaire en a perdues.";
+    questions[10]="Pas de changements.";
+    questions[11]="Vous avez perdu 1 unitee d'eau et de soleil et votre adversaire en a gagnee.";
+    questions[12]="Vous avez perdu 2 unitees d'eau et de soleil et votre adversaire en a gagnees.";
+    questions[13]="Vous avez perdu 3 unitees d'eau et de soleil et votre adversaire en a gagnees.";
    
     SDL_Surface* surface=TTF_RenderText_Blended(font,questions[indice].c_str(),c);
     
@@ -451,5 +458,35 @@ void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int jouertour){
     if(jouertour==6){
         charger_questions(renderer,6,vert);
     }
+
+    if(jouertour==7){
+        charger_questions(renderer,7,vert);
+    }
+
+    if(jouertour==8){
+        charger_questions(renderer,8,vert);
+    }
+
+    if(jouertour==9){
+        charger_questions(renderer,9,vert);
+    }
+
+    if(jouertour==10){
+        charger_questions(renderer,10,blanc);
+    }
+
+    if(jouertour==11){
+        charger_questions(renderer,11,rouge);
+    }
+
+    if(jouertour==12){
+        charger_questions(renderer,12,rouge);
+    }
+
+    if(jouertour==13){
+        charger_questions(renderer,13,rouge);
+    }
+
+
 }
 

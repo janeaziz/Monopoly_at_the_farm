@@ -104,6 +104,7 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event){
         srand(time(NULL));
         int indice;
         indice= rand()%7;
+
         int indice_joueur=rand()% 2;
         int eau_actuel=joueurs[joueur_actuel].getEau();
         int soleil_actuel=joueurs[joueur_actuel].getSoleil();
@@ -112,6 +113,35 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event){
 
         int eau_case=plateau.getCase(i).get_qe(indice); 
         int soleil_case=plateau.getCase(i).get_qs(indice); 
+
+        switch(eau_case){
+            case 0:
+                questions=10;
+                break;
+            case 1:
+                questions=7;
+                break;
+
+            case 2:
+                questions=8;
+                break;
+
+            case 3:
+                questions=9;
+                break; 
+
+            case -1:
+                questions=11;
+                break; 
+
+            case -2:
+                questions=12;
+                break; 
+
+            case -3:
+                questions=13;
+                break;                          
+        }
 
     
             
