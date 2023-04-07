@@ -56,3 +56,35 @@ class CaseEnigme: public Case{
 
 
 
+
+
+
+
+
+/*class CaseEnigme: public Case{
+
+    private:
+    std::string question;
+    bool reponse;
+
+    public:
+
+    /
+    void poser_question();
+
+  
+    void verifie_reponse();
+
+    std::string & get_question() const;
+
+
+    
+    void set_couleur(Couleur c);
+
+    
+    bool & get_reponse() const;
+
+
+};*/
+
+#endif

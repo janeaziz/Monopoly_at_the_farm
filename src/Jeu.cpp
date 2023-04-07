@@ -99,6 +99,30 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event){
         cout<<"montan gagne"<<joueurs[joueur_actuel].getArgent ()<<endl;
     }
 
+    if(i==8 || i== 15){
+        cout<<"on est dans la boucle de case enigme"<<endl;
+        srand(time(NULL));
+        int indice;
+        indice= rand()%7;
+        int indice_joueur=rand()% 2;
+        int eau_actuel=joueurs[joueur_actuel].getEau();
+        int soleil_actuel=joueurs[joueur_actuel].getSoleil();
+        int eau_adversaire=joueurs[joueur_adverse].getEau();
+        int soleil_adversaire=joueurs[joueur_adverse].getSoleil();
+
+        int eau_case=plateau.getCase(i).get_qe(indice); 
+        int soleil_case=plateau.getCase(i).get_qs(indice); 
+
+    
+            
+        joueurs[joueur_actuel].setEau(eau_actuel+eau_case);
+        joueurs[joueur_adverse].setEau(eau_adversaire-eau_case);
+        joueurs[joueur_actuel].setSoleil(soleil_actuel+soleil_case);
+        joueurs[joueur_adverse].setSoleil(soleil_adversaire-soleil_case);
+       
+
+    }
+
     if (i==5 || i==9 || i==14){  // s'il est sur une case ressources
         int nb_eau = plateau.getCase(i).get_eau();
         int nb_soleil = plateau.getCase(i).get_soleil();

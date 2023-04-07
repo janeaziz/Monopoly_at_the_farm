@@ -56,3 +56,10 @@ int Case::get_soleil() const{
     return 0 ;
 }
 
+int Case::get_qs(int indice ) const{
+    return 0;
+}
+
+int Case::get_qe(int indice ) const{
+    return 0;
+}

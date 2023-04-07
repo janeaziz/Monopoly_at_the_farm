@@ -59,10 +59,8 @@ class Case{
     virtual int get_eau() const;    
     
     virtual int get_soleil() const; 
-//fonctions CaseEnigme
-    virtual int get_qe(int i) const;
 
-    virtual int get_qs(int i) const;
+    
 
    
 
