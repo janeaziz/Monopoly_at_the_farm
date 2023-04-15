@@ -95,6 +95,15 @@ class Joueur {
      */
     unsigned int getPosition () const;
 
+    /**
+     * @brief Get the tab propriete object
+     * 
+     * @param indice 
+     * @return CasePropriete 
+     */
+    CasePropriete get_tab_propriete(int indice) const;
+
+    void set_tab_propriete(int indicetab, CasePropriete p);
    
    // SDL_Texture* getImage() const;
 

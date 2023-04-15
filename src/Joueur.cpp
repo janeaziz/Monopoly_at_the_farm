@@ -75,6 +75,14 @@ unsigned int Joueur::getPosition()const{
     return position;
 }
 
+CasePropriete Joueur:: get_tab_propriete(int indice) const{
+    return tab_propriete[indice];
+}
+
+
+ void Joueur::set_tab_propriete(int indicetab, CasePropriete p){
+    tab_propriete[indicetab]=p;
+ }
 /*SDL_Texture* Joueur::getImage() const{
     return this->image;
 

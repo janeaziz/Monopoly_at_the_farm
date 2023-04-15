@@ -49,7 +49,7 @@ class Jeu{
      * @brief alterne vers le Joueur suivant lorsque le joueur courant fini son tour
      * 
      */
-    void tour_suivant();
+    bool tour_suivant();
 
     /**
      * @brief effectue tous les changements sur le Joueur lors du tour (achat, perte 
