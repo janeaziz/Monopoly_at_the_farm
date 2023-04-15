@@ -191,9 +191,14 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
         if(proprio_case == 2) {
             questions=2;
             if(propriete_achetee==true){
-                plateau.getCase(i).set_proprio(joueur_actuel);
-                cout<<"le proprietaire maintenant est :"<<plateau.getCase(i).get_proprio()<<endl;
-                propriete_achetee=false;
+                int prix_terrain=plateau.getCase(i).get_prix();
+                if(argent_actuel>prix_terrain){
+                    plateau.getCase(i).set_proprio(joueur_actuel);
+                    cout<<"le proprietaire maintenant est :"<<plateau.getCase(i).get_proprio()<<endl;
+                    joueurs[joueur_actuel].setArgent(argent_actuel - prix_terrain);
+                    propriete_achetee=false;
+                    questions=14;
+                }    
             }
         }
     }

@@ -374,7 +374,7 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
         exit(1);
     }
     
-    std::string questions[14];
+    std::string questions[15];
         
     questions[0]="Voulez-vous acheter ce terrain?";
     questions[1]="Voulez-vous planter un arbre?";// Cliquez sur Y pour oui et N pour non.";
@@ -390,6 +390,7 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
     questions[11]="Vous avez perdu 1 unitee d'eau et de soleil et votre adversaire en a gagnee.";
     questions[12]="Vous avez perdu 2 unitees d'eau et de soleil et votre adversaire en a gagnees.";
     questions[13]="Vous avez perdu 3 unitees d'eau et de soleil et votre adversaire en a gagnees.";
+    questions[14]="Vous avez bien achete le terrain.";
    
     SDL_Surface* surface=TTF_RenderText_Blended(font,questions[indice].c_str(),c);
     

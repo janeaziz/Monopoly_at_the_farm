@@ -113,7 +113,7 @@ while (!quit){
                 if(bouton_y_n == false && jouertour==1 ){
                     charger_questions(renderer,1,blanc);
                     //sleep(10);
-                    cout<<"je suis dans charger question"<<endl;
+                    //cout<<"je suis dans charger question"<<endl;
                 } 
 
                 if(bouton_y_n == false && jouertour==2 ){
@@ -160,6 +160,12 @@ while (!quit){
                         bouton_y=false;
                     }
                  }
+                 if(bouton_y_n == true && bouton_y ==false){
+                    tour_prochain=j.tour_suivant();
+                    bouton_y_n=false;              
+                    bouton_y=false;
+
+                 }  
                 }
 
                 
