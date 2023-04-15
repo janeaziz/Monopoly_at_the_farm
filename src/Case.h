@@ -52,6 +52,8 @@ class Case{
     virtual  int get_proprio() const;
 
     virtual int get_loyer()const;
+
+    virtual void set_proprio(int i);
 //fonction CaseArgent
     virtual int get_montant()const;
 

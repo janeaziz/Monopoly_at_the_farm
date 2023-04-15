@@ -56,7 +56,7 @@ class Jeu{
      * d'argent, de ressources, etc.) 
      * 
      */
-    int joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event);
+    int joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &propriete_achetee);
 
     /**
      * @brief retourne vrai si un des Joueurs perd ton son argent
@@ -97,6 +97,13 @@ class Jeu{
      * @param i 
      */
     void setJoueurActuel(unsigned int i);
+
+    /**
+     * @brief Get the Plateau object
+     * 
+     * @return Plateau 
+     */
+    Plateau getPlateau() const;
 
 };
 

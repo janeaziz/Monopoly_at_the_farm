@@ -94,7 +94,7 @@ class CasePropriete : public Case{
          * 
          * @return int 
          */
-         int get_proprio() const;
+         virtual int get_proprio() const;
 
        
         /**
@@ -102,7 +102,7 @@ class CasePropriete : public Case{
          * 
          * @param j 
          */
-        void set_proprio(int i);
+        virtual void set_proprio(int i);
 
         
 

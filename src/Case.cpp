@@ -43,9 +43,14 @@ int Case::get_loyer()const{
     return 0;
 }
 
+void Case::set_proprio(int i){
+
+}
+
+
 //fonction CaseArgent
 int Case::get_montant()const{
-    return 5;
+    return 0;
    }
 //fonctions CaseRessources
 int Case::get_eau() const{
@@ -63,3 +68,4 @@ int Case::get_qs(int indice ) const{
 int Case::get_qe(int indice ) const{
     return 0;
 }
+

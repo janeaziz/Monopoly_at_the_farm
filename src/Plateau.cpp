@@ -29,8 +29,9 @@ Plateau::Plateau() {
             //cases[i]->set_type();
         } else if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) {
             cases[i] =  new CasePropriete(rouge, 200,i, "Case propriete", 50, proprietaire_terrain, 0, 0, 3 );
+            CasePropriete* CaseProp= dynamic_cast<CasePropriete*>(cases[i]);
              cout<<"ca marche"<<endl;
-            cout<<"le prix est "<<cases[i]->get_prix()<<endl;
+           // cout<<"le prix est "<<cases[i]->get_prix()<<endl;
            
         }
         else if (i==8 || i==15){

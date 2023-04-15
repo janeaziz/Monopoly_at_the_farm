@@ -28,6 +28,7 @@ SDL_Color blanc={255,255,255};
 int indice_tabpropriete0=0;
 int indice_tabpropriete1=0;
 bool tour_prochain=true;
+bool propriete_achete=false;
  
 
 window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,1100,900,SDL_WINDOW_SHOWN);
@@ -96,7 +97,7 @@ while (!quit){
                // afficher_joueur (renderer,images,j.getJoueurs(0), j.getJoueurs(1));
                 
                 
-               jouertour=j.joue_tour(renderer,blanc,event);           
+               jouertour=j.joue_tour(renderer,blanc,event,propriete_achete);           
                cout<<"JAFFICHEEEE"<<endl;
                int pos_pion=j.getJoueurs(j.getJoueurActuel()).getPosition();    
                if(pos_pion==8||pos_pion==15||pos_pion==1||pos_pion==10||pos_pion==16||pos_pion==19||pos_pion==5||pos_pion==9||pos_pion==14||pos_pion==0)     
@@ -124,8 +125,14 @@ while (!quit){
                 if(bouton_y_n == true && bouton_y ==true){
                     
                     if(joueur_act==0){
+                        propriete_achete=true;
+                        j.joue_tour(renderer,blanc,event,propriete_achete);
                         //elle ajoute la casepropriete dans le tableau de proprietes du joueur
-                        //j.getJoueurs(joueur_act).set_tab_propriete(indice_tabpropriete0,j.getJoueurs(joueur_act).get_tab_propriete(indice_tabpropriete0));
+                       // CasePropriete* caseProp= dynamic_cast<CasePropriete*>(j.getPlateau().getCase(pos_actuelle));
+                       //j.getPlateau().getCase(pos_actuelle).set_proprio(joueur_act);
+                      // cout<<"le proprio de ce terrain estg"<<j.getPlateau().getCase(pos_actuelle).get_proprio()<<endl;
+                       // caseProp.set_proprio(joueur_act);
+                        //j.getPlateau().getCase(pos_actuelle).set_proprio(joueur_act);
                         cout<< "le tour prochain est "<<tour_prochain<<endl;
                         cout<< "la case propriete de joueur 0 qu'il vient acheter est : "<<endl;//j.getJoueurs(j.getJoueurActuel()).get_tab_propriete(indice_tabpropriete0).get_loyer()<<endl;
                         indice_tabpropriete0++;
@@ -139,6 +146,8 @@ while (!quit){
                     }
 
                     if(joueur_act==1){
+                        propriete_achete=true;
+                        j.joue_tour(renderer,blanc,event,propriete_achete);
                         //elle ajoute la casepropriete dans le tableau de proprietes du joueur
                         //j.getJoueurs(joueur_act).set_tab_propriete(indice_tabpropriete1,j.getJoueurs(joueur_act).get_tab_propriete(indice_tabpropriete1));
                         cout<< "la case propriete de joueur 1 qu'il vient acheter est : "<<endl;//j.getJoueurs(j.getJoueurActuel()).get_tab_propriete(indice_tabpropriete1).get_loyer()<<endl;
