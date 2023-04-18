@@ -72,14 +72,16 @@ class Joueur {
      * 
      * @return int 
      */
-    int get_nb_arbre () const;
+    int get_nbarbre () const;
 
+
+    void set_nbarbre(int i);
     /**
      * @brief Get the nb jardin object
      * 
      * @return int 
      */
-    int get_nb_jardin () const;
+    int get_nbjardin () const;
     /**
      * @brief Accesseur pour avoir la valeur de argent
      * 

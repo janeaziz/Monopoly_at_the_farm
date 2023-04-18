@@ -74,6 +74,14 @@ int CasePropriete::calculer_loyer(){
     return nv_loyer;
 }
 
+  void CasePropriete:: set_nb_arbre(int i){
+    nb_arbre=i;
+  }
+
+  int CasePropriete:: get_nb_arbre()const{
+    return nb_arbre;
+  }
+
 int CasePropriete::get_prix()const{
     return prix;   
 }

@@ -267,8 +267,8 @@ void afficher_info(SDL_Renderer * renderer,Joueur j,int x, int y,SDL_Color c){
     unsigned int money=j.getArgent();
     int soleil=j.getSoleil();
     int eau=j.getEau();
-    int arbres=j.get_nb_arbre();
-    int jardins=j.get_nb_jardin();
+    int arbres=j.get_nbarbre();
+    int jardins=j.get_nbjardin();
 
     std::string message[7];
     message[0] ="Joueur " + std::to_string(id);
@@ -374,7 +374,7 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
         exit(1);
     }
     
-    std::string questions[15];
+    std::string questions[18];
         
     questions[0]="Voulez-vous acheter ce terrain?";
     questions[1]="Voulez-vous planter un arbre?";// Cliquez sur Y pour oui et N pour non.";
@@ -391,6 +391,10 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
     questions[12]="Vous avez perdu 2 unitees d'eau et de soleil et votre adversaire en a gagnees.";
     questions[13]="Vous avez perdu 3 unitees d'eau et de soleil et votre adversaire en a gagnees.";
     questions[14]="Vous avez bien achete le terrain.";
+    questions[15]="Vous avez bien achete l'arbre";
+    questions[16]="Vous avez bien achete le jardin";
+    questions[17]="Vous avez paye les txes de passage";
+
    
     SDL_Surface* surface=TTF_RenderText_Blended(font,questions[indice].c_str(),c);
     

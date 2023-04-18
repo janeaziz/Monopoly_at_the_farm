@@ -47,6 +47,13 @@ void Case::set_proprio(int i){
 
 }
 
+int Case:: get_nb_arbre()const{
+    return 0;
+}
+
+ void Case:: set_nb_arbre(int i){
+
+}
 
 //fonction CaseArgent
 int Case::get_montant()const{

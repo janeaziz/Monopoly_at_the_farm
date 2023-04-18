@@ -171,25 +171,50 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
         if(proprio_case == joueur_adverse){ // si le proprio est le joueur adverse
             joueurs[joueur_actuel].setArgent(argent_actuel - loyer_case);
             joueurs[joueur_adverse].setArgent(argent_actuel_adverse + loyer_case);
+            cout<<"Il paye une taxe"<<endl;
+            questions=17;
+            cout<<"lindice de la question est "<<questions<<endl;
         }
 
-        if(proprio_case == joueur_actuel) {
-            cout<<"on est ds la boucle"<<endl;
-           // bool bouton_pr =bouton(event); //= bouton(event);
-            //cout<<"le bouton du clavier "<<bouton_pr<<endl;
-           questions=1;
         
-           /* while(  bouton_pr== 0){
-                question_arbre=true;
-                //charger_questions(renderer,1,c);
-                bouton_pr=bouton(event);
-                // cout<<"bouton du clavier "<<bouton_pr<<endl;
-              }
-            */
-        } 
+        
+        if(proprio_case == joueur_actuel) {
+
+        // cout<<"on est ds la boucle"<<endl;
+
+            int nb_arbre_case = plateau.getCase(i).get_nb_arbre();
+
+            int nb_arbre_joueur = joueurs[joueur_actuel].get_nbarbre();
+
+            if(nb_arbre_case<5 && argent_actuel>=100){ //si le nombre d'abre de la case est inferieur à 5 et s'il a l'argent necessaire pour l'acheter
+
+                questions=1;
+
+                if(propriete_achetee==true){ //s'il a dit oui
+
+                    cout<<"le nb d arbre avant l achat"<<nb_arbre_case<<endl;
+
+                    plateau.getCase(i).set_nb_arbre(nb_arbre_case + 1);
+                    cout<<"le nb d arbre de la case apres achat d arbre"<<nb_arbre_case<<endl;
+
+                    joueurs[joueur_actuel].set_nbarbre(nb_arbre_joueur+1);
+
+                    joueurs[joueur_actuel].setArgent(argent_actuel - 100);
+
+                    propriete_achetee=false;
+
+                    questions=15;
+
+                }
+
+            } 
+
+        }
+
+
 
         if(proprio_case == 2) {
-            questions=2;
+            questions=0;
             if(propriete_achetee==true){
                 int prix_terrain=plateau.getCase(i).get_prix();
                 if(argent_actuel>prix_terrain){

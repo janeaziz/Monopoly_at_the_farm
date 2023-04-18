@@ -25,8 +25,8 @@ SDL_Color rouge={255,0,0};
 SDL_Color bleu={0,0,255};
 SDL_Color vert={0,255,0};
 SDL_Color blanc={255,255,255};
-int indice_tabpropriete0=0;
-int indice_tabpropriete1=0;
+//int indice_tabpropriete0=0;
+//int indice_tabpropriete1=0;
 bool tour_prochain=true;
 bool propriete_achete=false;
  
@@ -91,18 +91,19 @@ while (!quit){
     }
 
     if(valde>0){
-                cout<<"le joueur act dans la boucle valde est: "<<j.getJoueurActuel()<<endl;
+                //cout<<"le joueur act dans la boucle valde est: "<<j.getJoueurActuel()<<endl;
                 j.bouge(valde);
                 valde=0;
                // afficher_joueur (renderer,images,j.getJoueurs(0), j.getJoueurs(1));
                 
                 
                jouertour=j.joue_tour(renderer,blanc,event,propriete_achete);           
-               cout<<"JAFFICHEEEE"<<endl;
+               //cout<<"JAFFICHEEEE"<<endl;
                int pos_pion=j.getJoueurs(j.getJoueurActuel()).getPosition();    
                if(pos_pion==8||pos_pion==15||pos_pion==1||pos_pion==10||pos_pion==16||pos_pion==19||pos_pion==5||pos_pion==9||pos_pion==14||pos_pion==0)     
                     {
                         tour_prochain=j.tour_suivant();
+                         cout<<"Jai fait le tour_suivant des autres cases"<<endl;
                          
                      }
 
@@ -110,19 +111,18 @@ while (!quit){
                int joueur_act=j.getJoueurActuel();
                int pos_actuelle=j.getJoueurs(joueur_act).getPosition();
                if(pos_actuelle==2||pos_actuelle==3||pos_actuelle==4||pos_actuelle==6||pos_actuelle==7||pos_actuelle==11||pos_actuelle==12||pos_actuelle==13||pos_actuelle==17||pos_actuelle==18){
+                //cout<<"je suis sur une Case Propriete"<<endl;
                 if(bouton_y_n == false && jouertour==1 ){
                     charger_questions(renderer,1,blanc);
-                    //sleep(10);
-                    //cout<<"je suis dans charger question"<<endl;
+                    
                 } 
 
-                if(bouton_y_n == false && jouertour==2 ){
+                if(bouton_y_n == false && jouertour==0 ){
                      charger_questions(renderer,0,blanc);
-                     //sleep(10);
-                    //cout<<"je suis dans charger question"<<endl;
+                     
                  }
 
-                if(bouton_y_n == true && bouton_y ==true){
+                if(bouton_y_n == true && bouton_y ==true){ //&& (jouertour==0 || jouertour==1 ||jouertour==2 )){
                     
                     if(joueur_act==0){
                         propriete_achete=true;
@@ -133,41 +133,49 @@ while (!quit){
                       // cout<<"le proprio de ce terrain estg"<<j.getPlateau().getCase(pos_actuelle).get_proprio()<<endl;
                        // caseProp.set_proprio(joueur_act);
                         //j.getPlateau().getCase(pos_actuelle).set_proprio(joueur_act);
-                        cout<< "le tour prochain est "<<tour_prochain<<endl;
-                        cout<< "la case propriete de joueur 0 qu'il vient acheter est : "<<endl;//j.getJoueurs(j.getJoueurActuel()).get_tab_propriete(indice_tabpropriete0).get_loyer()<<endl;
-                        indice_tabpropriete0++;
-                        cout<< "le joueur actuel est "<<j.getJoueurActuel()<<endl;
+                        //cout<< "le tour prochain est "<<tour_prochain<<endl;
+                        //cout<< "la case propriete de joueur 0 qu'il vient acheter est : "<<endl;//j.getJoueurs(j.getJoueurActuel()).get_tab_propriete(indice_tabpropriete0).get_loyer()<<endl;
+                       // indice_tabpropriete0++;
+                        //cout<< "le joueur actuel est "<<j.getJoueurActuel()<<endl;
                         tour_prochain=j.tour_suivant();
-                        cout<< "le joueur actuel (apres tour_suivant est "<<j.getJoueurActuel()<<endl;
+                        cout<<"Jai fait le tour_suivant du yes joueur act 0"<<endl;
+                        //cout<< "le joueur actuel (apres tour_suivant est "<<j.getJoueurActuel()<<endl;
                         bouton_y_n=false;              
                         bouton_y=false; 
         
                         
-                    }
+                    }st sur une case ressources
 
                     if(joueur_act==1){
-                        propriete_achete=true;
+                    
+                        propriete_achete=true;//on a dit oui
                         j.joue_tour(renderer,blanc,event,propriete_achete);
                         //elle ajoute la casepropriete dans le tableau de proprietes du joueur
                         //j.getJoueurs(joueur_act).set_tab_propriete(indice_tabpropriete1,j.getJoueurs(joueur_act).get_tab_propriete(indice_tabpropriete1));
-                        cout<< "la case propriete de joueur 1 qu'il vient acheter est : "<<endl;//j.getJoueurs(j.getJoueurActuel()).get_tab_propriete(indice_tabpropriete1).get_loyer()<<endl;
-                        cout<< "le tour prochain est "<<tour_prochain<<endl;
-                        indice_tabpropriete1++;
-                        cout<< "le joueur actuel est "<<j.getJoueurActuel()<<endl;
+                       // cout<< "la case propriete de joueur 1 qu'il vient acheter est : "<<endl;//j.getJoueurs(j.getJoueurActuel()).get_tab_propriete(indice_tabpropriete1).get_loyer()<<endl;
+                        //cout<< "le tour prochain est "<<tour_prochain<<endl;
+                       // indice_tabpropriete1++;
+                        //cout<< "le joueur actuel est "<<j.getJoueurActuel()<<endl;
                         tour_prochain=j.tour_suivant();
-                        cout<< "le joueur actuel (apres tour_suivant) est "<<j.getJoueurActuel()<<endl;
+                         cout<<"Jai fait le tour_suivant du yes joueur act 0"<<endl;
+                        //cout<< "le joueur actuel (apres tour_suivant) est "<<j.getJoueurActuel()<<endl;
                         bouton_y_n=false;              
                         bouton_y=false;
                     }
                  }
-                 if(bouton_y_n == true && bouton_y ==false){
+                 if((bouton_y_n == true && bouton_y ==false) || jouertour==17){
                     tour_prochain=j.tour_suivant();
+                    cout<<"Je fait le tour_suivant du no"<<endl;
                     bouton_y_n=false;              
                     bouton_y=false;
 
-                 }  
-                }
-
+                 }
+                /*if(bouton_y_n == false && propriete_achete==false && jouertour!=0 && jouertour!=1 && jouertour!=2){
+                    j.joue_tour(renderer,blanc,event,propriete_achete);
+                    tour_prochain=j.tour_suivant();
+                    cout<<"Jai fait le tour_suivant de la derniere boucle"<<endl;
+                } */
+               }
                 
            
    /* if(bouton_y_n == false && jouertour==1 ){

@@ -55,13 +55,19 @@ int Joueur::getEau()const{
     return quantite_eau;
 }
 
-int Joueur::get_nb_arbre()const{
+int Joueur::get_nbarbre()const{
     return nb_arbre;
 }
 
-int Joueur::get_nb_jardin()const{
+int Joueur::get_nbjardin()const{
     return nb_jardin;
 }
+
+
+ void Joueur::set_nbarbre(int i){
+    nb_arbre=i;
+ }
+
 
 int Joueur::getSoleil()const{
     return quantite_soleil;
