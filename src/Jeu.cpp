@@ -165,8 +165,8 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
     }
 
     if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) { // s'il est sur une case Propriete
-     int proprio_case=plateau.getCase(i).get_proprio();
-     cout<<"terrain"<< proprio_case<<endl;
+        int proprio_case=plateau.getCase(i).get_proprio();
+        cout<<"proprio case "<< proprio_case<<endl;
         int loyer_case=plateau.getCase(i).get_loyer();
         if(proprio_case == joueur_adverse){ // si le proprio est le joueur adverse
             joueurs[joueur_actuel].setArgent(argent_actuel - loyer_case);

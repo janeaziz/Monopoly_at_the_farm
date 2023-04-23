@@ -393,7 +393,7 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
     questions[14]="Vous avez bien achete le terrain.";
     questions[15]="Vous avez bien achete l'arbre";
     questions[16]="Vous avez bien achete le jardin";
-    questions[17]="Vous avez paye les txes de passage";
+    questions[17]="Vous avez paye les taxes de passage";
 
    
     SDL_Surface* surface=TTF_RenderText_Blended(font,questions[indice].c_str(),c);
