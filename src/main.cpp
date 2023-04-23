@@ -29,6 +29,7 @@ SDL_Color blanc={255,255,255};
 //int indice_tabpropriete1=0;
 bool tour_prochain=true;
 bool propriete_achete=false;
+bool non_achetee=false;
 
  
 
@@ -98,7 +99,7 @@ while (!quit){
                // afficher_joueur (renderer,images,j.getJoueurs(0), j.getJoueurs(1));
                 
                 
-               question=j.joue_tour(renderer,blanc,event,propriete_achete);           
+               question=j.joue_tour(renderer,blanc,event,propriete_achete,non_achetee);           
                //cout<<"JAFFICHEEEE"<<endl;
                int pos_pion=j.getJoueurs(j.getJoueurActuel()).getPosition();    
                if(pos_pion==8||pos_pion==15||pos_pion==1||pos_pion==10||pos_pion==16||pos_pion==19||pos_pion==5||pos_pion==9||pos_pion==14||pos_pion==0)     
@@ -127,7 +128,7 @@ while (!quit){
                     
                         if(joueur_act==0){
                             propriete_achete=true;
-                            question=j.joue_tour(renderer,blanc,event,propriete_achete);
+                            question=j.joue_tour(renderer,blanc,event,propriete_achete,non_achetee);
                         
                             tour_prochain=j.tour_suivant();
                             cout<<"Jai fait le tour_suivant du yes joueur act 0"<<endl;
@@ -141,7 +142,7 @@ while (!quit){
                         if(joueur_act==1){
                     
                             propriete_achete=true;//on a dit oui
-                            question=j.joue_tour(renderer,blanc,event,propriete_achete);
+                            question=j.joue_tour(renderer,blanc,event,propriete_achete,non_achetee);
                             tour_prochain=j.tour_suivant();
                             cout<<"Jai fait le tour_suivant du yes joueur act 0"<<endl;
                             //cout<< "le joueur actuel (apres tour_suivant) est "<<j.getJoueurActuel()<<endl;
@@ -149,14 +150,23 @@ while (!quit){
                             bouton_y=false;
                         }
                     }
-                    if((bouton_y_n == true && bouton_y ==false && (question==0||question==1||question==2))||
-                    question==17){
+                    if(bouton_y_n == true && bouton_y ==false && (question==0||question==1||question==2)){
+                        non_achetee=true;
+                        question=j.joue_tour(renderer,blanc,event,propriete_achete,non_achetee);
                         tour_prochain=j.tour_suivant();
                         cout<<"Je fait le tour_suivant du no"<<endl;
                         bouton_y_n=false;              
                         bouton_y=false;
 
                      }
+
+                    if(question==17){
+                        tour_prochain=j.tour_suivant();
+                        cout<<"Je fait le tour_suivant du no"<<endl;
+                        bouton_y_n=false;              
+                        bouton_y=false;
+                    }    
+
                     /*if(bouton_y_n == false && propriete_achete==false && jouertour!=0 && jouertour!=1 && jouertour!=2){
                         j.joue_tour(renderer,blanc,event,propriete_achete);
                         tour_prochain=j.tour_suivant();

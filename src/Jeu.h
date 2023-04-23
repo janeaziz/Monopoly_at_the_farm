@@ -56,7 +56,7 @@ class Jeu{
      * d'argent, de ressources, etc.) 
      * 
      */
-    int joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &propriete_achetee);
+    int joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &propriete_achetee,bool &non_achetee);
 
     /**
      * @brief retourne vrai si un des Joueurs perd ton son argent

@@ -374,7 +374,7 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
         exit(1);
     }
     
-    std::string questions[18];
+    std::string questions[21];
         
     questions[0]="Voulez-vous acheter ce terrain?";
     questions[1]="Voulez-vous planter un arbre?";// Cliquez sur Y pour oui et N pour non.";
@@ -394,6 +394,10 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
     questions[15]="Vous avez bien achete l'arbre";
     questions[16]="Vous avez bien achete le jardin";
     questions[17]="Vous avez paye les taxes de passage";
+    questions[18]="Vous n'avez pas achete le terrain.";
+    questions[19]="Vous n'avez pas achete l'arbre";
+    questions[20]="Vous n'avez pas achete le jardin";
+
 
    
     SDL_Surface* surface=TTF_RenderText_Blended(font,questions[indice].c_str(),c);
@@ -430,68 +434,94 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
 
 }
 
-void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int jouertour){
+void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question){
 
     SDL_Color rouge={255,0,0};
     SDL_Color bleu={0,0,255};
     SDL_Color vert={0,255,0};
     SDL_Color blanc={255,255,255};
-    if(bouton_y_n == false && jouertour==1 ){
+    if(bouton_y_n == false && question==1 ){
         charger_questions(renderer,1,blanc);
         //sleep(10);
         cout<<"je suis dans charger question"<<endl;
     } 
 
-    if(bouton_y_n == false && jouertour==2 ){
+    if(bouton_y_n == false && question==2 ){
         charger_questions(renderer,0,blanc);
                      //sleep(10);
                     //cout<<"je suis dans charger question"<<endl;
     }
 
-    if(jouertour==3){
+    if(question==3){
         charger_questions(renderer,3,rouge);
     }
     
-    if(jouertour==4){
-        charger_questions(renderer,4,bleu);
+    if(question==4){
+        charger_questions(renderer,4,vert);
     }
 
-    if(jouertour==5){
+    if(question==5){
         charger_questions(renderer,5,rouge);
     }
     
-    if(jouertour==6){
+    if(question==6){
         charger_questions(renderer,6,vert);
     }
 
-    if(jouertour==7){
+    if(question==7){
         charger_questions(renderer,7,vert);
     }
 
-    if(jouertour==8){
+    if(question==8){
         charger_questions(renderer,8,vert);
     }
 
-    if(jouertour==9){
+    if(question==9){
         charger_questions(renderer,9,vert);
     }
 
-    if(jouertour==10){
+    if(question==10){
         charger_questions(renderer,10,blanc);
     }
 
-    if(jouertour==11){
+    if(question==11){
         charger_questions(renderer,11,rouge);
     }
 
-    if(jouertour==12){
+    if(question==12){
         charger_questions(renderer,12,rouge);
     }
 
-    if(jouertour==13){
+    if(question==13){
         charger_questions(renderer,13,rouge);
     }
 
+    if(question==14){
+        charger_questions(renderer,14,vert);
+    }
 
+    if(question==15){
+        charger_questions(renderer,15,vert);
+    }
+
+    if(question==16){
+        charger_questions(renderer,16,vert);
+    }
+
+    if(question==17){
+        charger_questions(renderer,17,rouge);
+    }
+
+    if(question==18){
+        charger_questions(renderer,18,rouge);
+    }
+
+    if(question==19){
+        charger_questions(renderer,19,rouge);
+    }
+
+    if(question==20){
+        charger_questions(renderer,20,rouge);
+    }
 }
 

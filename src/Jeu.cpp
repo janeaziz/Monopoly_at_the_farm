@@ -75,7 +75,7 @@ bool Jeu:: tour_suivant(){
 }
 
 
-int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &propriete_achetee){
+int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &propriete_achetee,bool &non_achetee){
     int questions=0;
     int joueur_adverse;
     if (joueur_actuel==0) joueur_adverse=1;
@@ -207,6 +207,12 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
 
                 }
 
+                if(non_achetee==true){
+                    non_achetee=false;
+                    questions=19;
+                    
+                }   
+
             } 
 
         }
@@ -215,6 +221,7 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
 
         if(proprio_case == 2) {
             questions=0;
+            cout<<"la question de l'achat terrain"<<endl;
             if(propriete_achetee==true){
                 int prix_terrain=plateau.getCase(i).get_prix();
                 if(argent_actuel>prix_terrain){
@@ -224,6 +231,12 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
                     propriete_achetee=false;
                     questions=14;
                 }    
+            }
+            if(non_achetee==true){
+                non_achetee=false;
+                questions=18;
+                cout<<"non pour l'achat du terrain"<<endl;
+                
             }
         }
     }
