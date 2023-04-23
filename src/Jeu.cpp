@@ -201,6 +201,10 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
 
                     joueurs[joueur_actuel].setArgent(argent_actuel - 100);
 
+                    int nv_loyer=plateau.getCase(i).calculer_loyer();
+                    plateau.getCase(i).set_loyer(nv_loyer);
+                    cout<<"Le nouveau loyer "<<plateau.getCase(i).get_loyer()<<endl;
+
                     propriete_achetee=false;
 
                     questions=15;

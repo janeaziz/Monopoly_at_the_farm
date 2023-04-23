@@ -62,14 +62,14 @@ void CasePropriete::set_loyer(int nv_loyer){
 }
 
 int CasePropriete::calculer_loyer(){
-    int nv_loyer;
-    for(int i=0;i<6;i++){
-        if (nb_arbre==i){
-            nv_loyer=nv_loyer+i*40;
-        }
+    int nv_loyer=loyer;
+    
+    if (nb_arbre!=0){
+        nv_loyer=50 + nb_arbre*40;
     }
+    
     if(nb_jardin==1){
-        nv_loyer=nv_loyer+400;
+        nv_loyer=50 + 400;
     }
     return nv_loyer;
 }

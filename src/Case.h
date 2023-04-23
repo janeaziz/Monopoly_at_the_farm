@@ -58,6 +58,10 @@ class Case{
     virtual int get_nb_arbre()const;
 
     virtual void set_nb_arbre(int i);
+
+    virtual int calculer_loyer();
+
+    virtual void set_loyer(int nouveau_montant);
 //fonction CaseArgent
     virtual int get_montant()const;
 

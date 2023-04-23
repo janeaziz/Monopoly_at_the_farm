@@ -154,7 +154,7 @@ while (!quit){
                         non_achetee=true;
                         question=j.joue_tour(renderer,blanc,event,propriete_achete,non_achetee);
                         tour_prochain=j.tour_suivant();
-                        cout<<"Je fait le tour_suivant du no"<<endl;
+                        //cout<<"Je fait le tour_suivant du no"<<endl;
                         bouton_y_n=false;              
                         bouton_y=false;
 
@@ -162,7 +162,7 @@ while (!quit){
 
                     if(question==17){
                         tour_prochain=j.tour_suivant();
-                        cout<<"Je fait le tour_suivant du no"<<endl;
+                        //cout<<"Je fait le tour_suivant du no"<<endl;
                         bouton_y_n=false;              
                         bouton_y=false;
                     }    
