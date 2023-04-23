@@ -222,6 +222,10 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
                 }   
 
             } 
+            else if(nb_arbre_case<3 && argent_actuel<100){
+                propriete_achetee=false;
+                questions=22;   
+            }  
             else if(nb_arbre_case==3 && argent_actuel>=200){
                 questions=2;
                 if(propriete_achetee==true){
@@ -250,6 +254,10 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
                     
                 }      
             }
+            else if(nb_arbre_case==3 && argent_actuel<200){ //s'il a 3 arbres mais pas l'argent suffisant
+                propriete_achetee=false;
+                questions=23;
+            }   
 
         }
 
@@ -266,7 +274,11 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
                     joueurs[joueur_actuel].setArgent(argent_actuel - prix_terrain);
                     propriete_achetee=false;
                     questions=14;
-                }    
+                }  
+                if(argent_actuel<prix_terrain){
+                    propriete_achetee=false;
+                    questions=21;
+                }      
             }
             if(non_achetee==true){
                 non_achetee=false;

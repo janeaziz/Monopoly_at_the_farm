@@ -3,7 +3,7 @@
 
 Joueur::Joueur (){
     id =0;
-    argent=1500;
+    argent=500;
     quantite_eau=3;
     quantite_soleil=3;
     nb_arbre=0;
@@ -15,7 +15,7 @@ Joueur::Joueur (){
 Joueur::Joueur(int idj){ //, SDL_Renderer *renderer, TTF_Font *font){
     
     id =idj;
-    argent=1500;
+    argent=500;
     quantite_eau=3;
     quantite_soleil=3;
     nb_arbre=0;

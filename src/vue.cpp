@@ -374,11 +374,11 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
         exit(1);
     }
     
-    std::string questions[21];
+    std::string questions[24];
         
-    questions[0]="Voulez-vous acheter ce terrain?";
-    questions[1]="Voulez-vous planter un arbre?";// Cliquez sur Y pour oui et N pour non.";
-    questions[2]="Voulez-vous planter un jardin?";
+    questions[0]="Voulez-vous acheter ce terrain? Il coute 200 euros.";
+    questions[1]="Voulez-vous planter un arbre? Il coute 100 euros.";// Cliquez sur Y pour oui et N pour non.";
+    questions[2]="Voulez-vous planter un jardin? Il coute 200 euros";
     questions[3]="Vous avez perdu 200 euros!";
     questions[4]="Vous avez gagne 200 euros!";
     questions[5]="Vous avez perdu 2 unites d'eau et de soleil!";
@@ -397,6 +397,9 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
     questions[18]="Vous n'avez pas achete le terrain.";
     questions[19]="Vous n'avez pas achete l'arbre";
     questions[20]="Vous n'avez pas achete le jardin";
+    questions[21]="Vous n'avez pas l'argent suffisant pour acheter le terrain.";
+    questions[22]="Vous n'avez pas l'argent suffisant pour acheter l'arbre.";
+    questions[23]="Vous n'avez pas l'argent suffisant pour acheter le jardin.";
 
 
    
@@ -525,6 +528,18 @@ void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question){
 
     if(question==20){
         charger_questions(renderer,20,rouge);
+    }
+
+    if(question==21){
+        charger_questions(renderer,21,rouge);
+    }
+
+    if(question==22){
+        charger_questions(renderer,22,rouge);
+    }
+
+    if(question==23){
+        charger_questions(renderer,23,rouge);
     }
 }
 
