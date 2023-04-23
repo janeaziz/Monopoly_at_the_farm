@@ -88,7 +88,9 @@ class Jeu{
      */
     Joueur getJoueurs(int id) const;
 
+    void set_gagnant(unsigned int i);
 
+    unsigned int get_gagnant()const;
 
 
     /**

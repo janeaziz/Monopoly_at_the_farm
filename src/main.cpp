@@ -46,7 +46,16 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     }
 
 while (!quit){
-    
+     
+    if(question==24 || question==25){
+        unsigned int joueur_actu=j.getJoueurActuel();
+        cout<<"le joueur actuel est "<<joueur_actu<<endl;
+        j.set_gagnant(joueur_actu);
+        cout<<"Le joueur "<<j.get_gagnant()<<" a gagneeee"<<endl;
+    }
+
+  else{
+
     bool bouton_y_n=false;
     bool bouton_y=false;
     dessiner_plateau(renderer,images);
@@ -156,7 +165,7 @@ while (!quit){
 
                      }
 
-                    if(question==17){
+                    if(question==17 || question==22 || question==23){
                         tour_prochain=j.tour_suivant();
                         //cout<<"Je fait le tour_suivant du no"<<endl;
                         bouton_y_n=false;              
@@ -179,7 +188,7 @@ while (!quit){
     SDL_RenderPresent(renderer);
     SDL_RenderClear(renderer);
 
-          
+  }      
          
   } 
     

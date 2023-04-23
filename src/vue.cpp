@@ -374,7 +374,7 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
         exit(1);
     }
     
-    std::string questions[24];
+    std::string questions[26];
         
     questions[0]="Voulez-vous acheter ce terrain? Il coute 200 euros.";
     questions[1]="Voulez-vous planter un arbre? Il coute 100 euros.";// Cliquez sur Y pour oui et N pour non.";
@@ -400,6 +400,8 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
     questions[21]="Vous n'avez pas l'argent suffisant pour acheter le terrain.";
     questions[22]="Vous n'avez pas l'argent suffisant pour acheter l'arbre.";
     questions[23]="Vous n'avez pas l'argent suffisant pour acheter le jardin.";
+    questions[24]="Vous avez perdu :( Vous n'avez pas assez d'argent pour payer la taxe de passage.";
+    questions[25]="Vous avez perdu :( Vous n'avez pas assez d'argent pour payer les 200 euros.";
 
 
    

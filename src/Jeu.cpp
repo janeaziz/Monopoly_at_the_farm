@@ -13,7 +13,7 @@ Jeu::Jeu() {
    joueurs[1].setid(1);
 
     joueur_actuel = 0; // Initialisation du joueur actuel
-    gagnant = -1; // Initialisation du gagnant à -1 
+    gagnant = 2; // Initialisation du gagnant à -1 
 }
 
 /*Jeu::~Jeu(){
@@ -36,6 +36,15 @@ unsigned int Jeu::jete_de(){
     cout<<"la val du de "<<de <<endl;
     return de;
 
+}
+
+
+ void Jeu::set_gagnant(unsigned int i){
+    gagnant=i;
+ }
+
+unsigned int Jeu::get_gagnant()const{
+    return gagnant;
 }
 
 
@@ -92,7 +101,8 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
         int montant_case=plateau.getCase(i).get_montant();
         
         if (montant_case<0){
-            questions=3;
+            if(argent_actuel>=200) questions=3;    //si argent suffisant
+            else if(argent_actuel<200) questions=25; //si argent pas suffisant
         } else questions=4;
         
         cout<<"montant case argent "<< montant_case<<endl;;
@@ -168,14 +178,16 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
         int proprio_case=plateau.getCase(i).get_proprio();
         cout<<"proprio case "<< proprio_case<<endl;
         int loyer_case=plateau.getCase(i).get_loyer();
-        if(proprio_case == joueur_adverse){ // si le proprio est le joueur adverse
+        if(proprio_case == joueur_adverse && argent_actuel>=loyer_case){ // si le proprio est le joueur adverse
             joueurs[joueur_actuel].setArgent(argent_actuel - loyer_case);
             joueurs[joueur_adverse].setArgent(argent_actuel_adverse + loyer_case);
             cout<<"Il paye une taxe de "<<loyer_case<<endl;
             questions=17;
             cout<<"lindice de la question est "<<questions<<endl;
         }
-
+        if(proprio_case == joueur_adverse && argent_actuel<loyer_case){ //si proprio joueur adv et pas assez d'argent
+            questions=24;
+        }    
         
         
         if(proprio_case == joueur_actuel) {
