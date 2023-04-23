@@ -63,6 +63,9 @@ int Joueur::get_nbjardin()const{
     return nb_jardin;
 }
 
+void Joueur::set_nbjardin(int i){
+    nb_jardin=i;
+}
 
  void Joueur::set_nbarbre(int i){
     nb_arbre=i;

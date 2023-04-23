@@ -57,6 +57,10 @@ class Case{
 
     virtual int get_nb_arbre()const;
 
+    virtual int get_nb_jardin()const;
+
+    virtual void set_nb_jardin(int i);
+
     virtual void set_nb_arbre(int i);
 
     virtual int calculer_loyer();

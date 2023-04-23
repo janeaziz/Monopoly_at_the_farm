@@ -55,12 +55,20 @@ void Case:: set_nb_arbre(int i){
 
 }
 
+int Case:: get_nb_jardin()const{
+    return 0;
+}
+
+void Case:: set_nb_jardin(int i){
+
+}
+
 int Case::calculer_loyer(){
     return 0;
 }
 
 void Case::set_loyer(int nouveau_montant){
-    
+
 }
 
 //fonction CaseArgent

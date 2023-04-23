@@ -76,7 +76,7 @@ bool Jeu:: tour_suivant(){
 
 
 int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &propriete_achetee,bool &non_achetee){
-    int questions=0;
+    int questions=-1;
     int joueur_adverse;
     if (joueur_actuel==0) joueur_adverse=1;
     else joueur_adverse=0;
@@ -171,7 +171,7 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
         if(proprio_case == joueur_adverse){ // si le proprio est le joueur adverse
             joueurs[joueur_actuel].setArgent(argent_actuel - loyer_case);
             joueurs[joueur_adverse].setArgent(argent_actuel_adverse + loyer_case);
-            cout<<"Il paye une taxe"<<endl;
+            cout<<"Il paye une taxe de "<<loyer_case<<endl;
             questions=17;
             cout<<"lindice de la question est "<<questions<<endl;
         }
@@ -186,7 +186,11 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
 
             int nb_arbre_joueur = joueurs[joueur_actuel].get_nbarbre();
 
-            if(nb_arbre_case<5 && argent_actuel>=100){ //si le nombre d'abre de la case est inferieur à 5 et s'il a l'argent necessaire pour l'acheter
+            int nb_jardin_case = plateau.getCase(i).get_nb_jardin();
+
+            int nb_jardin_joueur = joueurs[joueur_actuel].get_nbjardin();
+
+            if(nb_arbre_case<3 && argent_actuel>=100){ //si le nombre d'abre de la case est inferieur à 5 et s'il a l'argent necessaire pour l'acheter
 
                 questions=1;
 
@@ -218,6 +222,34 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
                 }   
 
             } 
+            else if(nb_arbre_case==3 && argent_actuel>=200){
+                questions=2;
+                if(propriete_achetee==true){
+                    plateau.getCase(i).set_nb_jardin(nb_jardin_case + 1);
+
+                    joueurs[joueur_actuel].set_nbjardin(nb_jardin_joueur + 1);
+
+                    joueurs[joueur_actuel].setArgent(argent_actuel - 200);
+
+                    joueurs[joueur_actuel].set_nbarbre(nb_arbre_joueur - 3);
+
+                    plateau.getCase(i).set_nb_arbre(0);
+
+                    int nv_loyer=plateau.getCase(i).calculer_loyer();
+                    plateau.getCase(i).set_loyer(nv_loyer);
+                    cout<<"Le nouveau loyer avec jardin "<<plateau.getCase(i).get_loyer()<<endl;
+
+                    propriete_achetee=false;
+
+                    questions=16;
+
+                }
+                if(non_achetee==true){
+                    non_achetee=false;
+                    questions=20;
+                    
+                }      
+            }
 
         }
 

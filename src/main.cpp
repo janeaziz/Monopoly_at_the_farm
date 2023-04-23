@@ -30,6 +30,7 @@ SDL_Color blanc={255,255,255};
 bool tour_prochain=true;
 bool propriete_achete=false;
 bool non_achetee=false;
+int question=-1;
 
  
 
@@ -45,7 +46,7 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     }
 
 while (!quit){
-    int question;
+    
     bool bouton_y_n=false;
     bool bouton_y=false;
     dessiner_plateau(renderer,images);
@@ -83,12 +84,7 @@ while (!quit){
                     bouton_y=false; 
                     cout<< "on a appuye sur n"<<endl;
                 }
-               
-               
-            
-
-        
-       
+                     
         }
     }
 
@@ -114,7 +110,7 @@ while (!quit){
                int pos_actuelle=j.getJoueurs(joueur_act).getPosition();
                if(pos_actuelle==2||pos_actuelle==3||pos_actuelle==4||pos_actuelle==6||pos_actuelle==7||pos_actuelle==11||pos_actuelle==12||pos_actuelle==13||pos_actuelle==17||pos_actuelle==18){
                 //cout<<"je suis sur une Case Propriete"<<endl;
-                    if(bouton_y_n == false && question==1 ){
+                   /* if(bouton_y_n == false && question==1 ){
                         charger_questions(renderer,1,blanc);
                     
                     } 
@@ -122,7 +118,7 @@ while (!quit){
                     if(bouton_y_n == false & question==0 ){
                          charger_questions(renderer,0,blanc);
                      
-                    }
+                    } */
 
                     if(bouton_y_n == true && bouton_y ==true && (question==0||question==1||question==2)){ 
                     

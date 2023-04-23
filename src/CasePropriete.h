@@ -108,8 +108,10 @@ class CasePropriete : public Case{
         virtual void set_nb_arbre(int i);
 
         virtual int get_nb_arbre()const;
-        
 
+        virtual void set_nb_jardin(int i);
+        
+        virtual int get_nb_jardin()const;
 
 
 };

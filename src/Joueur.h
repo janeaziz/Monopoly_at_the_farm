@@ -76,6 +76,8 @@ class Joueur {
 
 
     void set_nbarbre(int i);
+
+    void set_nbjardin(int i);
     /**
      * @brief Get the nb jardin object
      * 

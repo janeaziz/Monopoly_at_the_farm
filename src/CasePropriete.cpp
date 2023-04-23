@@ -69,7 +69,7 @@ int CasePropriete::calculer_loyer(){
     }
     
     if(nb_jardin==1){
-        nv_loyer=50 + 400;
+        nv_loyer=50 + 300;
     }
     return nv_loyer;
 }
@@ -81,6 +81,14 @@ int CasePropriete::calculer_loyer(){
   int CasePropriete:: get_nb_arbre()const{
     return nb_arbre;
   }
+
+ void CasePropriete:: set_nb_jardin(int i){
+    nb_jardin=i;
+  }
+
+  int CasePropriete:: get_nb_jardin()const{
+    return nb_jardin;
+  } 
 
 int CasePropriete::get_prix()const{
     return prix;   

@@ -440,16 +440,19 @@ void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question){
     SDL_Color bleu={0,0,255};
     SDL_Color vert={0,255,0};
     SDL_Color blanc={255,255,255};
+
+    if(bouton_y_n == false & question==0 ){
+        charger_questions(renderer,0,blanc);
+    }
+
     if(bouton_y_n == false && question==1 ){
         charger_questions(renderer,1,blanc);
-        //sleep(10);
-        cout<<"je suis dans charger question"<<endl;
+        
     } 
 
     if(bouton_y_n == false && question==2 ){
-        charger_questions(renderer,0,blanc);
-                     //sleep(10);
-                    //cout<<"je suis dans charger question"<<endl;
+        charger_questions(renderer,2,blanc);
+                     
     }
 
     if(question==3){
