@@ -58,6 +58,8 @@ class Jeu{
      */
     int joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &propriete_achetee,bool &non_achetee);
 
+
+    void arrose_arbre(unsigned int id);
     /**
      * @brief retourne vrai si un des Joueurs perd ton son argent
      * 

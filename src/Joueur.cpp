@@ -3,9 +3,9 @@
 
 Joueur::Joueur (){
     id =0;
-    argent=5;
-    quantite_eau=3;
-    quantite_soleil=3;
+    argent=1500;
+    quantite_eau=-200;
+    quantite_soleil=-200;
     nb_arbre=0;
     nb_jardin=0;
     tab_propriete = nullptr;
@@ -15,9 +15,9 @@ Joueur::Joueur (){
 Joueur::Joueur(int idj){ //, SDL_Renderer *renderer, TTF_Font *font){
     
     id =idj;
-    argent=5;
-    quantite_eau=3;
-    quantite_soleil=3;
+    argent=1500;
+    quantite_eau=-200;
+    quantite_soleil=-200;
     nb_arbre=0;
     nb_jardin=0; 
 /*  this->renderer=renderer;

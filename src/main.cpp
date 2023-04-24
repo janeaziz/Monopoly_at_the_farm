@@ -32,6 +32,8 @@ bool tour_prochain=true;
 bool propriete_achete=false;
 bool non_achetee=false;
 int question=-1;
+int nb_clic=0;
+bool boucle_taxe=true;
 
  
 
@@ -54,7 +56,7 @@ while (!quit){
                 quit=true;
             }
         }
-        
+
         unsigned int joueur_actu=j.getJoueurActuel();
         //cout<<"le joueur actuel est "<<joueur_actu<<endl;
         j.set_gagnant(joueur_actu);
@@ -93,7 +95,9 @@ while (!quit){
         if (event.type == SDL_MOUSEBUTTONDOWN && tour_prochain==true){
             valde=clic(event,j,rect_de);
             valeurde=valde;
-            tour_prochain=false;                 
+            tour_prochain=false; 
+            boucle_taxe=true;
+            nb_clic++;                
         }
 
         if (event.type==SDL_KEYDOWN){
@@ -181,11 +185,12 @@ while (!quit){
 
                      }
 
-                    if(question==17 || question==22 || question==23){
+                    if((question==17 || question==22 || question==23) && boucle_taxe){
                         tour_prochain=j.tour_suivant();
-                        //cout<<"Je fait le tour_suivant du no"<<endl;
+                        cout<<"Je fait le tour_suivant du no"<<endl;
                         bouton_y_n=false;              
                         bouton_y=false;
+                        boucle_taxe=false;
                     }    
 
                     /*if(bouton_y_n == false && propriete_achete==false && jouertour!=0 && jouertour!=1 && jouertour!=2){
@@ -193,6 +198,12 @@ while (!quit){
                         tour_prochain=j.tour_suivant();
                         cout<<"Jai fait le tour_suivant de la derniere boucle"<<endl;
                     } */
+                }
+
+                if(nb_clic==10){
+                    j.arrose_arbre(0);
+                    j.arrose_arbre(1);
+                    nb_clic=0;
                 }
                 
            

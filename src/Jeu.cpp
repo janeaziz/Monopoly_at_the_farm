@@ -83,6 +83,55 @@ bool Jeu:: tour_suivant(){
 
 }
 
+void Jeu::arrose_arbre(unsigned int id){
+    int nb_eau_j=joueurs[id].getEau();
+    int nb_arbre_j=joueurs[id].get_nbarbre();
+    int nb_jardin_j=joueurs[id].get_nbjardin();
+    int conso_jardin_j= 4 * nb_jardin_j;
+    int reste_arroser;
+    cout<<"je suis dans arrose arbre"<<endl;
+    
+    if(nb_eau_j >= (nb_arbre_j + conso_jardin_j)){
+        joueurs[id].setEau(nb_eau_j - (nb_arbre_j + conso_jardin_j));
+        joueurs[id].setSoleil(nb_eau_j - (nb_arbre_j + conso_jardin_j));
+    }
+
+    if(nb_eau_j < (nb_arbre_j + conso_jardin_j)){
+        reste_arroser = (nb_arbre_j + conso_jardin_j) - nb_eau_j;
+        if(nb_eau_j>0){
+            joueurs[id].setEau(0);
+            joueurs[id].setSoleil(0);
+        }
+        
+
+        for(int i=2; i<19 ; i++){
+            if((i==2||i==3||i==4||i==6||i==7||i==11||i==12||i==13||i==17||i==18) && reste_arroser!=0){
+                int proprio_case=plateau.getCase(i).get_proprio();
+                int nb_arbre_case=plateau.getCase(i).get_nb_arbre();
+                nb_eau_j=joueurs[id].getEau();
+                nb_arbre_j=joueurs[id].get_nbarbre();
+                nb_jardin_j=joueurs[id].get_nbjardin();
+                
+                if(proprio_case==id && nb_arbre_case>0){
+                    if(nb_arbre_case >= reste_arroser){
+                        plateau.getCase(i).set_nb_arbre(nb_arbre_case - reste_arroser);
+                        joueurs[id].set_nbarbre(nb_arbre_j - reste_arroser);
+                        reste_arroser=0;
+                        
+                    }
+                    else{
+                        plateau.getCase(i).set_nb_arbre(0);
+                        joueurs[id].set_nbarbre(nb_arbre_j - nb_arbre_case);
+                        reste_arroser = reste_arroser - nb_arbre_case;
+                    }
+                }
+            }
+        }
+    }    
+
+   
+}
+
 
 int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &propriete_achetee,bool &non_achetee){
     int questions=-1;
