@@ -2,7 +2,7 @@
 #include "vue.h"
 #include "controleur.h"
 #include <iostream>
-//#include <unistd.h>
+#include <unistd.h>
 
 using namespace std;
  
@@ -12,7 +12,7 @@ const int case_height=130;
 Jeu j;
 SDL_Window*window = NULL; 
 SDL_Renderer * renderer = NULL;  
-SDL_Texture* images[26];
+SDL_Texture* images[28];
 bool quit;
 SDL_Event event;
 SDL_Rect rect_de;
@@ -21,6 +21,7 @@ rect_de.y=0;
 rect_de.h=case_height;
 rect_de.w=case_width;
 unsigned int valde;
+unsigned int valeurde;
 SDL_Color rouge={255,0,0};
 SDL_Color bleu={0,0,255};
 SDL_Color vert={0,255,0};
@@ -48,10 +49,24 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
 while (!quit){
      
     if(question==24 || question==25){
+        while (SDL_PollEvent(&event)){
+            if (event.type==SDL_QUIT){
+                quit=true;
+            }
+        }
+        
         unsigned int joueur_actu=j.getJoueurActuel();
-        cout<<"le joueur actuel est "<<joueur_actu<<endl;
+        //cout<<"le joueur actuel est "<<joueur_actu<<endl;
         j.set_gagnant(joueur_actu);
         cout<<"Le joueur "<<j.get_gagnant()<<" a gagneeee"<<endl;
+        afficher_gagnant(renderer,images,j.get_gagnant());
+        
+        SDL_RenderPresent(renderer);
+        SDL_RenderClear(renderer);
+        //sleep(10);
+        //quit=true;
+         
+        
     }
 
   else{
@@ -67,7 +82,7 @@ while (!quit){
     
     //charger_questions(renderer,1,blanc);
            
-    afficher_val_de( renderer,valde,800, 465, blanc);
+    afficher_val_de( renderer,valeurde,800, 465, blanc);
     
     valde=0;    
 
@@ -77,6 +92,7 @@ while (!quit){
         }   
         if (event.type == SDL_MOUSEBUTTONDOWN && tour_prochain==true){
             valde=clic(event,j,rect_de);
+            valeurde=valde;
             tour_prochain=false;                 
         }
 

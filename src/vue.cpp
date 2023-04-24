@@ -6,7 +6,7 @@ using namespace std;
 
 void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
     // Tableau contenant le nom de fichier pour chaque type de case
-    const char* images_filenames[11] = {
+    const char* images_filenames[13] = {
         "data/CasePropriete.png", 
         "data/CaseRessources.png", 
         "data/CaseEnigme.png", 
@@ -17,11 +17,13 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
         "data/pageaccueil.png",
         "data/boutonstart.png",
         "data/Joueur1.png",
-        "data/Joueur2.png"
+        "data/Joueur2.png",
+        "data/gagnant_rouge.png",
+        "data/gagnant_bleu.png"
 
     };
 
-    for (int i = 0; i < 26; i++) {
+    for (int i = 0; i < 28; i++) {
         // Charger l'image correspondante au type de case de la case i
         if (i == 0) {
             // Case départ
@@ -55,6 +57,10 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
             images[i] = IMG_LoadTexture(renderer, images_filenames[9]);
         } else if (i == 25){
             images[i] = IMG_LoadTexture(renderer, images_filenames[10]);
+        } else if (i==26){
+            images[i] = IMG_LoadTexture(renderer, images_filenames[11]);
+        } else if (i==27){
+            images[i] = IMG_LoadTexture(renderer, images_filenames[12]);
         }
 
 
@@ -127,9 +133,20 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[]) {
         Rect.h=4*case_height;
         SDL_RenderCopyEx(renderer, images[21], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
     }
-    
-    
-    
+        
+}
+
+void afficher_gagnant(SDL_Renderer* renderer,SDL_Texture* images[],unsigned int gagnant){
+    SDL_Rect Rectangle;
+    Rectangle.x=0;
+    Rectangle.y=0;
+    Rectangle.w=1100;
+    Rectangle.h=900;
+    if(gagnant==0){
+        SDL_RenderCopyEx(renderer, images[26], nullptr, &Rectangle, 0, nullptr, SDL_FLIP_NONE);
+    } else if(gagnant==1){
+        SDL_RenderCopyEx(renderer, images[27], nullptr, &Rectangle, 0, nullptr, SDL_FLIP_NONE);
+    }
 }
 
 

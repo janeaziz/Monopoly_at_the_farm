@@ -28,7 +28,7 @@
      */
     void dessiner_plateau(SDL_Renderer* renderer,SDL_Texture* images[]);
     
-   
+    void afficher_gagnant(SDL_Renderer* renderer,SDL_Texture* images[],unsigned int gagnant); 
 
     void afficher_joueur (SDL_Renderer* renderer,SDL_Texture* images[],Joueur p1, Joueur p2);
 
