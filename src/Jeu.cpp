@@ -108,21 +108,35 @@ void Jeu::arrose_arbre(unsigned int id){
             if((i==2||i==3||i==4||i==6||i==7||i==11||i==12||i==13||i==17||i==18) && reste_arroser!=0){
                 int proprio_case=plateau.getCase(i).get_proprio();
                 int nb_arbre_case=plateau.getCase(i).get_nb_arbre();
+                int nb_jardin_case=plateau.getCase(i).get_nb_jardin();
                 nb_eau_j=joueurs[id].getEau();
                 nb_arbre_j=joueurs[id].get_nbarbre();
                 nb_jardin_j=joueurs[id].get_nbjardin();
+                int valeur_jardin_case=4*nb_jardin_case;
                 
-                if(proprio_case==id && nb_arbre_case>0){
+                if(proprio_case==id && (nb_arbre_case>0 || nb_jardin_case>0)){
                     if(nb_arbre_case >= reste_arroser){
                         plateau.getCase(i).set_nb_arbre(nb_arbre_case - reste_arroser);
                         joueurs[id].set_nbarbre(nb_arbre_j - reste_arroser);
                         reste_arroser=0;
                         
                     }
-                    else{
+                    else if((nb_arbre_case < reste_arroser) && (nb_arbre_case>0)){
                         plateau.getCase(i).set_nb_arbre(0);
                         joueurs[id].set_nbarbre(nb_arbre_j - nb_arbre_case);
                         reste_arroser = reste_arroser - nb_arbre_case;
+                    }
+                    else if(valeur_jardin_case >= reste_arroser){
+                        plateau.getCase(i).set_nb_jardin(nb_jardin_case - 1);
+                        joueurs[id].set_nbjardin(nb_jardin_j - nb_jardin_case);
+                        joueurs[id].setEau(valeur_jardin_case-reste_arroser);
+                        joueurs[id].setSoleil(valeur_jardin_case-reste_arroser);
+                        reste_arroser=0;
+                    }
+                    else if((valeur_jardin_case < reste_arroser) && (nb_jardin_case>0)){
+                        plateau.getCase(i).set_nb_jardin(0);
+                        joueurs[id].set_nbjardin(nb_jardin_j - nb_jardin_case);
+                        reste_arroser = reste_arroser - valeur_jardin_case;
                     }
                 }
             }
