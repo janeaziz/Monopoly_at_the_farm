@@ -377,7 +377,7 @@ void afficher_val_de(SDL_Renderer * renderer,unsigned int val_de,int x, int y,SD
     
 }
 
-void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
+void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c,int nb_arbre_avant,int nb_arbre_apres,int nb_jardin_avant,int nb_jardin_apres){
     
     if(TTF_Init()==-1){
         std::cerr<<"Erreur lors de l'initialisation de TTF "<<TTF_GetError()<<endl;
@@ -391,7 +391,7 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
         exit(1);
     }
     
-    std::string questions[26];
+    std::string questions[28];
         
     questions[0]="Voulez-vous acheter ce terrain? Il coute 200 euros.";
     questions[1]="Voulez-vous planter un arbre? Il coute 100 euros.";// Cliquez sur Y pour oui et N pour non.";
@@ -419,44 +419,60 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c){
     questions[23]="Vous n'avez pas l'argent suffisant pour acheter le jardin.";
     questions[24]="Vous avez perdu :( Vous n'avez pas assez d'argent pour payer la taxe de passage.";
     questions[25]="Vous avez perdu :( Vous n'avez pas assez d'argent pour payer les 200 euros.";
-
-
-   
-    SDL_Surface* surface=TTF_RenderText_Blended(font,questions[indice].c_str(),c);
-    
-
-
-    if(surface==NULL){
-        std::cerr<<"Erreur lors de la creation de la surface "<<TTF_GetError()<<endl;
-        SDL_Quit();
-        exit(1);
+    questions[26]="Le joueur 1 arrose: il avait "+ std::to_string(nb_arbre_avant) +" arbres, "+std::to_string(nb_jardin_avant)+" jardins. Maintenant il a "
+    + std::to_string(nb_arbre_apres) +" arbres, "+std::to_string(nb_jardin_apres) +" jardins.";
+    questions[27]="Le joueur 2 arrose: il avait "+ std::to_string(nb_arbre_avant) +" arbres, "+std::to_string(nb_jardin_avant)+" jardins. Maintenant il a "
+    + std::to_string(nb_arbre_apres) +" arbres, "+std::to_string(nb_jardin_apres) +" jardins.";
 
     
-    }
-
-    SDL_Texture* texture= SDL_CreateTextureFromSurface(renderer,surface);
-    if(texture==NULL){
-        std::cerr<<"Erreur lors de la creation de la texture"<<TTF_GetError()<<endl;
-        SDL_Quit();
-        exit(1);
-    }
-
-    SDL_Rect posfont={100,820,surface->w,surface->h};
     
-   
-    SDL_RenderCopy(renderer,texture,NULL,&posfont);
+        SDL_Surface* surface=TTF_RenderText_Blended(font,questions[indice].c_str(),c);
+        
+
+
+        if(surface==NULL){
+            std::cerr<<"Erreur lors de la creation de la surface "<<TTF_GetError()<<endl;
+            SDL_Quit();
+            exit(1);
+
+        
+        }
+
+        SDL_Texture* texture= SDL_CreateTextureFromSurface(renderer,surface);
+        if(texture==NULL){
+            std::cerr<<"Erreur lors de la creation de la texture"<<TTF_GetError()<<endl;
+            SDL_Quit();
+            exit(1);
+        }
+
+        SDL_Rect posfont;
+
+        if(indice>=0 && indice<=25){
+
+            posfont={100,800,surface->w,surface->h};
+        }
+        else if(indice==26){ //pour les phrases de la fonction arroser de joueur 0
+            posfont={100,830,surface->w,surface->h};
+        }
+        else if(indice==27){ //pour les phrases de la fonction arroser de joueur 1
+            posfont={100,850,surface->w,surface->h};
+        }
+    
+        SDL_RenderCopy(renderer,texture,NULL,&posfont);
+        
+
+        SDL_FreeSurface(surface);
+        SDL_DestroyTexture(texture);
+        
+        TTF_CloseFont(font);
+        TTF_Quit();
     
 
-    SDL_FreeSurface(surface);
-    SDL_DestroyTexture(texture);
-    
-    TTF_CloseFont(font);
-    TTF_Quit();
-
+       
 
 }
 
-void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question){
+void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question,int nb_arbre_avant,int nb_arbre_apres,int nb_jardin_avant,int nb_jardin_apres){
 
     SDL_Color rouge={255,0,0};
     SDL_Color bleu={0,0,255};
@@ -464,101 +480,107 @@ void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question){
     SDL_Color blanc={255,255,255};
 
     if(bouton_y_n == false & question==0 ){
-        charger_questions(renderer,0,blanc);
+        charger_questions(renderer,0,blanc,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(bouton_y_n == false && question==1 ){
-        charger_questions(renderer,1,blanc);
+        charger_questions(renderer,1,blanc,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
         
     } 
 
     if(bouton_y_n == false && question==2 ){
-        charger_questions(renderer,2,blanc);
+        charger_questions(renderer,2,blanc,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
                      
     }
 
     if(question==3){
-        charger_questions(renderer,3,rouge);
+        charger_questions(renderer,3,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
     
     if(question==4){
-        charger_questions(renderer,4,vert);
+        charger_questions(renderer,4,vert,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==5){
-        charger_questions(renderer,5,rouge);
+        charger_questions(renderer,5,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
     
     if(question==6){
-        charger_questions(renderer,6,vert);
+        charger_questions(renderer,6,vert,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==7){
-        charger_questions(renderer,7,vert);
+        charger_questions(renderer,7,vert,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==8){
-        charger_questions(renderer,8,vert);
+        charger_questions(renderer,8,vert,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==9){
-        charger_questions(renderer,9,vert);
+        charger_questions(renderer,9,vert,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==10){
-        charger_questions(renderer,10,blanc);
+        charger_questions(renderer,10,blanc,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==11){
-        charger_questions(renderer,11,rouge);
+        charger_questions(renderer,11,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==12){
-        charger_questions(renderer,12,rouge);
+        charger_questions(renderer,12,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==13){
-        charger_questions(renderer,13,rouge);
+        charger_questions(renderer,13,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==14){
-        charger_questions(renderer,14,vert);
+        charger_questions(renderer,14,vert,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==15){
-        charger_questions(renderer,15,vert);
+        charger_questions(renderer,15,vert,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==16){
-        charger_questions(renderer,16,vert);
+        charger_questions(renderer,16,vert,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==17){
-        charger_questions(renderer,17,rouge);
+        charger_questions(renderer,17,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==18){
-        charger_questions(renderer,18,rouge);
+        charger_questions(renderer,18,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==19){
-        charger_questions(renderer,19,rouge);
+        charger_questions(renderer,19,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==20){
-        charger_questions(renderer,20,rouge);
+        charger_questions(renderer,20,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==21){
-        charger_questions(renderer,21,rouge);
+        charger_questions(renderer,21,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==22){
-        charger_questions(renderer,22,rouge);
+        charger_questions(renderer,22,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
     if(question==23){
-        charger_questions(renderer,23,rouge);
+        charger_questions(renderer,23,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
+    }
+    if(question==26){
+        charger_questions(renderer,26,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
+    }
+    if(question==27){
+        charger_questions(renderer,27,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 }
 

@@ -83,7 +83,8 @@ bool Jeu:: tour_suivant(){
 
 }
 
-void Jeu::arrose_arbre(unsigned int id){
+int Jeu::arrose_arbre(unsigned int id){
+    int question;
     int nb_eau_j=joueurs[id].getEau();
     int nb_arbre_j=joueurs[id].get_nbarbre();
     int nb_jardin_j=joueurs[id].get_nbjardin();
@@ -142,8 +143,13 @@ void Jeu::arrose_arbre(unsigned int id){
             }
         }
     }    
+    if(id==0){
+        return question=26;
+    }
 
-   
+    if(id==1){
+        return question=27;
+    }    
 }
 
 

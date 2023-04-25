@@ -38,6 +38,6 @@
 
     void afficher_val_de(SDL_Renderer * renderer,unsigned int val_de,int x, int y,SDL_Color c);
 
-    void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c);
+    void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c,int nb_arbre_avant,int nb_arbre_apres,int nb_jardin_avant,int nb_jardin_apres);
 
-    void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int jouertour);
+    void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question,int nb_arbre_avant,int nb_arbre_apres,int nb_jardin_avant,int nb_jardin_apres);

@@ -32,9 +32,20 @@ bool tour_prochain=true;
 bool propriete_achete=false;
 bool non_achetee=false;
 int question=-1;
+int question_arroser_0=-1;
+int question_arroser_1=-1;
 int nb_clic=0;
 bool boucle_taxe=true;
 
+int nb_arbre_j0_avant=j.getJoueurs(0).get_nbarbre();
+int nb_arbre_j1_avant=j.getJoueurs(1).get_nbarbre();
+int nb_arbre_j0_apres=j.getJoueurs(0).get_nbarbre();
+int nb_arbre_j1_apres=j.getJoueurs(1).get_nbarbre();
+
+int nb_jardin_j0_avant=j.getJoueurs(0).get_nbjardin();
+int nb_jardin_j1_avant=j.getJoueurs(1).get_nbjardin();
+int nb_jardin_j0_apres=j.getJoueurs(0).get_nbjardin();
+int nb_jardin_j1_apres=j.getJoueurs(1).get_nbjardin();
  
 
 window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,1100,900,SDL_WINDOW_SHOWN);
@@ -201,16 +212,35 @@ while (!quit){
                 }
 
                 if(nb_clic==10){
-                    j.arrose_arbre(0);
-                    j.arrose_arbre(1);
+                    cout<< "le nombre de clics est 10"<<endl;
+                    nb_arbre_j0_avant=j.getJoueurs(0).get_nbarbre();
+                    nb_arbre_j1_avant=j.getJoueurs(1).get_nbarbre();
+                    nb_jardin_j0_avant=j.getJoueurs(0).get_nbjardin();
+                    nb_jardin_j1_avant=j.getJoueurs(1).get_nbjardin();
+                    question_arroser_0=j.arrose_arbre(0);
+                    question_arroser_1=j.arrose_arbre(1);
+                    nb_arbre_j0_apres=j.getJoueurs(0).get_nbarbre();
+                    nb_arbre_j1_apres=j.getJoueurs(1).get_nbarbre();
+                    nb_jardin_j0_avant=j.getJoueurs(0).get_nbjardin();
+                    nb_jardin_j1_avant=j.getJoueurs(1).get_nbjardin();
                     nb_clic=0;
+                }
+                if(nb_clic==1){
+                    question_arroser_0 = -1;
+                    question_arroser_1 = -1;
                 }
                 
            
  
         
 
-    appel_questions(renderer,bouton_y_n,question);
+    appel_questions(renderer,bouton_y_n,question,nb_arbre_j0_avant,nb_arbre_j0_apres,nb_jardin_j0_avant,nb_jardin_j0_apres);
+    if(question_arroser_0 != -1){
+        appel_questions(renderer,bouton_y_n,question_arroser_0,nb_arbre_j0_avant,nb_arbre_j0_apres,nb_jardin_j0_avant,nb_jardin_j0_apres);
+    }
+    if(question_arroser_1 != -1){
+        appel_questions(renderer,bouton_y_n,question_arroser_1,nb_arbre_j1_avant,nb_arbre_j1_apres,nb_jardin_j1_avant,nb_jardin_j1_apres);
+    }
     
     SDL_RenderPresent(renderer);
     SDL_RenderClear(renderer);
