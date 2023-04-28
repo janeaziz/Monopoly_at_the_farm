@@ -6,7 +6,7 @@ using namespace std;
 
 void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
     // Tableau contenant le nom de fichier pour chaque type de case
-    const char* images_filenames[17] = {
+    const char* images_filenames[23] = {
         "data/CasePropriete.png", 
         "data/CaseRessources.png", 
         "data/CaseEnigme.png", 
@@ -23,11 +23,17 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
         "data/1arbre.png",
         "data/2arbres.png",
         "data/3arbres.png",
-        "data/1jardin.png"
+        "data/1jardin.png",
+        "data/de1.png",
+        "data/de2.png",
+        "data/de3.png",
+        "data/de4.png",
+        "data/de5.png",
+        "data/de6.png",
 
     };
 
-    for (int i = 0; i < 32; i++) {
+    for (int i = 0; i < 38; i++) {
         // Charger l'image correspondante au type de case de la case i
         if (i == 0) {
             // Case départ
@@ -73,11 +79,23 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
             images[i] = IMG_LoadTexture(renderer, images_filenames[15]);
         } else if (i==31){ //image 1 jardin
             images[i] = IMG_LoadTexture(renderer, images_filenames[16]);
+        } else if (i==32){ //de 1
+            images[i] = IMG_LoadTexture(renderer, images_filenames[17]);
+        } else if (i==33){ //de 2
+            images[i] = IMG_LoadTexture(renderer, images_filenames[18]);
+        } else if (i==34){ //de 3
+            images[i] = IMG_LoadTexture(renderer, images_filenames[19]);
+        } else if (i==35){ //de 4
+            images[i] = IMG_LoadTexture(renderer, images_filenames[20]);
+        } else if (i==36){ //de 5
+            images[i] = IMG_LoadTexture(renderer, images_filenames[21]);
+        } else if (i==37){ //de 6
+            images[i] = IMG_LoadTexture(renderer, images_filenames[22]);
         }
 
 
-        if(images[i]){
-            cout<< "l'image " <<i << "a ete chargee"<<endl;
+        if(!images[i]){
+            cout<< "l'image " <<i << "n'a ete pas ete chargee"<<endl;
         }
         
     }
@@ -86,7 +104,7 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
 }
 
 
-void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[],int arbre_case[],int jardin_case[]) {
+void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[],int arbre_case[],int jardin_case[],unsigned int valeurde) {
     // Dessin du plateau en utilisant les images des cases
     
     SDL_Rect Rect;
@@ -138,7 +156,7 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[],int arbre_ca
         Rect.h = case_height;
 
         if(i == 2 || i == 3 ||i == 4 || i == 6 ||i == 7 || i == 11 ||i == 12 ||
-         i == 13 ||i == 17 || i == 18) {
+         i == 13 ||i == 17 || i == 18) { //Case Propriete
             
             
             if(arbre_case[i]==0 && jardin_case[i]==0){ //aucun arbre ni jardin
@@ -158,6 +176,26 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[],int arbre_ca
             } 
                
         }
+        else if(i==20){ //si c'est un de
+            if(valeurde==1 || valeurde==0){
+                SDL_RenderCopyEx(renderer, images[32], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            }
+            else if(valeurde==2){
+                SDL_RenderCopyEx(renderer, images[33], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            }
+            else if(valeurde==3){
+                SDL_RenderCopyEx(renderer, images[34], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            }
+            else if(valeurde==4){
+                SDL_RenderCopyEx(renderer, images[35], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            }
+            else if(valeurde==5){
+                SDL_RenderCopyEx(renderer, images[36], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            }
+            else if(valeurde==6){
+                SDL_RenderCopyEx(renderer, images[37], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            }
+        } 
         else{
             SDL_RenderCopyEx(renderer, images[i], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
         }

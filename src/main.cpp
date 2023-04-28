@@ -12,7 +12,7 @@ const int case_height=130;
 Jeu j;
 SDL_Window*window = NULL; 
 SDL_Renderer * renderer = NULL;  
-SDL_Texture* images[32];
+SDL_Texture* images[38];
 bool quit;
 SDL_Event event;
 SDL_Rect rect_de;
@@ -105,7 +105,7 @@ while (!quit){
     }
  
     //cout<<"ON DESSINEEE LE PLATEAUUUUUU"<<endl;
-    dessiner_plateau(renderer,images,arbre_case,jardin_case);
+    dessiner_plateau(renderer,images,arbre_case,jardin_case,valeurde);
     afficher_joueur (renderer,images,j.getJoueurs(0), j.getJoueurs(1));
     afficher_info(renderer, j.getJoueurs(0),800, 150,rouge);
     afficher_info(renderer, j.getJoueurs(1),800, 300,bleu);
