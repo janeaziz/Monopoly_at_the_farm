@@ -12,7 +12,7 @@ const int case_height=130;
 Jeu j;
 SDL_Window*window = NULL; 
 SDL_Renderer * renderer = NULL;  
-SDL_Texture* images[28];
+SDL_Texture* images[32];
 bool quit;
 SDL_Event event;
 SDL_Rect rect_de;
@@ -46,6 +46,10 @@ int nb_jardin_j0_avant=j.getJoueurs(0).get_nbjardin();
 int nb_jardin_j1_avant=j.getJoueurs(1).get_nbjardin();
 int nb_jardin_j0_apres=j.getJoueurs(0).get_nbjardin();
 int nb_jardin_j1_apres=j.getJoueurs(1).get_nbjardin();
+
+int arbre_case[19];
+int jardin_case[19];
+
  
 
 window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,1100,900,SDL_WINDOW_SHOWN);
@@ -86,7 +90,22 @@ while (!quit){
 
     bool bouton_y_n=false;
     bool bouton_y=false;
-    dessiner_plateau(renderer,images);
+
+    for(int i=0;i<19;i++){
+        if(i == 2 || i == 3 ||i == 4 || i == 6 ||i == 7 || i == 11 ||i == 12 ||
+         i == 13 ||i == 17 || i == 18) {
+            arbre_case[i]=j.getPlateau()->getCase(i).get_nb_arbre();
+            jardin_case[i]=j.getPlateau()->getCase(i).get_nb_jardin();
+
+         }
+         else{
+            arbre_case[i]=0;
+            jardin_case[i]=0;
+         }   
+    }
+ 
+    //cout<<"ON DESSINEEE LE PLATEAUUUUUU"<<endl;
+    dessiner_plateau(renderer,images,arbre_case,jardin_case);
     afficher_joueur (renderer,images,j.getJoueurs(0), j.getJoueurs(1));
     afficher_info(renderer, j.getJoueurs(0),800, 150,rouge);
     afficher_info(renderer, j.getJoueurs(1),800, 300,bleu);

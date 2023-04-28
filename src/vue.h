@@ -26,7 +26,7 @@
      * @param x Position x du coin supérieur gauche du plateau
      * @param y Position y du coin supérieur gauche du plateau
      */
-    void dessiner_plateau(SDL_Renderer* renderer,SDL_Texture* images[]);
+    void dessiner_plateau(SDL_Renderer* renderer,SDL_Texture* images[],int arbre_case[],int jardin_case[]);
     
     void afficher_gagnant(SDL_Renderer* renderer,SDL_Texture* images[],unsigned int gagnant); 
 

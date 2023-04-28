@@ -8,7 +8,7 @@
 class Jeu{
 
     private:
-    Plateau plateau;
+    Plateau* plateau;
     Joueur joueurs[2];
    unsigned int joueur_actuel;
     unsigned int  gagnant;
@@ -21,7 +21,7 @@ class Jeu{
      */
     Jeu();
 
- //   ~Jeu();
+    ~Jeu();
 
    
     /**
@@ -107,11 +107,9 @@ class Jeu{
      * 
      * @return Plateau 
      */
-    Plateau getPlateau() const;
+    Plateau* getPlateau() const;
 
 };
 
 #endif
 
-//achat propriete , payer loyer, modofier eau , modifier soleil, modifier argent , achat arbre, achat jardin, 
-//doivent etre dans la classe jeu pas joueur.

@@ -8,25 +8,20 @@ using namespace std;
 
 Jeu::Jeu() {
   
+    plateau=new Plateau();
 
+    joueurs[1].setid(1);
+    
    
-   joueurs[1].setid(1);
 
     joueur_actuel = 0; // Initialisation du joueur actuel
     gagnant = 2; // Initialisation du gagnant à -1 
 }
 
-/*Jeu::~Jeu(){
+Jeu::~Jeu(){
     
- for(int i=0;i<2;i++){
-        joueurs[i]=NULL;
-        
-    } 
-  
-
-    joueur_actuel=0;
-    gagnant=-1;  
-} */
+ delete plateau;  
+} 
 
 unsigned int Jeu::jete_de(){
     srand(time(NULL));
@@ -107,9 +102,9 @@ int Jeu::arrose_arbre(unsigned int id){
 
         for(int i=2; i<19 ; i++){
             if((i==2||i==3||i==4||i==6||i==7||i==11||i==12||i==13||i==17||i==18) && reste_arroser!=0){
-                int proprio_case=plateau.getCase(i).get_proprio();
-                int nb_arbre_case=plateau.getCase(i).get_nb_arbre();
-                int nb_jardin_case=plateau.getCase(i).get_nb_jardin();
+                int proprio_case=plateau->getCase(i).get_proprio();
+                int nb_arbre_case=plateau->getCase(i).get_nb_arbre();
+                int nb_jardin_case=plateau->getCase(i).get_nb_jardin();
                 nb_eau_j=joueurs[id].getEau();
                 nb_arbre_j=joueurs[id].get_nbarbre();
                 nb_jardin_j=joueurs[id].get_nbjardin();
@@ -117,25 +112,25 @@ int Jeu::arrose_arbre(unsigned int id){
                 
                 if(proprio_case==id && (nb_arbre_case>0 || nb_jardin_case>0)){
                     if(nb_arbre_case >= reste_arroser){
-                        plateau.getCase(i).set_nb_arbre(nb_arbre_case - reste_arroser);
+                        plateau->getCase(i).set_nb_arbre(nb_arbre_case - reste_arroser);
                         joueurs[id].set_nbarbre(nb_arbre_j - reste_arroser);
                         reste_arroser=0;
                         
                     }
                     else if((nb_arbre_case < reste_arroser) && (nb_arbre_case>0)){
-                        plateau.getCase(i).set_nb_arbre(0);
+                        plateau->getCase(i).set_nb_arbre(0);
                         joueurs[id].set_nbarbre(nb_arbre_j - nb_arbre_case);
                         reste_arroser = reste_arroser - nb_arbre_case;
                     }
                     else if(valeur_jardin_case >= reste_arroser){
-                        plateau.getCase(i).set_nb_jardin(nb_jardin_case - 1);
+                        plateau->getCase(i).set_nb_jardin(nb_jardin_case - 1);
                         joueurs[id].set_nbjardin(nb_jardin_j - nb_jardin_case);
                         joueurs[id].setEau(valeur_jardin_case-reste_arroser);
                         joueurs[id].setSoleil(valeur_jardin_case-reste_arroser);
                         reste_arroser=0;
                     }
                     else if((valeur_jardin_case < reste_arroser) && (nb_jardin_case>0)){
-                        plateau.getCase(i).set_nb_jardin(0);
+                        plateau->getCase(i).set_nb_jardin(0);
                         joueurs[id].set_nbjardin(nb_jardin_j - nb_jardin_case);
                         reste_arroser = reste_arroser - valeur_jardin_case;
                     }
@@ -167,7 +162,7 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
     
     if (i==1 || i==10 || i==16 || i==19){  //s'il est sur une case Argent
         cout<<"on est dans la boucle case argent "<<endl;
-        int montant_case=plateau.getCase(i).get_montant();
+        int montant_case=plateau->getCase(i).get_montant();
         
         if (montant_case<0){
             if(argent_actuel>=200) questions=3;    //si argent suffisant
@@ -191,8 +186,8 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
         int eau_adversaire=joueurs[joueur_adverse].getEau();
         int soleil_adversaire=joueurs[joueur_adverse].getSoleil();
 
-        int eau_case=plateau.getCase(i).get_qe(indice); 
-        int soleil_case=plateau.getCase(i).get_qs(indice); 
+        int eau_case=plateau->getCase(i).get_qe(indice); 
+        int soleil_case=plateau->getCase(i).get_qs(indice); 
 
         switch(eau_case){
             case 0:
@@ -234,8 +229,8 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
     }
 
     if (i==5 || i==9 || i==14){  // s'il est sur une case ressources
-        int nb_eau = plateau.getCase(i).get_eau();
-        int nb_soleil = plateau.getCase(i).get_soleil();
+        int nb_eau = plateau->getCase(i).get_eau();
+        int nb_soleil = plateau->getCase(i).get_soleil();
         if (nb_eau < 0){
             questions=5;
         } else questions=6;
@@ -244,9 +239,9 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
     }
 
     if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) { // s'il est sur une case Propriete
-        int proprio_case=plateau.getCase(i).get_proprio();
+        int proprio_case=plateau->getCase(i).get_proprio();
         cout<<"proprio case "<< proprio_case<<endl;
-        int loyer_case=plateau.getCase(i).get_loyer();
+        int loyer_case=plateau->getCase(i).get_loyer();
         if(proprio_case == joueur_adverse && argent_actuel>=loyer_case){ // si le proprio est le joueur adverse
             joueurs[joueur_actuel].setArgent(argent_actuel - loyer_case);
             joueurs[joueur_adverse].setArgent(argent_actuel_adverse + loyer_case);
@@ -263,11 +258,11 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
 
         // cout<<"on est ds la boucle"<<endl;
 
-            int nb_arbre_case = plateau.getCase(i).get_nb_arbre();
+            int nb_arbre_case = plateau->getCase(i).get_nb_arbre();
 
             int nb_arbre_joueur = joueurs[joueur_actuel].get_nbarbre();
 
-            int nb_jardin_case = plateau.getCase(i).get_nb_jardin();
+            int nb_jardin_case = plateau->getCase(i).get_nb_jardin();
 
             int nb_jardin_joueur = joueurs[joueur_actuel].get_nbjardin();
 
@@ -279,16 +274,16 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
 
                     cout<<"le nb d arbre avant l achat"<<nb_arbre_case<<endl;
 
-                    plateau.getCase(i).set_nb_arbre(nb_arbre_case + 1);
+                    plateau->getCase(i).set_nb_arbre(nb_arbre_case + 1);
                     cout<<"le nb d arbre de la case apres achat d arbre"<<nb_arbre_case<<endl;
 
                     joueurs[joueur_actuel].set_nbarbre(nb_arbre_joueur+1);
 
                     joueurs[joueur_actuel].setArgent(argent_actuel - 100);
 
-                    int nv_loyer=plateau.getCase(i).calculer_loyer();
-                    plateau.getCase(i).set_loyer(nv_loyer);
-                    cout<<"Le nouveau loyer "<<plateau.getCase(i).get_loyer()<<endl;
+                    int nv_loyer=plateau->getCase(i).calculer_loyer();
+                    plateau->getCase(i).set_loyer(nv_loyer);
+                    cout<<"Le nouveau loyer "<<plateau->getCase(i).get_loyer()<<endl;
 
                     propriete_achetee=false;
 
@@ -310,7 +305,7 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
             else if(nb_arbre_case==3 && argent_actuel>=200){
                 questions=2;
                 if(propriete_achetee==true){
-                    plateau.getCase(i).set_nb_jardin(nb_jardin_case + 1);
+                    plateau->getCase(i).set_nb_jardin(nb_jardin_case + 1);
 
                     joueurs[joueur_actuel].set_nbjardin(nb_jardin_joueur + 1);
 
@@ -318,11 +313,11 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
 
                     joueurs[joueur_actuel].set_nbarbre(nb_arbre_joueur - 3);
 
-                    plateau.getCase(i).set_nb_arbre(0);
+                    plateau->getCase(i).set_nb_arbre(0);
 
-                    int nv_loyer=plateau.getCase(i).calculer_loyer();
-                    plateau.getCase(i).set_loyer(nv_loyer);
-                    cout<<"Le nouveau loyer avec jardin "<<plateau.getCase(i).get_loyer()<<endl;
+                    int nv_loyer=plateau->getCase(i).calculer_loyer();
+                    plateau->getCase(i).set_loyer(nv_loyer);
+                    cout<<"Le nouveau loyer avec jardin "<<plateau->getCase(i).get_loyer()<<endl;
 
                     propriete_achetee=false;
 
@@ -348,10 +343,10 @@ int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &prop
             questions=0;
             cout<<"la question de l'achat terrain"<<endl;
             if(propriete_achetee==true){
-                int prix_terrain=plateau.getCase(i).get_prix();
+                int prix_terrain=plateau->getCase(i).get_prix();
                 if(argent_actuel>prix_terrain){
-                    plateau.getCase(i).set_proprio(joueur_actuel);
-                    cout<<"le proprietaire maintenant est :"<<plateau.getCase(i).get_proprio()<<endl;
+                    plateau->getCase(i).set_proprio(joueur_actuel);
+                    cout<<"le proprietaire maintenant est :"<<plateau->getCase(i).get_proprio()<<endl;
                     joueurs[joueur_actuel].setArgent(argent_actuel - prix_terrain);
                     propriete_achetee=false;
                     questions=14;
@@ -386,6 +381,6 @@ void Jeu:: setJoueurActuel(unsigned int i){
     joueur_actuel=i;
 }
 
-Plateau Jeu::getPlateau() const{
+Plateau* Jeu::getPlateau() const{
     return plateau;
 }

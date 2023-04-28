@@ -6,7 +6,7 @@ using namespace std;
 
 void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
     // Tableau contenant le nom de fichier pour chaque type de case
-    const char* images_filenames[13] = {
+    const char* images_filenames[17] = {
         "data/CasePropriete.png", 
         "data/CaseRessources.png", 
         "data/CaseEnigme.png", 
@@ -19,11 +19,15 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
         "data/Joueur1.png",
         "data/Joueur2.png",
         "data/gagnant_rouge.png",
-        "data/gagnant_bleu.png"
+        "data/gagnant_bleu.png",
+        "data/1arbre.png",
+        "data/2arbres.png",
+        "data/3arbres.png",
+        "data/1jardin.png"
 
     };
 
-    for (int i = 0; i < 28; i++) {
+    for (int i = 0; i < 32; i++) {
         // Charger l'image correspondante au type de case de la case i
         if (i == 0) {
             // Case départ
@@ -53,19 +57,27 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
         } else if (i ==  23){
             //Bouton Start
             images[i] = IMG_LoadTexture(renderer, images_filenames[8]);
-        } else if (i == 24){
+        } else if (i == 24){ //joueur 1
             images[i] = IMG_LoadTexture(renderer, images_filenames[9]);
-        } else if (i == 25){
+        } else if (i == 25){ //joueur 2
             images[i] = IMG_LoadTexture(renderer, images_filenames[10]);
-        } else if (i==26){
+        } else if (i==26){  //gagnant rouge
             images[i] = IMG_LoadTexture(renderer, images_filenames[11]);
-        } else if (i==27){
+        } else if (i==27){ //gagnant bleu
             images[i] = IMG_LoadTexture(renderer, images_filenames[12]);
+        } else if (i==28){ //image 1 arbre
+            images[i] = IMG_LoadTexture(renderer, images_filenames[13]);
+        } else if (i==29){ //image 2 arbres
+            images[i] = IMG_LoadTexture(renderer, images_filenames[14]);
+        } else if (i==30){ //image 3 arbres
+            images[i] = IMG_LoadTexture(renderer, images_filenames[15]);
+        } else if (i==31){ //image 1 jardin
+            images[i] = IMG_LoadTexture(renderer, images_filenames[16]);
         }
 
 
         if(images[i]){
-            cout<< "l'image " <<i << "n'a pas ete charge"<<endl;
+            cout<< "l'image " <<i << "a ete chargee"<<endl;
         }
         
     }
@@ -74,15 +86,14 @@ void charger_images(SDL_Renderer* renderer, SDL_Texture* images[]) {
 }
 
 
-void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[]) {
+void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[],int arbre_case[],int jardin_case[]) {
     // Dessin du plateau en utilisant les images des cases
     
     SDL_Rect Rect;
  //j.tour_suivant();
     const int case_width=130;
     const int case_height=130;
-
-
+    
     for (int i= 0; i< 21; i++) {
 
         if (i==20) {  // pour le de
@@ -125,14 +136,39 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[]) {
         }
         Rect.w = case_width;
         Rect.h = case_height;
-        SDL_RenderCopyEx(renderer, images[i], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
-        
+
+        if(i == 2 || i == 3 ||i == 4 || i == 6 ||i == 7 || i == 11 ||i == 12 ||
+         i == 13 ||i == 17 || i == 18) {
+            
+            
+            if(arbre_case[i]==0 && jardin_case[i]==0){ //aucun arbre ni jardin
+                SDL_RenderCopyEx(renderer, images[i], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            } 
+            if(arbre_case[i]==1 && jardin_case[i]==0){ //un seul arbre
+                SDL_RenderCopyEx(renderer, images[28], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            } 
+            if(arbre_case[i]==2 && jardin_case[i]==0){ //2 arbres
+                SDL_RenderCopyEx(renderer, images[29], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            } 
+            if(arbre_case[i]==3 && jardin_case[i]==0){ //3 arbres
+                SDL_RenderCopyEx(renderer, images[30], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            } 
+            if(arbre_case[i]==0 && jardin_case[i]==1){ //1 jardin
+                SDL_RenderCopyEx(renderer, images[31], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+            } 
+               
+        }
+        else{
+            SDL_RenderCopyEx(renderer, images[i], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
+        }
+    }
+        //la photo du centre de plateau
         Rect.x=case_width;
         Rect.y=case_height;
         Rect.w=4*case_width;
         Rect.h=4*case_height;
         SDL_RenderCopyEx(renderer, images[21], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE);
-    }
+    
         
 }
 
