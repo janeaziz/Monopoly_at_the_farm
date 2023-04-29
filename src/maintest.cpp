@@ -8,11 +8,13 @@ using namespace std;
 
 int main(int argc, char** argv) {
     
-    Jeu j;
-    
-    cout<<"ARBRES "<<j.getPlateau()->getCase(2).get_nb_arbre()<<endl;
-    
-    
+    Joueur joueur;
+    joueur.testRegressionJoueur();
 
+    Plateau p;
+    p.testRegressionPlateau();
+
+    Jeu j;
+    j.testRegressionJeu();
 
 }

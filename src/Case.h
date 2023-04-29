@@ -47,6 +47,8 @@ class Case{
     int get_pos()const;
 
 //fonctions CasePropriete
+    virtual void set_prix(unsigned int i);
+
     virtual int get_prix()const;
 
     virtual  int get_proprio() const;
@@ -68,9 +70,10 @@ class Case{
     virtual void set_loyer(int nouveau_montant);
 //fonction CaseArgent
     virtual int get_montant()const;
+    virtual void set_montant(int montant);
 
 //fonctions CaseRessources
-    virtual int get_eau() const;    
+    virtual int get_eau() const;   
     
     virtual int get_soleil() const; 
 //fonctions CaseEnigme

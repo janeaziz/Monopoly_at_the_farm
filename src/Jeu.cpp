@@ -3,6 +3,7 @@
 #include"vue.h"
 #include<iostream>
 #include<stdlib.h>
+#include<assert.h>
 using namespace std;
 
 
@@ -28,7 +29,7 @@ unsigned int Jeu::jete_de(){
     unsigned int de;
     de = rand()% 6 +1;
 
-    cout<<"la val du de "<<de <<endl;
+    //cout<<"la val du de "<<de <<endl;
     return de;
 
 }
@@ -148,7 +149,7 @@ int Jeu::arrose_arbre(unsigned int id){
 }
 
 
-int Jeu::joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &propriete_achetee,bool &non_achetee){
+int Jeu::joue_tour(bool &propriete_achetee,bool &non_achetee){
     int questions=-1;
     int joueur_adverse;
     if (joueur_actuel==0) joueur_adverse=1;
@@ -383,4 +384,53 @@ void Jeu:: setJoueurActuel(unsigned int i){
 
 Plateau* Jeu::getPlateau() const{
     return plateau;
+}
+
+void Jeu::testRegressionJeu(){
+    
+    //on teste la fonction jete_de()
+    int valeur_de=jete_de();
+    assert(valeur_de>0);
+    assert(valeur_de<7);
+
+    //on teste getJoueurs et la fonction bouge
+    bouge(5);
+    assert(getJoueurs(0).getPosition()==5);
+
+    //on teste set et get_gagnant
+    set_gagnant(3);
+    assert(get_gagnant()==3);
+
+    //on teste tour_suivant
+    tour_suivant(); //le joueur actuel est 0 ainsi apres tour_suivant il doit etre 1
+    assert(getJoueurActuel()==1);
+
+    //on teste arrose_arbre
+    joueurs[0].set_nbarbre(2);
+    assert(getJoueurs(0).get_nbarbre()==2);
+    int eau_avant_arrose=getJoueurs(0).getEau();
+    arrose_arbre(0);
+    assert(getJoueurs(0).getEau()==(eau_avant_arrose - 2));
+
+    //on teste joue_tour
+    int argent_avant_jouetour= getJoueurs(1).getArgent();
+    bouge(1);
+    bool propriete_achetee=false;
+    bool non_achetee=false;
+    joue_tour(propriete_achetee,non_achetee);
+    assert(getJoueurs(1).getArgent()==argent_avant_jouetour + 200);
+
+    bouge(7); //on est sur une Case Enigme
+    int question=joue_tour(propriete_achetee,non_achetee);
+    assert(question==10 || question==7 || question==8 ||question==9||question==11
+    ||question==12||question==13);
+
+    bouge(1); //on est sur une case Ressources
+    question=joue_tour(propriete_achetee,non_achetee);
+    assert(question==5 || question==6);
+
+    bouge(2);
+    non_achetee=true;
+    question=joue_tour(propriete_achetee,non_achetee);
+    assert(question==18);
 }

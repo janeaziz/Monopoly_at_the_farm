@@ -17,7 +17,7 @@ class Joueur {
     int quantite_soleil;
     int nb_arbre;
     int nb_jardin;
-    CasePropriete * tab_propriete ;
+    //CasePropriete * tab_propriete ;
     unsigned int position; //indice de la case
     /*SDL_Texture *image; // Image du joueur pour SDL2
     TTF_Font *font; // Police pour afficher le nom du joueur
@@ -99,15 +99,15 @@ class Joueur {
      */
     unsigned int getPosition () const;
 
-    /**
+    /*
      * @brief Get the tab propriete object
      * 
      * @param indice 
      * @return CasePropriete 
-     */
+     
     CasePropriete get_tab_propriete(int indice) const;
 
-    void set_tab_propriete(int indicetab, CasePropriete p);
+    void set_tab_propriete(int indicetab, CasePropriete p);*/ 
    
    // SDL_Texture* getImage() const;
 
@@ -143,29 +143,11 @@ class Joueur {
     */
     void setPosition (unsigned int x);
 
-    /**
-    * @brief Additionne x (ou la soustrait si elle est negative) a la valeur de quantite_eau
-    * 
-    * @param x 
-    */
-    void modifierEau (int x);
-
-    /**
-    * @brief Additionne x (ou la soustrait si elle est negative) a la valeur de quantite_soleil
-    * 
-    * @param x 
-    */
-    void modifierSoleil (int x);
-
-    /**
-    * @brief Additionne x (ou la soustrait si elle est negative) a la valeur de argent
-    * 
-    * @param x 
-    */
-    void modifierArgent (int x);
+    
+    
 
 
-
+    void testRegressionJoueur();
 
 
    

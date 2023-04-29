@@ -40,6 +40,7 @@ class Plateau{
      */
     Case & getCase(unsigned int x) const;
 
+    void testRegressionPlateau();
 
 };
 

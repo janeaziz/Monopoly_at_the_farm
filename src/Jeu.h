@@ -56,7 +56,7 @@ class Jeu{
      * d'argent, de ressources, etc.) 
      * 
      */
-    int joue_tour(SDL_Renderer* renderer,SDL_Color c,SDL_Event event,bool &propriete_achetee,bool &non_achetee);
+    int joue_tour(bool &propriete_achetee,bool &non_achetee);
 
 
     int arrose_arbre(unsigned int id);
@@ -108,6 +108,8 @@ class Jeu{
      * @return Plateau 
      */
     Plateau* getPlateau() const;
+
+    void testRegressionJeu();
 
 };
 

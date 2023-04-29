@@ -35,6 +35,10 @@ int Case::get_prix()const{
     return 0;
 }
 
+void Case::set_prix(unsigned int i){
+
+}
+
  int Case::get_proprio()const{
     return 0 ;
 }
@@ -75,6 +79,10 @@ void Case::set_loyer(int nouveau_montant){
 int Case::get_montant()const{
     return 0;
    }
+
+void Case::set_montant(int montant){
+
+}   
 //fonctions CaseRessources
 int Case::get_eau() const{
     return 0;
@@ -83,7 +91,7 @@ int Case::get_eau() const{
 int Case::get_soleil() const{
     return 0 ;
 }
-
+//fonctions CaseRessources
 int Case::get_qs(int indice ) const{
     return 0;
 }
