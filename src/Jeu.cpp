@@ -29,7 +29,6 @@ unsigned int Jeu::jete_de(){
     unsigned int de;
     de = rand()% 6 +1;
 
-    //cout<<"la val du de "<<de <<endl;
     return de;
 
 }
@@ -60,13 +59,7 @@ void Jeu::bouge(int x){
   
 } 
 
-/*void Jeu::ajouter_joueur(){
-    //Joueur j1(0);
-    //Joueur j2(1) ;
-    //joueurs[0]= Joueur(0);
-    //joueurs[1]= Joueur(1) ;
-    //cout<< "2 joueurs sont initialises "<< joueurs[0]->id<< "le 2 eme "<< joueurs[1]->id<<endl;
-}*/
+
 
 bool Jeu:: tour_suivant(){
     if(joueur_actuel==0){

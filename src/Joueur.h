@@ -17,12 +17,7 @@ class Joueur {
     int quantite_soleil;
     int nb_arbre;
     int nb_jardin;
-    //CasePropriete * tab_propriete ;
-    unsigned int position; //indice de la case
-    /*SDL_Texture *image; // Image du joueur pour SDL2
-    TTF_Font *font; // Police pour afficher le nom du joueur
-    SDL_Renderer *renderer; // Renderer pour SDL2
-    */
+    unsigned int position;
     public:
 
     Joueur();
@@ -99,22 +94,7 @@ class Joueur {
      */
     unsigned int getPosition () const;
 
-    /*
-     * @brief Get the tab propriete object
-     * 
-     * @param indice 
-     * @return CasePropriete 
-     
-    CasePropriete get_tab_propriete(int indice) const;
-
-    void set_tab_propriete(int indicetab, CasePropriete p);*/ 
    
-   // SDL_Texture* getImage() const;
-
- 
-   // void setImage(SDL_Texture* im);
-
-
     /**
     * @brief Mutateur de la donnée membre eau
     * 

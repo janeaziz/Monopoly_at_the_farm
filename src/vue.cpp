@@ -322,40 +322,7 @@ void afficher_joueur(SDL_Renderer* renderer,SDL_Texture* images[],Joueur p1, Jou
                 
 }
     
-/*void afficher_texte(SDL_Renderer* renderer, int x, int y)
-{    if(TTF_Init()==-1){
-        std::cerr<<"Erreur lors de l'initialisation de TTF "<<TTF_GetError()<<endl;
-        SDL_Quit();
-        exit(1);
-    }
-    int i=5;
-    std::string texte = "Joueur " + std::to_string(i) + " /n argent:";
-    SDL_Color couleur = { 255, 255, 255, 255 };
-    TTF_Font* font = TTF_OpenFont("data/DejaVuSansCondensed.ttf", 20);
-    if (!font) {
-        std::cerr << "Erreur lors de l'ouverture de la police : " << TTF_GetError() << std::endl;
-        return;
-    }
 
-    std::stringstream ss(texte);
-    std::string ligne;
-    int ligne_y = y;
-    while (std::getline(ss, ligne, '\n')) {
-        SDL_Surface* surface_texte = TTF_RenderText_Solid(font, ligne.c_str(), couleur);
-        SDL_Texture* texture_texte = SDL_CreateTextureFromSurface(renderer, surface_texte);
-
-        SDL_Rect rect_texte = { x, ligne_y, surface_texte->w, surface_texte->h };
-        SDL_RenderCopy(renderer, texture_texte, nullptr, &rect_texte);
-
-        SDL_FreeSurface(surface_texte);
-        SDL_DestroyTexture(texture_texte);
-
-        ligne_y += surface_texte->h;
-    }
-
-    TTF_CloseFont(font);
-}
-*/
 
 void afficher_info(SDL_Renderer * renderer,Joueur j,int x, int y,SDL_Color c){
     if(TTF_Init()==-1){
@@ -384,7 +351,6 @@ void afficher_info(SDL_Renderer * renderer,Joueur j,int x, int y,SDL_Color c){
     message[4] ="nb arbres: " + std::to_string(arbres);
     message[5] ="nb jardins: " + std::to_string(jardins);
 
-    //SDL_Color couleur={255,0,0};
     for(int i=0;i<6;i++){
     SDL_Surface* surface=TTF_RenderText_Blended(font,message[i].c_str(),c);
 

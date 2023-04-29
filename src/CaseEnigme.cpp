@@ -9,10 +9,6 @@ CaseEnigme::CaseEnigme(){
     }
 }
 
-/*CaseEnigme::CaseEnigme(int e, int s , int i){
-    qe=e;
-    qs=s;
-}*/
 
 int CaseEnigme::get_qe(int i ) const{
     return qe[i];

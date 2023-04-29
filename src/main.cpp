@@ -96,16 +96,12 @@ while (!quit){
         }
 
         unsigned int joueur_actu=j.getJoueurActuel();
-        //cout<<"le joueur actuel est "<<joueur_actu<<endl;
         j.set_gagnant(joueur_actu);
         cout<<"Le joueur "<<j.get_gagnant()<<" a gagneeee"<<endl;
         afficher_gagnant(renderer,images,j.get_gagnant());
         
         SDL_RenderPresent(renderer);
         SDL_RenderClear(renderer);
-        //sleep(10);
-        //quit=true;
-         
         
     }
 
@@ -171,36 +167,22 @@ while (!quit){
     }
 
     if(valde>0){
-                //cout<<"le joueur act dans la boucle valde est: "<<j.getJoueurActuel()<<endl;
+               
                 j.bouge(valde);
                 valde=0;
-               // afficher_joueur (renderer,images,j.getJoueurs(0), j.getJoueurs(1));
-                
-                
+               
                question=j.joue_tour(propriete_achete,non_achetee);           
-               //cout<<"JAFFICHEEEE"<<endl;
                int pos_pion=j.getJoueurs(j.getJoueurActuel()).getPosition();    
                if(pos_pion==8||pos_pion==15||pos_pion==1||pos_pion==10||pos_pion==16||pos_pion==19||pos_pion==5||pos_pion==9||pos_pion==14||pos_pion==0)     
                     {
-                        tour_prochain=j.tour_suivant();
-                         //cout<<"Jai fait le tour_suivant des autres cases"<<endl;
-                         
+                        tour_prochain=j.tour_suivant();   
                      }
 
     }
                int joueur_act=j.getJoueurActuel();
                int pos_actuelle=j.getJoueurs(joueur_act).getPosition();
                if(pos_actuelle==2||pos_actuelle==3||pos_actuelle==4||pos_actuelle==6||pos_actuelle==7||pos_actuelle==11||pos_actuelle==12||pos_actuelle==13||pos_actuelle==17||pos_actuelle==18){
-                //cout<<"je suis sur une Case Propriete"<<endl;
-                   /* if(bouton_y_n == false && question==1 ){
-                        charger_questions(renderer,1,blanc);
-                    
-                    } 
-
-                    if(bouton_y_n == false & question==0 ){
-                         charger_questions(renderer,0,blanc);
-                     
-                    } */
+                
 
                     if(bouton_y_n == true && bouton_y ==true && (question==0||question==1||question==2)){ 
                     
@@ -210,7 +192,7 @@ while (!quit){
                         
                             tour_prochain=j.tour_suivant();
                             cout<<"Jai fait le tour_suivant du yes joueur act 0"<<endl;
-                            //cout<< "le joueur actuel (apres tour_suivant est "<<j.getJoueurActuel()<<endl;
+                            
                             bouton_y_n=false;              
                             bouton_y=false; 
         
@@ -223,7 +205,6 @@ while (!quit){
                             question=j.joue_tour(propriete_achete,non_achetee);
                             tour_prochain=j.tour_suivant();
                             cout<<"Jai fait le tour_suivant du yes joueur act 0"<<endl;
-                            //cout<< "le joueur actuel (apres tour_suivant) est "<<j.getJoueurActuel()<<endl;
                             bouton_y_n=false;              
                             bouton_y=false;
                         }
@@ -232,7 +213,6 @@ while (!quit){
                         non_achetee=true;
                         question=j.joue_tour(propriete_achete,non_achetee);
                         tour_prochain=j.tour_suivant();
-                        //cout<<"Je fait le tour_suivant du no"<<endl;
                         bouton_y_n=false;              
                         bouton_y=false;
 
@@ -246,11 +226,6 @@ while (!quit){
                         boucle_taxe=false;
                     }    
 
-                    /*if(bouton_y_n == false && propriete_achete==false && jouertour!=0 && jouertour!=1 && jouertour!=2){
-                        j.joue_tour(renderer,blanc,event,propriete_achete);
-                        tour_prochain=j.tour_suivant();
-                        cout<<"Jai fait le tour_suivant de la derniere boucle"<<endl;
-                    } */
                 }
 
                 if(nb_clic==10){

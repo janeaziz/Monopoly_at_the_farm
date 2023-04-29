@@ -12,17 +12,12 @@ using namespace std;
 
 
 Plateau::Plateau() {
-    // Création des cases du plateau
-    //cases = new Case[20];
     
     for ( int i = 0; i < 20; i++) {
 
         int proprietaire_terrain=2;
         Couleur rouge;
         rouge= Couleur(255,255,255);
-        /*rouge.setRouge(255);
-        rouge.setVert(0);
-        rouge.setBleu(0); */
        
         
         if (i == 0) {
@@ -67,18 +62,13 @@ Plateau::Plateau() {
 }
 
  Plateau::~Plateau() {
-    // Suppression des cases du plateau
-  /* if (cases != nullptr) {
-        delete [] cases;
-        cases = nullptr;
-    }  */
-
+ 
     for (int i=0;i<20;i++){
         if(cases[i] != nullptr){
             delete cases[i];
             cases[i]=nullptr;
         }    
-    } //delete [] cases;
+    } 
 }
 
 

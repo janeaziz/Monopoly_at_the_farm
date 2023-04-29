@@ -7,11 +7,6 @@ CaseArgent::CaseArgent(int argent,int position,std::string letype){
     type=letype;
 }
 
-/*CaseArgent::~CaseArgent(){
-    montant=0;
-    pos=-1;
-    type="NULL";
-} */
 
 int CaseArgent::get_montant()const{
     return montant;

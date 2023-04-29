@@ -25,7 +25,6 @@ CasePropriete::CasePropriete(Couleur cl, int pr,int position, std::string type, 
     nb_jardin=nbj;
     proprio=propri;
 
-    //set_proprio(j);
 }
 
 CasePropriete::~CasePropriete(){

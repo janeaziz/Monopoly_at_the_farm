@@ -4,48 +4,29 @@
 
 Joueur::Joueur (){
     id =0;
-    argent=15000;
-    quantite_eau=50;
-    quantite_soleil=50;
+    argent=1500;
+    quantite_eau=5;
+    quantite_soleil=5;
     nb_arbre=0;
     nb_jardin=0;
-    //tab_propriete = nullptr;
-  
+    
     position =0;
 }
-Joueur::Joueur(int idj){ //, SDL_Renderer *renderer, TTF_Font *font){
+Joueur::Joueur(int idj){ 
     
     id =idj;
-    argent=15000;
-    quantite_eau=50;
-    quantite_soleil=50;
+    argent=1500;
+    quantite_eau=5;
+    quantite_soleil=5;
     nb_arbre=0;
     nb_jardin=0; 
-/*  this->renderer=renderer;
-    this->font=font;
-   
-    this->image = IMG_LoadTexture(renderer,"data/Joueur1.png");
-*/
-    //tab_propriete = new CasePropriete[10];
 
-    
-    
     position =0;
 
 }
 
 Joueur::~Joueur(){
 
-       /* if(tab_propriete != nullptr){
-            delete [] tab_propriete;
-            tab_propriete= nullptr;
-        }*/
-    
-
-
-    /*SDL_DestroyRenderer(renderer);
-    SDL_DestroyTexture(image);
-    TTF_CloseFont(font); */
 }
 
 unsigned int Joueur::getid () const{
@@ -85,23 +66,7 @@ unsigned int Joueur::getPosition()const{
     return position;
 }
 
-/*CasePropriete Joueur:: get_tab_propriete(int indice) const{
-    return tab_propriete[indice];
-}
 
-
- void Joueur::set_tab_propriete(int indicetab, CasePropriete p){
-    tab_propriete[indicetab]=p;
- } */
-/*SDL_Texture* Joueur::getImage() const{
-    return this->image;
-
-} 
-
-
-void Joueur::setImage(SDL_Texture* im){
-    image=im;
-}  */
 
 void Joueur::setid (int idj){
     id=idj;
