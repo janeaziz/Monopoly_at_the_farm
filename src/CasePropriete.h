@@ -30,21 +30,19 @@ class CasePropriete : public Case{
     CasePropriete();
 
         /**
-         * @brief Construct a new Case Propriete object
-         * on initialise la couleur 
+         * @brief Construct a new Case Propriete object 
          * le prix du terrain qui change pas 
          * le loyer qui commence a une valeur et qui augmente en fonction de nb arbre et jardin 
          * nb arbre/ jardin sur le terrain  
          * nb arbre max sur chaque terrain 
-         * 
-         * @param c 
+         *  
          * @param p 
          * @param l 
          * @param j 
          * @param arb 
          * @param jard 
          */
-        CasePropriete(Couleur c, int prix_achat, int pos, std::string type, int l, int proprietaire, int arb, int jard, int nba_max); 
+        CasePropriete(int prix_achat, int pos, std::string type, int l, int proprietaire, int arb, int jard); 
         
 
         ~CasePropriete();

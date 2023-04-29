@@ -24,16 +24,16 @@ Plateau::Plateau() {
             cases[i] =  new Case(i, "Case départ");
             //cases[i]->set_type();
         } else if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) {
-            cases[i] =  new CasePropriete(rouge, 200,i, "Case propriete", 50, proprietaire_terrain, 0, 0, 3 );
+            cases[i] =  new CasePropriete(200,i, "Case propriete", 50, proprietaire_terrain, 0, 0);
             CasePropriete* CaseProp= dynamic_cast<CasePropriete*>(cases[i]);
              //cout<<"ca marche"<<endl;
-           // cout<<"le prix est "<<cases[i]->get_prix()<<endl;
+            cout<<"le prix est "<<CaseProp->get_prix()<<endl;
            
         }
         else if (i==8 || i==15){
             cases[i] = new CaseEnigme();
             CaseEnigme* caseEnigme2= dynamic_cast<CaseEnigme*>(cases[i]);
-            //cout<<"il gagne ou per "<<cases[i]->get_qe()<<cases[i]->get_qs()<<endl;
+            cout<<"il gagne ou perd "<<caseEnigme2->get_qe(2)<<cases[i]->get_qs(2)<<endl;
             //cases[i]->set_type("Case enigme");
         }
         else if (i==1 || i==10 || i==16 || i==19)
@@ -42,19 +42,18 @@ Plateau::Plateau() {
             if (i==1 || i==10){
                 cases[i]= new CaseArgent(200,i,"Case Argent");
                 CaseArgent* caseArg= dynamic_cast<CaseArgent*>(cases[i]);
-              //  cout<< "Il a gagne "<<caseArg->get_montant()<<" euros"<<endl;
+                cout<< "Il a gagne "<<caseArg->get_montant()<<" euros"<<endl;
             }
             else{
                 cases[i]= new CaseArgent(-200,i,"Case Argent");
                 CaseArgent* caseArg2= dynamic_cast<CaseArgent*>(cases[i]);
-               
-               // cout<< "Il a perdu "<<caseArg2->get_montant()<<" euros"<<endl;
+                cout<< "Il a perdu "<<caseArg2->get_montant()<<" euros"<<endl;
             }    
         }
         else{
             cases[i] = new CaseRessources(2, 2, i, "Case Ressources");
             CaseRessources* caseRes= dynamic_cast<CaseRessources*>(cases[i]);
-            //cout<< "Il a gagne "<<caseRes->get_eau()<<" unites d'eau et "<<cases[i]->get_soleil()<<" de soleil"<<endl;
+            cout<< "Il a gagne "<<caseRes->get_eau()<<" unites d'eau et "<<cases[i]->get_soleil()<<" de soleil"<<endl;
         }
 
 

@@ -15,7 +15,7 @@ CasePropriete::CasePropriete() {
     proprio=1;
 }
 
-CasePropriete::CasePropriete(Couleur cl, int pr,int position, std::string type, int l, int propri, int nba, int nbj, int nba_max )
+CasePropriete::CasePropriete(int pr,int position, std::string type, int l, int propri, int nba, int nbj)
 {
     prix=pr;
     pos=position;
