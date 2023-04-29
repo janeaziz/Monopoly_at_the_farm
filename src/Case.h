@@ -1,7 +1,7 @@
 #include <string>
 #ifndef CASE_H
 #define CASE_H
-#include"Couleur.h"
+
 
 
 using namespace std;

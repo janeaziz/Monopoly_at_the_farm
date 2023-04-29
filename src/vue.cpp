@@ -210,6 +210,21 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[],int arbre_ca
         
 }
 
+void dessiner_pageaccueil(SDL_Renderer* renderer,SDL_Texture* images[]){
+   SDL_Rect Rect;
+   Rect.x=0;
+   Rect.y=0;
+   Rect.w=1100;
+   Rect.h=900;
+   SDL_RenderCopyEx(renderer, images[21], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE); 
+
+   Rect.x=400;
+   Rect.y=400;
+   Rect.w=300;
+   Rect.h=160;
+   SDL_RenderCopyEx(renderer, images[23], nullptr, &Rect, 0, nullptr, SDL_FLIP_NONE); 
+}
+
 void afficher_gagnant(SDL_Renderer* renderer,SDL_Texture* images[],unsigned int gagnant){
     SDL_Rect Rectangle;
     Rectangle.x=0;
@@ -656,5 +671,9 @@ void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question,int nb
     if(question==27){
         charger_questions(renderer,27,rouge,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
+}
+
+void initialisation_donnees(){
+    
 }
 

@@ -16,6 +16,17 @@ unsigned int clic(SDL_Event event , Jeu &jeu, SDL_Rect de_rect){
     
 }
 
+void clic_bouton_start(SDL_Event event , bool &bouton_start){
+    int x=event.motion.x;
+    int y=event.motion.y;
+
+
+    if(x>= 400 && x<=700 && y<= 560 && y>=400 ){
+        bouton_start=true;
+    }
+    
+}
+
 bool bouton(SDL_Event event){
     //SDL_Event event;
     bool bouton_y_n=false;

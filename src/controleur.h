@@ -5,4 +5,6 @@
 
 unsigned int clic(SDL_Event event , Jeu &jeu, SDL_Rect de_rect);
 
+void clic_bouton_start(SDL_Event event , bool &bouton_start);
+
 bool bouton(SDL_Event event);

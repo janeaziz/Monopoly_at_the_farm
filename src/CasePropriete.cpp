@@ -5,30 +5,23 @@
 
 CasePropriete::CasePropriete() {
 
-    c.setRouge(0);
-    c.setVert(0);
-    c.setBleu(0);
+    
     prix=0;
     pos=0;
     type="Case Propriete";
     loyer=0;
     nb_arbre=0;
-    nb_arbre_max=0;
     nb_jardin=0;
     proprio=1;
 }
 
 CasePropriete::CasePropriete(Couleur cl, int pr,int position, std::string type, int l, int propri, int nba, int nbj, int nba_max )
 {
-    c.setRouge(cl.getRouge());
-    c.setVert(cl.getVert());
-    c.setBleu(cl.getBleu());
     prix=pr;
     pos=position;
     type="Case Propriete";
     loyer=l;
     nb_arbre=nba;
-    nb_arbre_max=nba_max;
     nb_jardin=nbj;
     proprio=propri;
 
@@ -36,19 +29,13 @@ CasePropriete::CasePropriete(Couleur cl, int pr,int position, std::string type, 
 }
 
 CasePropriete::~CasePropriete(){
-    c.setRouge(0);
-    c.setVert(0);
-    c.setBleu(0);
-    
+
     prix=0;
     loyer=0;
     nb_arbre=0;
-    nb_arbre_max=0;
     nb_jardin=0;
     proprio=0;
-    //proprio.~Joueur();
-
-
+    
 
 }
 

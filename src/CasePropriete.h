@@ -13,12 +13,12 @@ class CasePropriete : public Case{
 
     private:
 
-        Couleur c;
+
         int prix; // prix du terrain
         int proprio;
         int loyer; // loyer  que l'adversaire paye s'il arrive sur cette case
         int nb_arbre;
-        int nb_arbre_max;
+        
         bool nb_jardin;
 
 

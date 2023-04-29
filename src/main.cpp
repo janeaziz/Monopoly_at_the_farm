@@ -7,6 +7,7 @@
 using namespace std;
  
 int main(){
+
 const int case_width=130;
 const int case_height=130;
 Jeu j;
@@ -26,8 +27,7 @@ SDL_Color rouge={255,0,0};
 SDL_Color bleu={0,0,255};
 SDL_Color vert={0,255,0};
 SDL_Color blanc={255,255,255};
-//int indice_tabpropriete0=0;
-//int indice_tabpropriete1=0;
+
 bool tour_prochain=true;
 bool propriete_achete=false;
 bool non_achetee=false;
@@ -36,6 +36,7 @@ int question_arroser_0=-1;
 int question_arroser_1=-1;
 int nb_clic=0;
 bool boucle_taxe=true;
+bool bouton_start=false;
 
 int nb_arbre_j0_avant=j.getJoueurs(0).get_nbarbre();
 int nb_arbre_j1_avant=j.getJoueurs(1).get_nbarbre();
@@ -50,7 +51,6 @@ int nb_jardin_j1_apres=j.getJoueurs(1).get_nbjardin();
 int arbre_case[19];
 int jardin_case[19];
 
- 
 
 window = SDL_CreateWindow("Monopoly",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,1100,900,SDL_WINDOW_SHOWN);
 renderer= SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
@@ -64,11 +64,34 @@ if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     }
 
 while (!quit){
-     
-    if(question==24 || question==25){
+    if(bouton_start==false){
         while (SDL_PollEvent(&event)){
             if (event.type==SDL_QUIT){
                 quit=true;
+            }
+            if (event.type == SDL_MOUSEBUTTONDOWN){
+                
+                clic_bouton_start(event,bouton_start);
+            }
+
+        dessiner_pageaccueil(renderer,images);
+        SDL_RenderPresent(renderer);
+        SDL_RenderClear(renderer);
+
+        }
+    }    
+    else if(question==24 || question==25){
+        while (SDL_PollEvent(&event)){
+            if (event.type==SDL_QUIT){
+                quit=true;
+            }
+
+            if (event.type == SDL_MOUSEBUTTONDOWN){
+                valde=clic(event,j,rect_de);
+                valeurde=valde;
+                tour_prochain=false; 
+                boucle_taxe=true;
+                nb_clic++;                
             }
         }
 

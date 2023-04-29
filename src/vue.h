@@ -28,6 +28,8 @@
      */
     void dessiner_plateau(SDL_Renderer* renderer,SDL_Texture* images[],int arbre_case[],int jardin_case[],unsigned int valeurde);
     
+    void dessiner_pageaccueil(SDL_Renderer* renderer,SDL_Texture* images[]);
+    
     void afficher_gagnant(SDL_Renderer* renderer,SDL_Texture* images[],unsigned int gagnant); 
 
     void afficher_joueur (SDL_Renderer* renderer,SDL_Texture* images[],Joueur p1, Joueur p2);
@@ -41,3 +43,5 @@
     void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c,int nb_arbre_avant,int nb_arbre_apres,int nb_jardin_avant,int nb_jardin_apres);
 
     void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question,int nb_arbre_avant,int nb_arbre_apres,int nb_jardin_avant,int nb_jardin_apres);
+
+    void initialisation_donnees();
