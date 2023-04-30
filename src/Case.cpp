@@ -95,4 +95,3 @@ int Case::get_qs(int indice ) const{
 int Case::get_qe(int indice ) const{
     return 0;
 }
-

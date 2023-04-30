@@ -1,7 +1,5 @@
 
 #include "Plateau.h"
-//#include "CasePropriete.h"
-//#include "Couleur.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <assert.h>
@@ -22,23 +20,26 @@ Plateau::Plateau() {
         
         if (i == 0) {
             cases[i] =  new Case(i, "Case départ");
-            //cases[i]->set_type();
-        } else if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) {
+            
+        } 
+        //si c'est une CasePropriete
+        else if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) { 
             cases[i] =  new CasePropriete(200,i, "Case propriete", 50, proprietaire_terrain, 0, 0);
             CasePropriete* CaseProp= dynamic_cast<CasePropriete*>(cases[i]);
-             //cout<<"ca marche"<<endl;
             cout<<"le prix est "<<CaseProp->get_prix()<<endl;
            
         }
+        //si c'est une CaseMystere
         else if (i==8 || i==15){
             cases[i] = new CaseMystere();
             CaseMystere* CaseMystere2= dynamic_cast<CaseMystere*>(cases[i]);
             cout<<"il gagne ou perd "<<CaseMystere2->get_qe(2)<<cases[i]->get_qs(2)<<endl;
-            //cases[i]->set_type("Case enigme");
+            
         }
+
+        //si c'est une caseArgent
         else if (i==1 || i==10 || i==16 || i==19)
         {
-            //cases[i] = new Case(i, "Case argent");
             if (i==1 || i==10){
                 cases[i]= new CaseArgent(200,i,"Case Argent");
                 CaseArgent* caseArg= dynamic_cast<CaseArgent*>(cases[i]);
@@ -50,6 +51,7 @@ Plateau::Plateau() {
                 cout<< "Il a perdu "<<caseArg2->get_montant()<<" euros"<<endl;
             }    
         }
+        //si c'est une CaseRessources
         else{
             cases[i] = new CaseRessources(2, 2, i, "Case Ressources");
             CaseRessources* caseRes= dynamic_cast<CaseRessources*>(cases[i]);
