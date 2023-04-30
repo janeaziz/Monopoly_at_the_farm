@@ -24,13 +24,14 @@ class CasePropriete : public Case{
 
     public:
 
-    /**
-     * 
-    */
-    CasePropriete();
+        /**
+         * @brief Constructeur par defaut de CasePropriete
+         * 
+         */
+        CasePropriete();
 
         /**
-         * @brief Construct a new Case Propriete object 
+         * @brief Constructeur par copie de CasePropriete 
          * le prix du terrain qui change pas 
          * le loyer qui commence a une valeur et qui augmente en fonction de nb arbre et jardin 
          * nb arbre/ jardin sur le terrain  
@@ -44,51 +45,51 @@ class CasePropriete : public Case{
          */
         CasePropriete(int prix_achat, int pos, std::string type, int l, int proprietaire, int arb, int jard); 
         
-
+        /**
+         * @brief Destructeur de CasePropriete
+         * 
+         */
         ~CasePropriete();
         
         /**
-         * @brief Get the prix object
+         * @brief Accesseur de prix
          * 
          * @return int 
          */
         int get_prix()const;
 
         /**
-         * @brief Set the prix object
+         * @brief Mutateur de prix
          * 
          * @param x 
          */
         void set_prix(unsigned int x);
 
         /**
-         * @brief Get the loyer object
+         * @brief Accesseur de loyer
          * 
          * @return int 
          */
-
         int get_loyer()const;
     
 
         /**
-         * @brief Set the loyer object, donne le nouveau montant du loyer 
-         * en fonction du nb d'arbres, jardin
+         * @brief Mutateur de loyer
          * 
          * @param nouveau_montant 
          */
-
-        void set_loyer(int nouveau_montant); //prend la fonction calculer loyer en parametre
+        void set_loyer(int nouveau_montant); 
 
         
         /**
-         * @brief calcule le nouveau loyer en fonction du nombre d'abre et de jardins
+         * @brief calcule le nouveau loyer en fonction du nombre d'arbres et de jardins
          * 
          * @return int 
          */
         int calculer_loyer();
 
         /**
-         * @brief Get the proprio object
+         * @brief Accesseur de proprio
          * 
          * @return int 
          */
@@ -96,19 +97,38 @@ class CasePropriete : public Case{
 
        
         /**
-         * @brief Set the proprio object
+         * @brief Mutateur de proprio
          * 
-         * @param j 
+         * @param i 
          */
         virtual void set_proprio(int i);
 
-
+        /**
+         * @brief Mutateur de nb_arbre
+         * 
+         * @param i 
+         */
         virtual void set_nb_arbre(int i);
 
+        /**
+         * @brief Accesseur de nb_arbre
+         * 
+         * @return int 
+         */
         virtual int get_nb_arbre()const;
 
+        /**
+         * @brief Mutateur de nb_jardin
+         * 
+         * @param i 
+         */
         virtual void set_nb_jardin(int i);
         
+        /**
+         * @brief Accesseur de nb_jardin
+         * 
+         * @return int 
+         */
         virtual int get_nb_jardin()const;
 
 

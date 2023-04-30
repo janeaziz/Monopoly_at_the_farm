@@ -16,37 +16,44 @@ class Case{
     public:
 
     /**
-     * @brief Construct a new Case object
+     * @brief Constructeur de Case
      * 
      */
     Case();
+   
     /**
-     * @brief Construct a new Case object
+     * @brief Constructeur par copie avec l'indice et le type en parametre
      * 
-     * @param i 
+     * @param indice 
+     * @param t 
      */
-  //  Case(int i);
     Case(int indice, std::string t);
 
+    
+    /**
+     * @brief Destructeur de Case
+     * 
+     */
     virtual ~Case();
 
 
-/**
- * @brief Set the type object
- * 
- * @param letype 
- */
+    /**
+     * @brief Mutateur du type
+     * 
+     * @param letype 
+     */
 
     void set_type(std::string letype);
 
     /**
-     * @brief Get the pos object
+     * @brief Mutateur de Position
      * 
      * @return int 
      */
     int get_pos()const;
 
 //fonctions CasePropriete
+
     virtual void set_prix(unsigned int i);
 
     virtual int get_prix()const;
@@ -76,12 +83,11 @@ class Case{
     virtual int get_eau() const;   
     
     virtual int get_soleil() const; 
-//fonctions CaseEnigme
+
+//fonctions CaseMystere
     virtual int get_qe(int i) const;
 
     virtual int get_qs(int i) const;
-
-   
 
 };
 

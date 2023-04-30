@@ -16,7 +16,7 @@ Jeu::Jeu() {
    
 
     joueur_actuel = 0; // Initialisation du joueur actuel
-    gagnant = 2; // Initialisation du gagnant à -1 
+    gagnant = 2; // Initialisation du gagnant a 2, donc a aucun des joueurs qui ont 0 et 1 comme indice 
 }
 
 Jeu::~Jeu(){
@@ -79,7 +79,6 @@ int Jeu::arrose_arbre(unsigned int id){
     int nb_jardin_j=joueurs[id].get_nbjardin();
     int conso_jardin_j= 4 * nb_jardin_j;
     int reste_arroser;
-    cout<<"je suis dans arrose arbre"<<endl;
     
     if(nb_eau_j >= (nb_arbre_j + conso_jardin_j)){
         joueurs[id].setEau(nb_eau_j - (nb_arbre_j + conso_jardin_j));

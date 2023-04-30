@@ -108,7 +108,7 @@ void dessiner_plateau(SDL_Renderer* renderer, SDL_Texture* images[],int arbre_ca
     // Dessin du plateau en utilisant les images des cases
     
     SDL_Rect Rect;
- //j.tour_suivant();
+ 
     const int case_width=130;
     const int case_height=130;
     
@@ -530,11 +530,10 @@ void charger_questions(SDL_Renderer* renderer,unsigned int indice,SDL_Color c,in
 void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question,int nb_arbre_avant,int nb_arbre_apres,int nb_jardin_avant,int nb_jardin_apres){
 
     SDL_Color rouge={255,0,0};
-    SDL_Color bleu={0,0,255};
     SDL_Color vert={0,255,0};
     SDL_Color blanc={255,255,255};
 
-    if(bouton_y_n == false & question==0 ){
+    if(bouton_y_n == false && question==0 ){
         charger_questions(renderer,0,blanc,nb_arbre_avant,nb_arbre_apres,nb_jardin_avant,nb_jardin_apres);
     }
 
@@ -639,7 +638,4 @@ void appel_questions(SDL_Renderer* renderer,bool bouton_y_n, int question,int nb
     }
 }
 
-void initialisation_donnees(){
-    
-}
 

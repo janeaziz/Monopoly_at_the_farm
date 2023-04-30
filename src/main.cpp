@@ -25,7 +25,6 @@ unsigned int valde;
 unsigned int valeurde;
 SDL_Color rouge={255,0,0};
 SDL_Color bleu={0,0,255};
-SDL_Color vert={0,255,0};
 SDL_Color blanc={255,255,255};
 
 bool tour_prochain=true;

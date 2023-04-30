@@ -1,6 +1,6 @@
-#include"CaseEnigme.h"
+#include"CaseMystere.h"
 
-CaseEnigme::CaseEnigme(){
+CaseMystere::CaseMystere(){
     int n=-3;
     for (int i =0;i < 7 ;i++){
         qe[i]=n;
@@ -10,10 +10,10 @@ CaseEnigme::CaseEnigme(){
 }
 
 
-int CaseEnigme::get_qe(int i ) const{
+int CaseMystere::get_qe(int i ) const{
     return qe[i];
 }
 
-int CaseEnigme::get_qs(int i) const{
+int CaseMystere::get_qs(int i) const{
     return qs[i];
 }

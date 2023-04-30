@@ -1,4 +1,4 @@
-OBJ=obj/Plateau.o obj/Case.o obj/Joueur.o obj/Jeu.o obj/vue.o obj/controleur.o obj/Couleur.o obj/CasePropriete.o obj/CaseArgent.o obj/CaseRessources.o obj/CaseEnigme.o
+OBJ=obj/Plateau.o obj/Case.o obj/Joueur.o obj/Jeu.o obj/vue.o obj/controleur.o obj/Couleur.o obj/CasePropriete.o obj/CaseArgent.o obj/CaseRessources.o obj/CaseMystere.o
 CC=g++
 CFLAGS=-g -Wall
 LIBS_SDL = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lGL
@@ -19,7 +19,7 @@ bin/test: $(OBJ) obj/maintest.o
 obj/Couleur.o: src/Couleur.cpp src/Couleur.h
 	$(CC) $(CFLAGS) -c src/Couleur.cpp -o obj/Couleur.o
 
-obj/Plateau.o: src/Plateau.cpp src/Plateau.h src/Case.h src/CasePropriete.h src/Couleur.h src/CaseArgent.h src/CaseRessources.h src/CaseEnigme.h
+obj/Plateau.o: src/Plateau.cpp src/Plateau.h src/Case.h src/CasePropriete.h src/Couleur.h src/CaseArgent.h src/CaseRessources.h src/CaseMystere.h
 	$(CC) $(CFLAGS) -c src/Plateau.cpp -o obj/Plateau.o
 
 obj/CasePropriete.o: src/CasePropriete.cpp 	src/CasePropriete.h src/Couleur.h src/Case.h src/Joueur.h
@@ -31,8 +31,8 @@ obj/CaseArgent.o: src/CaseArgent.cpp src/CaseArgent.h src/Case.h
 obj/CaseRessources.o: src/CaseRessources.cpp src/CaseRessources.h src/Case.h
 	$(CC) $(CFLAGS) -c src/CaseRessources.cpp -o obj/CaseRessources.o
 
-obj/CaseEnigme.o: src/CaseEnigme.cpp src/CaseEnigme.h src/Case.h
-	$(CC) $(CFLAGS) -c src/CaseEnigme.cpp -o obj/CaseEnigme.o		
+obj/CaseMystere.o: src/CaseMystere.cpp src/CaseMystere.h src/Case.h
+	$(CC) $(CFLAGS) -c src/CaseMystere.cpp -o obj/CaseMystere.o		
 
 obj/Case.o: src/Case.cpp src/Case.h 
 	$(CC) $(CFLAGS) -c src/Case.cpp -o obj/Case.o

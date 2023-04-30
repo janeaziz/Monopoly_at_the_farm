@@ -9,32 +9,30 @@
 
         int q_eau;
         int q_soleil;
-     //   Couleur c;
-
+    
         public:
         
 
         /**
-         * @brief Construct a new Case Ressources object
+         * @brief Constructeur de CaseRessources
          * 
          * @param e 
          * @param s 
+         * @param position 
+         * @param letype 
          */
         CaseRessources(int e, int s, int position, std::string letype);
 
 
         /**
-         * @brief Destroy the Case Ressouces object
+         * @brief Destructeur de CaseRessources
          * 
          */
         ~CaseRessources();
 
 
-      
-        
-
         /**
-         * @brief Get the eau object
+         * @brief Accesseur de quantite_eau
          * 
          * @return int 
          */
@@ -44,7 +42,7 @@
 
 
         /**
-         * @brief Get the soleil object
+         * @brief Accesseur de quantite_soleil
          * 
          * @return int 
          */

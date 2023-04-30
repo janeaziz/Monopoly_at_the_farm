@@ -87,7 +87,7 @@ int Case::get_eau() const{
 int Case::get_soleil() const{
     return 0 ;
 }
-//fonctions CaseRessources
+//fonctions CaseMystere
 int Case::get_qs(int indice ) const{
     return 0;
 }

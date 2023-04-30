@@ -50,11 +50,11 @@ void CasePropriete::set_loyer(int nv_loyer){
 int CasePropriete::calculer_loyer(){
     int nv_loyer=loyer;
     
-    if (nb_arbre!=0){
+    if (nb_arbre!=0){   //chaque arbre rajoute 40 euros au loyer
         nv_loyer=50 + nb_arbre*40;
     }
     
-    if(nb_jardin==1){
+    if(nb_jardin==1){ //un jardin rajoute 300 euros au loyer
         nv_loyer=50 + 300;
     }
     return nv_loyer;

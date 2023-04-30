@@ -3,7 +3,7 @@
 #include "CasePropriete.h"
 #include "CaseArgent.h"
 #include "CaseRessources.h"
-#include "CaseEnigme.h"
+#include "CaseMystere.h"
 #include "Couleur.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -30,16 +30,18 @@ class Plateau{
      */
     ~Plateau();
 
-
-    
     /**
-     * @brief Get the Case object
+     * @brief Accesseur de cases[]
      * 
      * @param x 
-     * @return Case 
+     * @return Case& 
      */
     Case & getCase(unsigned int x) const;
 
+    /**
+     * @brief teste les fonctions de Plateau, Case, CaseMystere, CaseRessources, CaseArgent, CasePropriete
+     * 
+     */
     void testRegressionPlateau();
 
 };

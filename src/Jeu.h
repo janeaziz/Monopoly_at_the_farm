@@ -16,11 +16,15 @@ class Jeu{
     public:
 
     /**
-     * @brief Construct a new Jeu object
+     * @brief Constructeur par defaut de Jeu
      * 
      */
     Jeu();
 
+    /**
+     * @brief Destructeur de Jeu
+     * 
+     */
     ~Jeu();
 
    
@@ -33,82 +37,96 @@ class Jeu{
 
 
     /**
-     * @brief bouge le joueur de x cases
+     * @brief bouge le joueur actuel de x cases
      * 
      * @param x 
      */
     void bouge(int x); 
 
+    
     /**
-     * @brief Ajoute deux joueurs au jeur en les initialisant
-     * 
-     */
-    /*void ajouter_joueur(SDL_Renderer* renderer,SDL_Color cl);*/
-
-    /**
-     * @brief alterne vers le Joueur suivant lorsque le joueur courant fini son tour
+     * @brief alterne vers le Joueur suivant
      * 
      */
     bool tour_suivant();
 
     /**
      * @brief effectue tous les changements sur le Joueur lors du tour (achat, perte 
-     * d'argent, de ressources, etc.) 
+     * d'argent, de ressources, etc.) et retourne l'indice de la phrase a afficher sur la fenetre SDL
      * 
+     * @param propriete_achetee 
+     * @param non_achetee 
+     * @return int 
      */
     int joue_tour(bool &propriete_achetee,bool &non_achetee);
 
-
-    int arrose_arbre(unsigned int id);
     /**
-     * @brief retourne vrai si un des Joueurs perd ton son argent
+     * @brief Retire les ressources convenables pour entretenir les arbres et jardins
+     * Et si le joueur n'a pas assez de ressources, il tue les arbres et jardins selon le 
+     * nombre de ressources qui manque (ex: s'il lui manque 1 eau et 1 soleil, 1 arbre est donc mort)
      * 
-     * @return true 
-     * @return false 
+     * @param id 
+     * @return int 
      */
-    bool partie_terminee();
-
+    int arrose_arbre(unsigned int id);
+    
+    
     /**
-     * @brief accesseur sur le gagnant
+     * @brief Accesseur au gagnant
      * 
      * @return Joueur 
      */
     Joueur getGagnant();
 
     /**
-     * @brief accesseur sur le joueur_actuel
+     * @brief Accesseur au joueur_actuel
      * 
      * @return unsigned int
      */
     unsigned int getJoueurActuel()const;
 
     /**
-     * @brief Get the Joueurs object
+     * @brief Accesseur au joueur dans le tableau de joueurs
      * 
      * @param id 
      * @return Joueur 
      */
     Joueur getJoueurs(int id) const;
 
+    /**
+     * @brief Mutateur de gagnant
+     * 
+     * @param i 
+     */
     void set_gagnant(unsigned int i);
 
+    /**
+     * @brief Accesseur de gagnant
+     * 
+     * @return unsigned int 
+     */
     unsigned int get_gagnant()const;
 
 
     /**
-     * @brief Set the Joueur Actuel object
+     * @brief Mutateur du Joueur_actuel
      * 
      * @param i 
      */
     void setJoueurActuel(unsigned int i);
 
+    
     /**
-     * @brief Get the Plateau object
+     * @brief Accesseur de plateau
      * 
-     * @return Plateau 
+     * @return Plateau* 
      */
     Plateau* getPlateau() const;
 
+    /**
+     * @brief teste toutes les fonctions de Jeu grace aux asserts
+     * 
+     */
     void testRegressionJeu();
 
 };

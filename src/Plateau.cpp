@@ -31,9 +31,9 @@ Plateau::Plateau() {
            
         }
         else if (i==8 || i==15){
-            cases[i] = new CaseEnigme();
-            CaseEnigme* caseEnigme2= dynamic_cast<CaseEnigme*>(cases[i]);
-            cout<<"il gagne ou perd "<<caseEnigme2->get_qe(2)<<cases[i]->get_qs(2)<<endl;
+            cases[i] = new CaseMystere();
+            CaseMystere* CaseMystere2= dynamic_cast<CaseMystere*>(cases[i]);
+            cout<<"il gagne ou perd "<<CaseMystere2->get_qe(2)<<cases[i]->get_qs(2)<<endl;
             //cases[i]->set_type("Case enigme");
         }
         else if (i==1 || i==10 || i==16 || i==19)

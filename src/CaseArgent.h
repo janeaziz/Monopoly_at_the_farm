@@ -7,21 +7,31 @@ class CaseArgent: public Case{
     private:
 
     int montant;
-   // Couleur couleur;
+
 
     public:
 
-
     /**
-     * @brief Construct a new Case Argent object
+     * @brief Constructeur de CaseArgent
      * 
      * @param argent 
-     * @param c 
+     * @param position 
+     * @param letype 
      */
     CaseArgent(int argent, int position, std::string letype);
 
+    /**
+     * @brief Accesseur de montant
+     * 
+     * @return int 
+     */
     virtual int get_montant()const;
 
+    /**
+     * @brief Mutateur de montant
+     * 
+     * @param monnaie 
+     */
     void set_montant(int monnaie);
 
 

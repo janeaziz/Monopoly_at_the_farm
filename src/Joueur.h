@@ -22,11 +22,11 @@ class Joueur {
 
     Joueur();
     /**
-     * @brief Construit un nouveau Joueur
+     * @brief Constructeur de Joueur qui prend l'id en parametre
      * 
      * @param id 
      */
-    Joueur(int id); //SDL_Renderer *renderer, TTF_Font *font);
+    Joueur(int id); 
 
     /**
     * @brief Destructeur de Joueur
@@ -35,46 +35,56 @@ class Joueur {
     ~Joueur();
 
     /**
-     * @brief Get the id object
+     * @brief Accesseur de id
      * 
      * @return unsigned int 
      */
     unsigned int getid () const;
 
     /**
-     * @brief 
+     * @brief Mutateur de id
      * 
      * @param id 
      */
     void setid (int id); 
 
     /**
-     * @brief Accesseur pour avoir la valeur de quantite_eau
+     * @brief Accesseur de quantite_eau
      * 
-     * @return int& 
+     * @return int 
      */
     int  getEau () const;
 
     /**
-     * @brief Accesseur pour avoir la valeur de quantite_soleil
+     * @brief Accesseur de quantite_soleil
      * 
-     * @return int& 
+     * @return int 
      */
     int getSoleil () const;
 
     /**
-     * @brief Get the nb arbre object
+     * @brief Accesseur de nb_arbre
      * 
      * @return int 
      */
     int get_nbarbre () const;
 
-
+    /**
+     * @brief Mutateur de nb_arbre
+     * 
+     * @param i 
+     */
     void set_nbarbre(int i);
 
-    void set_nbjardin(int i);
     /**
-     * @brief Get the nb jardin object
+     * @brief Mutateur de nb_jardin
+     * 
+     * @param i 
+     */
+    void set_nbjardin(int i);
+    
+    /**
+     * @brief Accesseur de nb_jardin
      * 
      * @return int 
      */
@@ -82,7 +92,7 @@ class Joueur {
     /**
      * @brief Accesseur pour avoir la valeur de argent
      * 
-     * @return unsigned int& 
+     * @return unsigned int 
      */
     unsigned int getArgent () const;
 
@@ -90,7 +100,7 @@ class Joueur {
     /**
      * @brief Accesseur pour avoir la valeur de position
      * 
-     * @return int& 
+     * @return int 
      */
     unsigned int getPosition () const;
 
@@ -123,10 +133,10 @@ class Joueur {
     */
     void setPosition (unsigned int x);
 
-    
-    
-
-
+    /**
+     * @brief teste toutes les fonctions de Joueur
+     * 
+     */
     void testRegressionJoueur();
 
 

@@ -28,7 +28,7 @@ void clic_bouton_start(SDL_Event event , bool &bouton_start){
 }
 
 bool bouton(SDL_Event event){
-    //SDL_Event event;
+    
     bool bouton_y_n=false;
     while(SDL_PollEvent(&event)) {
         if(event.type == SDL_KEYDOWN){
