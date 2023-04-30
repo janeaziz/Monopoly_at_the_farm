@@ -18,8 +18,7 @@ class CasePropriete : public Case{
         int proprio;
         int loyer; // loyer  que l'adversaire paye s'il arrive sur cette case
         int nb_arbre;
-        
-        bool nb_jardin;
+        int nb_jardin;
 
 
     public:
