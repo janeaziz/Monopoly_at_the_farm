@@ -70,13 +70,6 @@ class Jeu{
      */
     int arrose_arbre(unsigned int id);
     
-    
-    /**
-     * @brief Accesseur au gagnant
-     * 
-     * @return Joueur 
-     */
-    Joueur getGagnant();
 
     /**
      * @brief Accesseur au joueur_actuel
