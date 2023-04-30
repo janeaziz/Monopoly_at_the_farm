@@ -73,7 +73,7 @@ bool Jeu:: tour_suivant(){
 }
 
 int Jeu::arrose_arbre(unsigned int id){
-    int question;
+    int question=1;
     //prend la valeur actuelle d’eau, d'arbres et de jardins que le joueur possède
     int nb_eau_j=joueurs[id].getEau();
     int nb_arbre_j=joueurs[id].get_nbarbre();
@@ -105,6 +105,7 @@ int Jeu::arrose_arbre(unsigned int id){
             if((i==2||i==3||i==4||i==6||i==7||i==11||i==12||i==13||i==17||i==18) && reste_arroser!=0){
                 //prendre le propriétaire de la case
                 int proprio_case=plateau->getCase(i).get_proprio();
+                unsigned int proprietaire_case=(unsigned int) proprio_case;
                 //prendre le nb d’arbre et de jardin dans la case
                 int nb_arbre_case=plateau->getCase(i).get_nb_arbre();
                 int nb_jardin_case=plateau->getCase(i).get_nb_jardin();
@@ -117,7 +118,7 @@ int Jeu::arrose_arbre(unsigned int id){
                 int valeur_jardin_case=4*nb_jardin_case;
                 
                 //si le propriétaire de la case est le joueur lui meme et qu’il a des arbres ou jardin
-                if(proprio_case==id && (nb_arbre_case>0 || nb_jardin_case>0)){
+                if(proprietaire_case==id && (nb_arbre_case>0 || nb_jardin_case>0)){
                     //s'il reste des arbres non arroses
                     if(nb_arbre_case >= reste_arroser){
                         plateau->getCase(i).set_nb_arbre(nb_arbre_case - reste_arroser);
@@ -152,7 +153,9 @@ int Jeu::arrose_arbre(unsigned int id){
 
     if(id==1){
         return question=27;
-    }    
+    }   
+
+    return question; 
 }
 
 
@@ -182,13 +185,13 @@ int Jeu::joue_tour(bool &propriete_achetee,bool &non_achetee){
         cout<<"montan gagne"<<joueurs[joueur_actuel].getArgent ()<<endl;
     }
 
-    if(i==8 || i== 15){ //si on est sur une case enigme
+    if(i==8 || i== 15){ //si on est sur une case mystere
         
         srand(time(NULL));
         int indice;
         indice= rand()%7;
 
-        int indice_joueur=rand()% 2;
+       //int indice_joueur=rand()% 2;
         int eau_actuel=joueurs[joueur_actuel].getEau();
         int soleil_actuel=joueurs[joueur_actuel].getSoleil();
         int eau_adversaire=joueurs[joueur_adverse].getEau();
@@ -250,17 +253,18 @@ int Jeu::joue_tour(bool &propriete_achetee,bool &non_achetee){
 
     //si on se trouve sur une casepropriete
     if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) { // s'il est sur une case Propriete
-        int proprio_case=plateau->getCase(i).get_proprio();
+        int proprietaire_case=plateau->getCase(i).get_proprio();
+        unsigned int proprio_case=(unsigned int) proprietaire_case;
         cout<<"proprio case "<< proprio_case<<endl;
         int loyer_case=plateau->getCase(i).get_loyer();
-        if(proprio_case == joueur_adverse && argent_actuel>=loyer_case){ // si le proprio est le joueur adverse
+        if(proprietaire_case == joueur_adverse && argent_actuel>=loyer_case){ // si le proprio est le joueur adverse
             joueurs[joueur_actuel].setArgent(argent_actuel - loyer_case);
             joueurs[joueur_adverse].setArgent(argent_actuel_adverse + loyer_case);
             cout<<"Il paye une taxe de "<<loyer_case<<endl;
             questions=17;//"Vous avez paye les taxes de passage"
             cout<<"lindice de la question est "<<questions<<endl;
         }
-        if(proprio_case == joueur_adverse && argent_actuel<loyer_case){ //si proprio joueur adv et pas assez d'argent
+        if(proprietaire_case == joueur_adverse && argent_actuel<loyer_case){ //si proprio joueur adv et pas assez d'argent
             questions=24;//"Vous avez perdu :( Vous n'avez pas assez d'argent pour payer la taxe de passage."
         }    
         
@@ -430,7 +434,8 @@ void Jeu::testRegressionJeu(){
     bool propriete_achetee=false;
     bool non_achetee=false;
     joue_tour(propriete_achetee,non_achetee);
-    assert(getJoueurs(1).getArgent()==argent_avant_jouetour + 200);
+    unsigned int argent_av_jouetour=(unsigned int)argent_avant_jouetour;
+    assert(getJoueurs(1).getArgent()==argent_av_jouetour + 200);
 
     bouge(7); //on est sur une Case Enigme
     int question=joue_tour(propriete_achetee,non_achetee);
