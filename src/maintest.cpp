@@ -1,6 +1,5 @@
 #include "Plateau.h"
 #include "vue.h"
-//#include "controleur.h"
 #include "Jeu.h"
 #include <iostream>
 

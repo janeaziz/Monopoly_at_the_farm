@@ -27,6 +27,7 @@ Jeu::~Jeu(){
 unsigned int Jeu::jete_de(){
     srand(time(NULL));
     unsigned int de;
+    // genere des valeurs aléatoire pour le de (1 à 6) et retourne la valeur
     de = rand()% 6 +1;
 
     return de;
@@ -51,12 +52,11 @@ void Jeu::bouge(int x){
         joueurs[joueur_actuel].setPosition(joueurs[joueur_actuel].getPosition() + x);
         cout<<"la nv pos du j est "<< joueurs[joueur_actuel].getPosition() <<endl;
     }else{
-        pos= pos -20;
+        pos= pos -20; //pour ne pas depasser les 20 cases
         joueurs[joueur_actuel].setPosition(pos);
         cout<<"la nv pos du j est "<< joueurs[joueur_actuel].getPosition() <<endl;
     }
     
-  
 } 
 
 
@@ -74,36 +74,51 @@ bool Jeu:: tour_suivant(){
 
 int Jeu::arrose_arbre(unsigned int id){
     int question;
+    //prend la valeur actuelle d’eau, d'arbres et de jardins que le joueur possède
     int nb_eau_j=joueurs[id].getEau();
     int nb_arbre_j=joueurs[id].get_nbarbre();
     int nb_jardin_j=joueurs[id].get_nbjardin();
-    int conso_jardin_j= 4 * nb_jardin_j;
+    int conso_jardin_j= 4 * nb_jardin_j; //le nb d’eau et de ressource qu’on a besoin pour arroser un jardin
     int reste_arroser;
     
+    //boucle pour quand le nb de ressources du joueur est supérieur ou égale a la valeur que le joueur 
+    //a besoin pour arroser les arbres qu’il a 
     if(nb_eau_j >= (nb_arbre_j + conso_jardin_j)){
+        //modifier la valeur d’eau 
         joueurs[id].setEau(nb_eau_j - (nb_arbre_j + conso_jardin_j));
+        //modifier la valeur du soleil
         joueurs[id].setSoleil(nb_eau_j - (nb_arbre_j + conso_jardin_j));
     }
 
+    //boucle pour quand le nb de ressources est inférieur au nb de ressources que le joueur a besoin
+    // pour arroser les arbres et jardin qu’il a 
     if(nb_eau_j < (nb_arbre_j + conso_jardin_j)){
         reste_arroser = (nb_arbre_j + conso_jardin_j) - nb_eau_j;
         if(nb_eau_j>0){
-            joueurs[id].setEau(0);
+            joueurs[id].setEau(0); //son eau et son soleil deviennent nuls
             joueurs[id].setSoleil(0);
         }
         
-
+        //parcourir les cases et prendre les cases propriete 
         for(int i=2; i<19 ; i++){
+            //si c’est une CasePropriete
             if((i==2||i==3||i==4||i==6||i==7||i==11||i==12||i==13||i==17||i==18) && reste_arroser!=0){
+                //prendre le propriétaire de la case
                 int proprio_case=plateau->getCase(i).get_proprio();
+                //prendre le nb d’arbre et de jardin dans la case
                 int nb_arbre_case=plateau->getCase(i).get_nb_arbre();
                 int nb_jardin_case=plateau->getCase(i).get_nb_jardin();
+                //prendre la valeur d’eau pour le joueur de la case
+                //ainsi que le nb_jardin et nb_arbre
                 nb_eau_j=joueurs[id].getEau();
                 nb_arbre_j=joueurs[id].get_nbarbre();
                 nb_jardin_j=joueurs[id].get_nbjardin();
+                //le nb de ressources qu’a besoin le jardin pour pouvoir être arrosé
                 int valeur_jardin_case=4*nb_jardin_case;
                 
+                //si le propriétaire de la case est le joueur lui meme et qu’il a des arbres ou jardin
                 if(proprio_case==id && (nb_arbre_case>0 || nb_jardin_case>0)){
+                    //s'il reste des arbres non arroses
                     if(nb_arbre_case >= reste_arroser){
                         plateau->getCase(i).set_nb_arbre(nb_arbre_case - reste_arroser);
                         joueurs[id].set_nbarbre(nb_arbre_j - reste_arroser);
@@ -160,15 +175,15 @@ int Jeu::joue_tour(bool &propriete_achetee,bool &non_achetee){
         if (montant_case<0){
             if(argent_actuel>=200) questions=3;    //si argent suffisant
             else if(argent_actuel<200) questions=25; //si argent pas suffisant
-        } else questions=4;
+        } else questions=4; //"Vous avez gagne 200 euros!"
         
         cout<<"montant case argent "<< montant_case<<endl;;
         joueurs[joueur_actuel].setArgent (argent_actuel + montant_case);
         cout<<"montan gagne"<<joueurs[joueur_actuel].getArgent ()<<endl;
     }
 
-    if(i==8 || i== 15){
-        cout<<"on est dans la boucle de case enigme"<<endl;
+    if(i==8 || i== 15){ //si on est sur une case enigme
+        
         srand(time(NULL));
         int indice;
         indice= rand()%7;
@@ -182,37 +197,38 @@ int Jeu::joue_tour(bool &propriete_achetee,bool &non_achetee){
         int eau_case=plateau->getCase(i).get_qe(indice); 
         int soleil_case=plateau->getCase(i).get_qs(indice); 
 
+        //retourne l'indice de la phrase a afficher selon le nombre de ressources dans la case
         switch(eau_case){
             case 0:
-                questions=10;
+                questions=10; //"Pas de changements."
                 break;
             case 1:
-                questions=7;
+                questions=7; // "Vous avez gagne 1 unitee d'eau et de soleil et votre adversaire en a gagnee."
                 break;
 
             case 2:
-                questions=8;
+                questions=8; //"Vous avez gagne 2 unitees d'eau et de soleil et votre adversaire en a gagnee."
                 break;
 
             case 3:
-                questions=9;
+                questions=9; //"Vous avez gagne 3 unitees d'eau et de soleil et votre adversaire en a gagnee."
                 break; 
 
             case -1:
-                questions=11;
+                questions=11; //"Vous avez perdu 1 unitee d'eau et de soleil et votre adversaire en a gagnee."
                 break; 
 
             case -2:
-                questions=12;
+                questions=12; //"Vous avez perdu 2 unitees d'eau et de soleil et votre adversaire en a gagnee."
                 break; 
 
             case -3:
-                questions=13;
+                questions=13; //"Vous avez perdu 3 unitees d'eau et de soleil et votre adversaire en a gagnee."
                 break;                          
         }
 
     
-            
+        //set l'eau et le soleil des joueurs selon le nb de ressources dans la case
         joueurs[joueur_actuel].setEau(eau_actuel+eau_case);
         joueurs[joueur_adverse].setEau(eau_adversaire-eau_case);
         joueurs[joueur_actuel].setSoleil(soleil_actuel+soleil_case);
@@ -225,12 +241,14 @@ int Jeu::joue_tour(bool &propriete_achetee,bool &non_achetee){
         int nb_eau = plateau->getCase(i).get_eau();
         int nb_soleil = plateau->getCase(i).get_soleil();
         if (nb_eau < 0){
-            questions=5;
-        } else questions=6;
+            questions=5; //"Vous avez perdu 2 unites d'eau et de soleil!"
+        } else questions=6; //"Vous avez gagne 2 unites d'eau et de soleil!"
+        //set l'eau et le soleil du joueur selon nombre d'eau et de soleil de la case
         joueurs[joueur_actuel].setEau(eau_actuel + nb_eau);
         joueurs[joueur_actuel].setSoleil(soleil_actuel + nb_soleil);
     }
 
+    //si on se trouve sur une casepropriete
     if (i==2 || i==3 || i==4 || i==6 || i==7 || i==11 ||i==12|| i==13|| i==17|| i==18 ) { // s'il est sur une case Propriete
         int proprio_case=plateau->getCase(i).get_proprio();
         cout<<"proprio case "<< proprio_case<<endl;
@@ -239,17 +257,16 @@ int Jeu::joue_tour(bool &propriete_achetee,bool &non_achetee){
             joueurs[joueur_actuel].setArgent(argent_actuel - loyer_case);
             joueurs[joueur_adverse].setArgent(argent_actuel_adverse + loyer_case);
             cout<<"Il paye une taxe de "<<loyer_case<<endl;
-            questions=17;
+            questions=17;//"Vous avez paye les taxes de passage"
             cout<<"lindice de la question est "<<questions<<endl;
         }
         if(proprio_case == joueur_adverse && argent_actuel<loyer_case){ //si proprio joueur adv et pas assez d'argent
-            questions=24;
+            questions=24;//"Vous avez perdu :( Vous n'avez pas assez d'argent pour payer la taxe de passage."
         }    
         
         
-        if(proprio_case == joueur_actuel) {
+        if(proprio_case == joueur_actuel) { //s'il est lui meme le proprio de la case
 
-        // cout<<"on est ds la boucle"<<endl;
 
             int nb_arbre_case = plateau->getCase(i).get_nb_arbre();
 
@@ -261,7 +278,7 @@ int Jeu::joue_tour(bool &propriete_achetee,bool &non_achetee){
 
             if(nb_arbre_case<3 && argent_actuel>=100){ //si le nombre d'abre de la case est inferieur à 5 et s'il a l'argent necessaire pour l'acheter
 
-                questions=1;
+                questions=1; //"Voulez-vous planter un arbre?"
 
                 if(propriete_achetee==true){ //s'il a dit oui
 
@@ -280,24 +297,27 @@ int Jeu::joue_tour(bool &propriete_achetee,bool &non_achetee){
 
                     propriete_achetee=false;
 
-                    questions=15;
+                    questions=15;//"Vous avez bien achete l'arbre"
 
                 }
 
                 if(non_achetee==true){
                     non_achetee=false;
-                    questions=19;
+                    questions=19; //"Vous n'avez pas achete l'arbre"
                     
                 }   
 
             } 
+            //s'il n'a pas assez d'argent pour acheter l'arbre
             else if(nb_arbre_case<3 && argent_actuel<100){
-                propriete_achetee=false;
+                propriete_achetee=false; 
                 questions=22;   
             }  
+            //s'il a deja 3 arbres sur la case et il a l'argent suffisant pour acheter un jardin
             else if(nb_arbre_case==3 && argent_actuel>=200){
-                questions=2;
-                if(propriete_achetee==true){
+                questions=2; //"veux-tu acheter un jardin?"
+
+                if(propriete_achetee==true){ //si le joueur dit oui
                     plateau->getCase(i).set_nb_jardin(nb_jardin_case + 1);
 
                     joueurs[joueur_actuel].set_nbjardin(nb_jardin_joueur + 1);
@@ -314,44 +334,44 @@ int Jeu::joue_tour(bool &propriete_achetee,bool &non_achetee){
 
                     propriete_achetee=false;
 
-                    questions=16;
+                    questions=16; //"Vous avez bien achete l'arbre"
 
                 }
                 if(non_achetee==true){
                     non_achetee=false;
-                    questions=20;
+                    questions=20; //"Vous n'avez pas achete le jardin
                     
                 }      
             }
             else if(nb_arbre_case==3 && argent_actuel<200){ //s'il a 3 arbres mais pas l'argent suffisant
                 propriete_achetee=false;
-                questions=23;
+                questions=23; //"vous ne pouvez pas achete le jardin"
             }   
 
         }
 
 
 
-        if(proprio_case == 2) {
-            questions=0;
+        if(proprio_case == 2) { //si la case n'a pas de proprio
+            questions=0; //"voulez-vous acheter le terrain"
             cout<<"la question de l'achat terrain"<<endl;
-            if(propriete_achetee==true){
+            if(propriete_achetee==true){ //s'il dit oui
                 int prix_terrain=plateau->getCase(i).get_prix();
-                if(argent_actuel>prix_terrain){
+                if(argent_actuel>prix_terrain){ //s'il a l'argent suffisant
                     plateau->getCase(i).set_proprio(joueur_actuel);
                     cout<<"le proprietaire maintenant est :"<<plateau->getCase(i).get_proprio()<<endl;
                     joueurs[joueur_actuel].setArgent(argent_actuel - prix_terrain);
                     propriete_achetee=false;
-                    questions=14;
+                    questions=14; //"vous avez bien achete le terrain."
                 }  
-                if(argent_actuel<prix_terrain){
-                    propriete_achetee=false;
-                    questions=21;
+                if(argent_actuel<prix_terrain){ //s'il n'a pas l'argent suffisant
+                    propriete_achetee=false; 
+                    questions=21; //"vous n'avez pas pu acheter ce terrain."
                 }      
             }
-            if(non_achetee==true){
+            if(non_achetee==true){ //s'il dit non
                 non_achetee=false;
-                questions=18;
+                questions=18; //"vous n'avez pas achete ce terrain."
                 cout<<"non pour l'achat du terrain"<<endl;
                 
             }
