@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_7ejeu_0',['~Jeu',['../classJeu.html#a9cd19e73df169d7f09397be61ba8548c',1,'Jeu']]],
-  ['_7eplateau_1',['~Plateau',['../classPlateau.html#a0e6ae72e4d7e9923f996c1247e6a6c8b',1,'Plateau']]]
+  ['testregressionjeu_0',['testRegressionJeu',['../classJeu.html#a286de11eaf75bb4083bd07b87f71733a',1,'Jeu']]],
+  ['testregressionplateau_1',['testRegressionPlateau',['../classPlateau.html#a2a6b9b95af6fc53e2e22f6230e5fbd93',1,'Plateau']]],
+  ['tour_5fsuivant_2',['tour_suivant',['../classJeu.html#a3e2dae28ce6ab6dc4399abd77832a663',1,'Jeu']]]
 ];
